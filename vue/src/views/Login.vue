@@ -5,7 +5,7 @@
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
-      <div role="alert" v-if="this.$route.query.registration">
+      <div class="successfulRegister" role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
       <div class="form-input-group">
@@ -16,9 +16,8 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit">Sign in</button>
-      <p>
-      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <button type="submit" id ="signInButton">Sign In</button>
+      <p><router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
   </div>
 </template>
@@ -62,10 +61,83 @@ export default {
 </script>
 
 <style scoped>
-.form-input-group {
+h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 1rem;
+  color: var(--primary800);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.form-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+input[type="text"],
+input[type="password"],
+select {
+  width: 110%;
+  height: 1rem;
+  padding: 0.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--primary800);
+  transition-duration: 0.4s;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary400);
+  box-shadow: 0 0 0 0.125rem rgba(33, 150, 243, 0.25);
 }
 label {
   margin-right: 0.5rem;
+  text-align: center;
+  color: var(--primary800);
+  font: bold;
+  margin-bottom: 0.75rem;
+}
+button {
+  width: 100%;
+  height: 2rem;
+  margin-top: 1.5rem;
+  border-radius: 0.25rem;
+  font-size: 1.2rem;
+  background-color: var(--primary400);
+  color: var(--primary800);
+  border: 3px solid var(--primary800);
+  transition-duration: 0.4s;
+}
+button:hover {
+  background-color: var(--primary800);
+  border: 3px solid var(--primary400);
+  color: white;
+}
+#login {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+form {
+  height: fit-content;
+}
+#signInButton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+p {
+  justify-content: center;
+}
+.successfulRegister {
+  text-align: center;
+}
+input {
+  width: 100%;
 }
 </style>
