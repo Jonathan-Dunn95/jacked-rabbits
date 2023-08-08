@@ -18,6 +18,8 @@ export default {
   name: "home",
   created() {
     if(this.$store.state.user.authorities[0].name === 'ROLE_PARENT') {
+      this.$router.push('/parents')
+    } else {
       this.$router.push('/kids')
     }
   }
