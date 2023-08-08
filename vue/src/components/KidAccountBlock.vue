@@ -41,5 +41,16 @@ export default {
 </script>
 
 <style>
-
+  button {
+    background-color: #47d7ac;
+    border: 2px solid;
+    border-color: #1dc5ba;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+  }
+  button:active {
+    background-color: #26f1b4;
+  }
 </style>
