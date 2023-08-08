@@ -8,6 +8,7 @@ CREATE TABLE users (
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
+
 Create table kids (
 	kids_id SERIAL NOT NULL,
 	user_id SERIAL NOT NULL,
