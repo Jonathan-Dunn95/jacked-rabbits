@@ -59,7 +59,7 @@ const router = new Router({
       name: "kids",
       component: ManageKids,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
   ]
