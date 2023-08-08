@@ -1,8 +1,10 @@
 package com.techelevator.dao;
 
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.Kid;
 import com.techelevator.model.KidRequestDto;
 import com.techelevator.model.User;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -18,8 +20,18 @@ public class JdbcKidDao implements KidDao {
     }
 
     @Override
-    public Kid getKidById(int id) {
-        return null;
+    public Kid getKidById(int kidId) {
+        Kid kid = null;
+        String sql = "SELECT kids_id, user_id, username, password_hash, carrots FROM kids WHERE kids_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, kidId);
+            if (results.next()) {
+                kid = mapRowToKid(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return kid;
     }
 
     @Override
@@ -39,5 +51,12 @@ public class JdbcKidDao implements KidDao {
         }
     }
 
-
+    private Kid mapRowToKid(SqlRowSet rs) {
+        Kid kid = new Kid();
+        kid.setKidId(rs.getInt("kids_id"));
+        kid.setParentId(rs.getInt("user_id"));
+        kid.setUsername(rs.getString("username"));
+        kid.setCarrots(rs.getInt("carrots"));
+        return kid;
+    }
 }
