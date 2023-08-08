@@ -30,51 +30,29 @@
 </template>
 
 <script>
-import KidService from '../services/KidService'
 
 export default {
   data() {
     return {
-      newKid: {
-        name: "jean",
-        steps: 1
-      },
+      // newKid: {
+      //   name: "jean",
+      //   steps: 1
+      // },
       activityForm: {
         steps: 0,
         hours: 0
       },
       currentKidId: 0,
-      kids: [
-        {
-          id: 1,
-          name: "timmy",
-          steps: 0,
-          hours: 0,
-          carrots: 4
-        },
-        {
-          id: 2,
-          name: "jimmy",
-          steps: 0,
-          hours: 0,
-          carrots: 23
-        },
-        {
-          id: 3,
-          name: "tommy",
-          steps: 0,
-          hours: 0,
-          carrots: 135
-        }
-      ]
+      kids: this.$store.state.kids
     }
   },
   methods: {
     addKid() {
-      console.log("adding kid")
-      KidService.createKid(this.$store.state.user.id, this.newKid).then(
+      this.$router.push('/parents/register')
+      // KidService.createKid(this.$store.state.user.id, this.newKid).then(
 
-      )
+      // )
+
     },
     showForm(kidId) {
       this.currentKidId = kidId;
@@ -83,8 +61,10 @@ export default {
       this.currentKidId = 0;
     },
     updateKidActivity() {
-      this.kids[this.currentKidId-1].steps += parseInt(this.activityForm.steps);
-      this.kids[this.currentKidId-1].hours += parseInt(this.activityForm.hours);
+      let newKid = this.kids[this.currentKidId-1]
+      newKid.steps = this.activityForm.steps;
+      newKid.hours = this.activityForm.hours;
+      //this.$store.commit('UPDATE_ACTIVITY', newKid, this.activityForm)
       this.hideForm();
     },
     deleteKid(kidId) {
@@ -92,7 +72,7 @@ export default {
         return kid.id === kidId;
       });
       if(confirm(`Are you sure you want to delete ${currentKid.name}`)) {
-        this.kids.splice(this.kids.indexOf(currentKid),1);
+        this.$store.commit('DELETE_KID',currentKid)
       }
     }
   },

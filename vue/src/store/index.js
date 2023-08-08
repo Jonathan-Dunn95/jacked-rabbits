@@ -19,7 +19,31 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    //remove this when connecting to DB
+    kids: [
+      {
+        id: 1,
+        name: "timmy",
+        steps: 0,
+        hours: 0,
+        carrots: 4
+      },
+      {
+        id: 2,
+        name: "jimmy",
+        steps: 0,
+        hours: 0,
+        carrots: 23
+      },
+      {
+        id: 3,
+        name: "tommy",
+        steps: 0,
+        hours: 0,
+        carrots: 135
+      }
+    ]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,6 +61,14 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    //remove this when connecting to DB
+    ADD_KID(state, kid) {
+      state.kids.push(kid)
+    },
+    //remove this when connecting to DB
+    DELETE_KID(state,kid) {
+      state.kids.splice(state.kids.indexOf(kid),1);
     }
   }
 })

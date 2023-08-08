@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import ParentLandingPage from '../views/ParentLandingPage.vue'
 import KidsLandingPage from '../views/KidsLandingPage.vue'
+import RegisterKids from '../views/RegisterKids.vue'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -67,6 +68,14 @@ const router = new Router({
       path: "/kids",
       name: "kids",
       component: KidsLandingPage,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/parents/register",
+      name: "register-kids",
+      component: RegisterKids,
       meta: {
         requiresAuth: true
       }
