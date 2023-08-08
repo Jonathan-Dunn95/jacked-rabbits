@@ -8,11 +8,11 @@ import com.techelevator.model.User;
 import java.util.List;
 
 public interface KidDao {
+
     Kid getKidById(int id);
 
     List<Kid> listKidsById(int id);
 
     Kid createKid(KidRequestDto kidRequest);
-
 
 }
