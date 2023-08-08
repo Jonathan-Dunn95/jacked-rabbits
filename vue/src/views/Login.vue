@@ -1,5 +1,8 @@
 <template>
   <div id="login">
+    <div class="loading" v-if="isLoading">
+      <img src="@/assets/game_loading.gif" alt="Loading..." />
+    </div>
     <form @submit.prevent="login">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
@@ -16,7 +19,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit" id ="signInButton">Sign In</button>
+      <button type="submit" id ="signInButton" :disabled="isLoading">Sign In</button>
       <p><router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
   </div>
@@ -34,11 +37,13 @@ export default {
         username: "",
         password: ""
       },
+      isLoading: false,
       invalidCredentials: false
     };
   },
   methods: {
     login() {
+      this.isLoading = true;
       authService
         .login(this.user)
         .then(response => {
@@ -46,9 +51,14 @@ export default {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             this.$router.push("/");
+             setTimeout(() => {
+              this.isLoading = false; // Hide loading GIF
+              this.$router.push("/");
+            }, 100000);
           }
         })
         .catch(error => {
+          this.isLoading = false;
           const response = error.response;
 
           if (response.status === 401) {
