@@ -41,14 +41,5 @@ public class KidController {
     public void createKid(@RequestBody KidRequestDto kidRequestDto) {
         kidDao.createKid(kidRequestDto);
     }
-//    @RequestMapping(path = "/kids", method = RequestMethod.POST)
-//    public ResponseEntity<Kid> addKid(@Valid @RequestBody KidRequestDto kidRequest) {
-//        Kid newKid = new Kid(kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots());
-//        Kid createdKid = kidDao.createKid(kidRequest);
-//
-//        if (createdKid == null) {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Kid creation failed.");
-//        }
-//        return ResponseEntity.status(HttpStatus.CREATED).body(createdKid);
-//    }
+
 }

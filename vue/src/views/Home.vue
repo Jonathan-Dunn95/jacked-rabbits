@@ -33,7 +33,7 @@ export default {
     }
     setTimeout(() => {
       this.isLoading = false; 
-    }, 5000); 
+    }, 100000); 
   }
 };
 // computed: { 
