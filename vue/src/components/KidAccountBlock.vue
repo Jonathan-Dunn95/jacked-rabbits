@@ -13,7 +13,7 @@
               <div class="buttons">
                 <button v-on:click="showForm(kid.id)">Log Hours/Steps</button>
                 <button>View Account</button>
-                <button>Remove Kid</button>
+                <button v-on:click="deleteKid(kid.id)">Remove Kid</button>
               </div>
           </li>
         </ul>
@@ -86,6 +86,14 @@ export default {
       this.kids[this.currentKidId-1].steps += parseInt(this.activityForm.steps);
       this.kids[this.currentKidId-1].hours += parseInt(this.activityForm.hours);
       this.hideForm();
+    },
+    deleteKid(kidId) {
+      let currentKid = this.kids.find( kid => {
+        return kid.id === kidId;
+      });
+      if(confirm(`Are you sure you want to delete ${currentKid.name}`)) {
+        this.kids.splice(this.kids.indexOf(currentKid),1);
+      }
     }
   },
   computed: {
