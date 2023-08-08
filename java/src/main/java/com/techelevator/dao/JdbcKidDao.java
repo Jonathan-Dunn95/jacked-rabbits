@@ -53,7 +53,7 @@ public class JdbcKidDao implements KidDao {
 
     private Kid mapRowToKid(SqlRowSet rs) {
         Kid kid = new Kid();
-        kid.setKidId(rs.getInt("kid_id"));
+        kid.setKidId(rs.getInt("kids_id"));
         kid.setParentId(rs.getInt("user_id"));
         kid.setUsername(rs.getString("username"));
         kid.setCarrots(rs.getInt("carrots"));
