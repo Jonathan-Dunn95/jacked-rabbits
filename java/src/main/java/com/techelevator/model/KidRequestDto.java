@@ -5,6 +5,15 @@ public class KidRequestDto {
     private String username;
     private int parentId;
     private int carrots;
+    private String passwordHash;
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
 
     public String getUsername() {
         return username;

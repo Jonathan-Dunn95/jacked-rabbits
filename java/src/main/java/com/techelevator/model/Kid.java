@@ -5,12 +5,14 @@ public class Kid {
     private int parentId;
     private String username;
     private int carrots;
+    private String passwordHash;
 
-    public Kid(int kidId, int parentId, String username, int carrots) {
+    public Kid(int kidId, int parentId, String username, int carrots, String passwordHash) {
         this.kidId = kidId;
         this.parentId = parentId;
         this.username = username;
         this.carrots = carrots;
+        this.passwordHash = passwordHash;
     }
 
     public Kid() {
@@ -20,6 +22,14 @@ public class Kid {
         this.parentId = parentId;
         this.username = username;
         this.carrots = carrots;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public int getKidId() {
