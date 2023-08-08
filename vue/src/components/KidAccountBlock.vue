@@ -7,6 +7,13 @@
         <button>Log Hours/Steps</button>
         <button>View Account</button>
         <button>Remove Kid</button>
+        <button v-on:click="addKid">add kids</button>
+        <ul>
+          <!-- Loop through kids in DB -->
+          <li>
+              <h2>child_name</h2>
+          </li>
+        </ul>
       </div>
   </div>
 </template>

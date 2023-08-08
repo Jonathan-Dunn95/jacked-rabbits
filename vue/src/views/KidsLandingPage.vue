@@ -6,7 +6,12 @@
 
 <script>
 export default {
-    name: "kids-landing-page"
+    name: "kids-landing-page",
+    methods: {
+        addKid() {
+            console.log("adding kid")
+        }
+    }
 
 }
 </script>
