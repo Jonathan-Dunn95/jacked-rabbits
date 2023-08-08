@@ -1,44 +1,48 @@
 package com.techelevator.model;
 
 public class Kid {
-    private int kid_id;
-    private String name;
-    private int steps;
+    private int kidId;
+    private int parentId;
+    private String username;
+    private int carrots;
 
-    public Kid(int kid_id, String name, int steps) {
-        this.kid_id = kid_id;
-        this.name = name;
-        this.steps = steps;
+    public Kid(int kidId, int parentId, String username, int carrots) {
+        this.kidId = kidId;
+        this.parentId = parentId;
+        this.username = username;
+        this.carrots = carrots;
     }
 
     public Kid() {
     }
 
-    public Kid(String name, int steps) {
-
+    public Kid(int parentId, String username, int carrots) {
+        this.parentId = parentId;
+        this.username = username;
+        this.carrots = carrots;
     }
 
-    public int getKid_id() {
-        return kid_id;
+    public int getKidId() {
+        return kidId;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public int getSteps() {
-        return steps;
+    public int getCarrots() {
+        return carrots;
     }
 
-    public void setKid_id(int kid_id) {
-        this.kid_id = kid_id;
+    public void setKidId(int kidId) {
+        this.kidId = kidId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setSteps(int steps) {
-        this.steps = steps;
+    public void setCarrots(int carrots) {
+        this.carrots = carrots;
     }
 }

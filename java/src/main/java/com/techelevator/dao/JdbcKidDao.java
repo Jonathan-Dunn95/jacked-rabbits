@@ -29,11 +29,11 @@ public class JdbcKidDao implements KidDao {
 
     @Override
     public Kid createKid(KidRequestDto kidRequest) {
-        String sql = "INSERT INTO kids (name, steps) VALUES (?, ?) RETURNING kid_id";
-        Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, kidRequest.getName(), kidRequest.getSteps());
+        String sql = "INSERT INTO kids (user_id, username, carrots) VALUES (?, ?, ?) RETURNING kid_id";
+        Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots());
 
         if (kidId != null) {
-            return new Kid(kidId, kidRequest.getName(), kidRequest.getSteps());
+            return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots());
         } else {
             return null;
         }

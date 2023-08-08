@@ -2,22 +2,31 @@ package com.techelevator.model;
 
 public class KidRequestDto {
 
-    private String name;
-    private int steps;
+    private String username;
+    private int parentId;
+    private int carrots;
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public int getSteps() {
-        return steps;
+    public int getCarrots() {
+        return carrots;
     }
 
-    public void setSteps(int steps) {
-        this.steps = steps;
+    public void setCarrots(int carrots) {
+        this.carrots = carrots;
+    }
+
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 }

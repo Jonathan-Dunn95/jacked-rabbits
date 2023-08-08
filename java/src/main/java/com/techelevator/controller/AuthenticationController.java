@@ -73,7 +73,7 @@ public class AuthenticationController {
 
     @RequestMapping(path = "/add-kid", method = RequestMethod.POST)
     public ResponseEntity<Kid> addKid(@Valid @RequestBody KidRequestDto kidRequest) {
-        Kid newKid = new Kid(kidRequest.getName(), kidRequest.getSteps());
+        Kid newKid = new Kid(kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots());
 
         Kid createdKid = kidDao.createKid(kidRequest);
 
