@@ -5,9 +5,9 @@ public class Kid {
     private int parentId;
     private String username;
     private int carrots;
-    private int passwordHash;
+    private String passwordHash;
 
-    public Kid(int kidId, int parentId, String username, int carrots, int passwordHash) {
+    public Kid(int kidId, int parentId, String username, int carrots, String passwordHash) {
         this.kidId = kidId;
         this.parentId = parentId;
         this.username = username;
@@ -24,11 +24,11 @@ public class Kid {
         this.carrots = carrots;
     }
 
-    public int getPasswordHash() {
+    public String getPasswordHash() {
         return passwordHash;
     }
 
-    public void setPasswordHash(int passwordHash) {
+    public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
 

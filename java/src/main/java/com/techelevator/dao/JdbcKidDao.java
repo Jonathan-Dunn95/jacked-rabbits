@@ -45,7 +45,7 @@ public class JdbcKidDao implements KidDao {
         Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getPasswordHash(), kidRequest.getCarrots());
 
         if (kidId != null) {
-            return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getPasswordHash(), kidRequest.getCarrots());
+            return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash());
         } else {
             return null;
         }
