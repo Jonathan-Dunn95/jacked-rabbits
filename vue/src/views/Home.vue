@@ -7,7 +7,12 @@
 
 <script>
 export default {
-  name: "home"
+  name: "home",
+  created() {
+    if(this.$store.state.user.authorities[0].name === 'ROLE_PARENT') {
+      this.$router.push('/kids')
+    }
+  }
 };
 </script>
 
