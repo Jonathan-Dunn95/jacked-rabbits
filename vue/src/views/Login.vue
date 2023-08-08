@@ -34,11 +34,13 @@ export default {
         username: "",
         password: ""
       },
+      isLoading: false,
       invalidCredentials: false
     };
   },
   methods: {
     login() {
+      this.isLoading = true;
       authService
         .login(this.user)
         .then(response => {
@@ -49,6 +51,7 @@ export default {
           }
         })
         .catch(error => {
+          this.isLoading = false;
           const response = error.response;
 
           if (response.status === 401) {
