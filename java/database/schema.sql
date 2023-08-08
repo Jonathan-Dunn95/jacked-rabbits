@@ -11,7 +11,7 @@ CREATE TABLE users (
 
 Create table kids (
 	kids_id SERIAL NOT NULL,
-	user_id SERIAL NOT NULL,
+	user_id int NOT NULL,
 	username varchar(50) NOT NULL,
 	password_hash varchar(200) NOT NULL,
 	carrots int,

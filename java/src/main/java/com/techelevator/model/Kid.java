@@ -45,4 +45,8 @@ public class Kid {
     public void setCarrots(int carrots) {
         this.carrots = carrots;
     }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
+    }
 }
