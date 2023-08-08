@@ -22,7 +22,7 @@
           <input type="number" id="steps" v-model="activityForm.steps">
           <label for="hours">hours: </label>
           <input type="number" id="hours" v-model="activityForm.hours">
-          <button v-on:click="hideForm"></button>
+          <button v-on:click="hideForm">Cancel</button>
           <input type="submit">
         </form>
       </div>
@@ -98,7 +98,7 @@ export default {
 </script>
 
 <style>
-  button {
+  button, input[type="submit"] {
     background-color: #47d7ac;
     border: 2px solid;
     border-color: #1dc5ba;
@@ -111,8 +111,11 @@ export default {
     background-color: #26f1b4;
   }
   li {
-    display: inline-block;
+    display: flex;
     margin: 40px
+  }
+  li > h2 {
+    margin-right: 20px
   }
   .kid-details {
     display: flex;
@@ -122,5 +125,8 @@ export default {
   }
   .buttons > button {
     margin-right: 20px;
+  }
+  form > * {
+    margin-right: 20px
   }
 </style>
