@@ -8,7 +8,6 @@ CREATE TABLE users (
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
-<<<<<<< HEAD
 Create table kids (
 	kids_id SERIAL NOT NULL,
 	user_id SERIAL NOT NULL,
@@ -57,8 +56,4 @@ Create table closet (
 	CONSTRAINT FK_kids_closet FOREIGN KEY (mascot_id) REFERENCES mascot (mascot_id),
 	CONSTRAINT FK_closet_mascot FOREIGN KEY (item_id) REFERENCES items_store (item_id)
 );
-=======
-
-
->>>>>>> d3bbb1d446646d7f8b0757836d31fb258a2a17d0
 COMMIT TRANSACTION;
