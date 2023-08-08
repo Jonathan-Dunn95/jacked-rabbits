@@ -15,4 +15,7 @@ export default {
             return kids.find(kid => kid.id == kidID);
         })
     },
+    createKid(parentID, kid) {
+        return axios.post(`/parents/${parentID}/add-kid`,kid);
+    }
 }
