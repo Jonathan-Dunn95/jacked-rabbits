@@ -26,21 +26,21 @@ export default new Vuex.Store({
         id: 1,
         name: "Timmy",
         steps: 0,
-        hours: 0,
+        minutes: 0,
         carrots: 4
       },
       {
         id: 2,
         name: "Jimmy",
         steps: 0,
-        hours: 0,
+        minutes: 0,
         carrots: 23
       },
       {
         id: 3,
         name: "Tommy",
         steps: 0,
-        hours: 0,
+        minutes: 0,
         carrots: 135
       }
     ]

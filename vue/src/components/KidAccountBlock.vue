@@ -8,22 +8,22 @@
             <h2>{{ kid.name }}</h2>
             <div class="kid-details">
               <p>Steps: {{ kid.steps }}</p>
-              <p>Hours of Activity: {{ kid.hours }}</p>
+              <p>Minutes of Activity: {{ kid.minutes }}</p>
               <p>Carrots: {{ kid.carrots }}</p>
             </div>
           </div>
           <div class="buttons">
-            <button v-on:click="showForm(kid.id)">Log Hours/Steps</button>
+            <button v-on:click="showForm(kid.id)">Log Minutes/Steps</button>
             <!-- <button>View Account</button> -->
             <button v-on:click="deleteKid(kid.id)">Remove Kid</button>
           </div>
           </li>
         </ul>
-        <form v-on:submit.prevent="updateKidActivity" class="log-hours-form"  v-if="isFormShown">
+        <form v-on:submit.prevent="updateKidActivity" class="log-minutes-form"  v-if="isFormShown">
           <label for="steps">Steps: </label>
           <input type="number" id="steps" v-model="activityForm.steps">
-          <label for="hours">Hours: </label>
-          <input type="number" id="hours" v-model="activityForm.hours">
+          <label for="minutes">Minutes: </label>
+          <input type="number" id="minutes" v-model="activityForm.minutes">
           <button type="submit">Submit</button>
           <button v-on:click="hideForm">Cancel</button>
         </form>
@@ -42,7 +42,7 @@ export default {
     return {
       activityForm: {
         steps: 0,
-        hours: 0
+        minutes: 0
       },
       currentKidId: 0,
       kids: this.$store.state.kids
@@ -68,7 +68,7 @@ export default {
     updateKidActivity() {
       let newKid = this.kids[this.currentKidId-1]
       newKid.steps = this.activityForm.steps;
-      newKid.hours = this.activityForm.hours;
+      newKid.minutes = this.activityForm.minutes;
       //this.$store.commit('UPDATE_ACTIVITY', newKid, this.activityForm)
       this.hideForm();
     },
