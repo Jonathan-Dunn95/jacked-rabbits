@@ -45,7 +45,6 @@ export default {
         minutes: 0
       },
       currentKidId: 0,
-      kids: this.$store.state.kids
     }
   },
   methods: {
@@ -84,6 +83,9 @@ export default {
   computed: {
     isFormShown() {
       return this.currentKidId > 0;
+    },
+    kids() {
+      return this.$store.state.kids;
     }
   },
   created() {
