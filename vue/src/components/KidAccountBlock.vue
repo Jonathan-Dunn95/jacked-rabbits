@@ -1,20 +1,22 @@
 <template>
-  <div>
+  <div class="container">
     <button v-on:click="addKid">Add Kid</button>
-      <div class="kid-block">
-        <ul>
-          <li v-for="kid in kids" v-bind:key="kid.id">
-              <h2>{{ kid.name }}</h2>
-              <div class="kid-details">
-                <p>Steps: {{ kid.steps }}</p>
-                <p>Hours of Activity: {{ kid.hours }}</p>
-                <p>Carrots: {{ kid.carrots }}</p>
-              </div>
-              <div class="buttons">
-                <button v-on:click="showForm(kid.id)">Log Hours/Steps</button>
-                <button>View Account</button>
-                <button v-on:click="deleteKid(kid.id)">Remove Kid</button>
-              </div>
+    <div class="kid-block">
+      <ul>
+        <li v-for="kid in kids" v-bind:key="kid.id" class="kid-item">
+          <div class="kid-info">
+            <h2>{{ kid.name }}</h2>
+            <div class="kid-details">
+              <p>Steps: {{ kid.steps }}</p>
+              <p>Hours of Activity: {{ kid.hours }}</p>
+              <p>Carrots: {{ kid.carrots }}</p>
+            </div>
+          </div>
+          <div class="buttons">
+            <button v-on:click="showForm(kid.id)">Log Hours/Steps</button>
+            <!-- <button>View Account</button> -->
+            <button v-on:click="deleteKid(kid.id)">Remove Kid</button>
+          </div>
           </li>
         </ul>
         <form v-on:submit.prevent="updateKidActivity" class="log-hours-form"  v-if="isFormShown">
@@ -22,7 +24,7 @@
           <input type="number" id="steps" v-model="activityForm.steps">
           <label for="hours">Hours: </label>
           <input type="number" id="hours" v-model="activityForm.hours">
-          <input type="submit">
+          <button type="submit">Submit</button>
           <button v-on:click="hideForm">Cancel</button>
         </form>
       </div>
@@ -86,18 +88,46 @@ export default {
 </script>
 
 <style>
-.kid-block {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .kid-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .kid-item {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    padding: 10px;
+    border: 4px solid var(--primary400);
+    border-radius: 5px;
+    width: 100%;
+  }
+  .kid-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+  .kid-details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .kid-details > p {
+    margin-right: 20px;
+    font-size: 1.2rem;
+  }
   button {
-    background-color: #47d7ac;
+    border-radius: 0.25rem;
+    background-color: var(--primary400);
     border: 2px solid;
     border-color: #1dc5ba;
     padding: 10px 20px;
-    font-size: 18px;
-    color: white;
+    font-size: 1.2rem;
+    color: var(--primary800);
+    border: 3px solid var(--primary800);
     font-weight: bold;
     transition-duration: 0.4s;
   }
@@ -122,16 +152,14 @@ export default {
   li > h2 {
     margin-right: 20px
   }
-  .kid-details {
-    display: flex;
-  }
-  .kid-details > p {
-    margin-right: 20px;
-  }
   .buttons > button {
     margin-right: 20px;
+    margin-top: 10px;
   }
   form > * {
     margin-right: 20px
   }
+  * {
+  font-family: 'Montserrat', sans-serif;
+}
 </style>

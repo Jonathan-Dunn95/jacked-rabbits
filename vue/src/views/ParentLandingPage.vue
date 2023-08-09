@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
       <h1>Parents Landing Page</h1>
       <h4>Manage Kids From This Page</h4>
       <kid-account-block />
@@ -18,5 +18,11 @@ export default {
 </script>
 
 <style>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 </style>
