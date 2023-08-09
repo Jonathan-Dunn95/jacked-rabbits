@@ -105,7 +105,6 @@ select {
 input[type="text"]:focus,
 input[type="password"]:focus,
 select:focus {
-  outline: none;
   border-color: var(--primary400);
   box-shadow: 0 0 0 0.125rem rgba(33, 150, 243, 0.25);
 }
@@ -153,8 +152,5 @@ form {
   justify-content: center;
   align-items: center;
   width: 100%;
-}
-* {
-  font-family: 'Montserrat', sans-serif;
 }
 </style>
