@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <div class="loading" v-if="isLoading">
-      <img src="@/assets/game_loading.gif" alt="Loading..." />
+      <img src="@/assets/game_loading.gif" />
     </div>
     <form @submit.prevent="login">
       <h1 >Please Sign In</h1>

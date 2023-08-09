@@ -8,6 +8,8 @@ import ParentLandingPage from '../views/ParentLandingPage.vue'
 import KidsLandingPage from '../views/KidsLandingPage.vue'
 import RegisterKids from '../views/RegisterKids.vue'
 import store from '../store/index'
+import ItemStore from '../views/StoreView.vue'
+import Closet from '../views/ClosetView.vue'
 
 Vue.use(Router)
 
@@ -79,7 +81,23 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: "/store",
+      name: "item-store",
+      component: ItemStore,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/closet",
+      name: "closet",
+      component: Closet,
+      meta: {
+        requiresAuth: false
+      }
+    },
   ]
 })
 
