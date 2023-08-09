@@ -4,18 +4,21 @@ import axios from 'axios';
 
 export default {
     getParents() { 
-        return axios.get('/parents')
+        return axios.get('/users')
     },
     getKids(parentID) { 
-        return axios.get(`/parents/${parentID}`)
+        return axios.get(`/users/${parentID}`)
     },
     getKid(parentID, kidID) { 
-        return axios.get(`/parents/${parentID}`).then((response) => {
+        return axios.get(`/users/${parentID}`).then((response) => {
             const kids = response.data.kids;
             return kids.find(kid => kid.id == kidID);
         })
     },
-    createKid(parentID, kid) {
-        return axios.post(`/parents/${parentID}/add-kid`,kid);
+    createKid(kid) {
+        return axios.post(`/kids`,kid);
+    },
+    getActivity(kidID) {
+        return axios.get(`/kids/${kidID}/activity`)
     }
 }

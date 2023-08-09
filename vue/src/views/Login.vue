@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <div class="loading" v-if="isLoading">
-      <img src="@/assets/game_loading.gif" alt="Loading..." />
+      <img src="@/assets/game_loading.gif" />
     </div>
     <form @submit.prevent="login">
       <h1 >Please Sign In</h1>
@@ -86,6 +86,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   margin-bottom: 1rem;
+  width: 100%;
 }
 input[type="text"],
 input[type="password"],
@@ -102,7 +103,6 @@ select {
 input[type="text"]:focus,
 input[type="password"]:focus,
 select:focus {
-  outline: none;
   border-color: var(--primary400);
   box-shadow: 0 0 0 0.125rem rgba(33, 150, 243, 0.25);
 }
@@ -136,27 +136,18 @@ button:hover {
   border: 3px solid var(--primary400);
   color: white;
 }
+form {
+  height: fit-content;
+}
 #login {
   display: flex;
   justify-content: center;
   height: 100vh;
 }
-form {
-  height: fit-content;
-}
 #signInButton {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-}
-p {
-  justify-content: center;
-}
-.successfulRegister {
-  text-align: center;
-}
-input {
-  width: 100%;
+  width: 108%;
 }
 </style>
