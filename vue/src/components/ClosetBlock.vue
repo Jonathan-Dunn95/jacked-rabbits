@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="nav-tabs">
-      <button @click="selectCategory('Shirts')">Shirts</button>
-      <button @click="selectCategory('Shoes')">Shoes</button>
-      <button @click="selectCategory('Hats')">Hats</button>
-      <button @click="selectCategory('Accessories')">Accessories</button>
-      <button @click="selectCategory('Backgrounds')">Backgrounds</button>
+      <button @click="selectCategory('Shirts')" :class="{ active: selectedCategory === 'Shirts' }">Shirts</button>
+      <button @click="selectCategory('Shoes')" :class="{ active: selectedCategory === 'Shoes' }">Shoes</button>
+      <button @click="selectCategory('Hats')" :class="{ active: selectedCategory === 'Hats' }">Hats</button>
+      <button @click="selectCategory('Accessories')" :class="{ active: selectedCategory === 'Accessories' }">Accessories</button>
+      <button @click="selectCategory('Backgrounds')" :class="{ active: selectedCategory === 'Backgrounds' }">Backgrounds</button>
     </div>
     <div class="item-grid">
       <img v-for="(item, index) in displayedItems" :key="index" :src="item.image" />
@@ -309,7 +309,6 @@ export default {
   justify-content: space-evenly;
   margin-bottom: 1rem;
   background-color: var(--primary400);
-
 }
 .item-grid img {
   flex: 0 1 calc(25% - 1rem);
@@ -320,5 +319,10 @@ export default {
   border: 4px solid var(--primary800);
   margin-bottom: 1rem;
   border-radius: 0.5rem;
+}
+.nav-tabs button.active {
+    background-color: var(--primary800);
+    border: 3px solid var(--primary400);
+    color: white;
 }
 </style>

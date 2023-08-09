@@ -5,13 +5,22 @@
 </template>
 
 <script>
-export default {
 
-}
+export default {
+  data() {
+    return {
+    };
+  },
+  created() {
+  },
+  methods: {
+
+  },
+};
 </script>
 
 <style scoped>
-.container { 
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
