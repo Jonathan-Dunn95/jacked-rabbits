@@ -1,9 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Kid;
-import com.techelevator.model.KidRequestDto;
-import com.techelevator.model.RegisterUserDto;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
 
 import java.util.List;
 
@@ -19,4 +16,5 @@ public interface KidDao {
 
     void updateKid(Kid kid);
 
+    Activity getActivityById(int id);
 }

@@ -3,11 +3,11 @@
     <button v-on:click="addKid">Add Kid</button>
     <div class="kid-block">
       <ul>
-        <li v-for="kid in kids" v-bind:key="kid.id" class="kid-item">
+        <li v-for="kid in kids" v-bind:key="kid.kidId" class="kid-item">
           <div class="kid-info">
-            <h2>{{ kid.name }}</h2>
+            <h2>{{ kid.username }}</h2>
             <div class="kid-details">
-              <p>Steps: {{ kid.steps }}</p>
+              <p>Steps: {{ kid.steps }}</p> <!-- TODO: a=connect activity to this -->
               <p>Minutes of Activity: {{ kid.minutes }}</p>
               <p>Carrots: {{ kid.carrots }}</p>
             </div>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-// import KidsService from "../services/KidService.js";
+import KidService from "../services/KidService.js";
 
 export default {
   components: {
@@ -85,6 +85,15 @@ export default {
     isFormShown() {
       return this.currentKidId > 0;
     }
+  },
+  created() {
+    KidService.getKids(this.$store.state.user.id).then(response => {
+      if(response.status === 200) {
+        //success
+        this.$store.commit("SET_KIDS", response.data);
+        console.log(this.$store.state.kids)
+      }
+    })
   }
 }
 
