@@ -24,21 +24,21 @@ export default new Vuex.Store({
     kids: [
       {
         id: 1,
-        name: "timmy",
+        name: "Timmy",
         steps: 0,
         hours: 0,
         carrots: 4
       },
       {
         id: 2,
-        name: "jimmy",
+        name: "Jimmy",
         steps: 0,
         hours: 0,
         carrots: 23
       },
       {
         id: 3,
-        name: "tommy",
+        name: "Tommy",
         steps: 0,
         hours: 0,
         carrots: 135

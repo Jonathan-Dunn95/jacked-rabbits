@@ -1,12 +1,12 @@
 <template>
   <div id="register">
     <form @submit.prevent="register">
-      <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
+      <div class="input-container">
       <div class="form-input-group">
-        <label for="username">Name</label>
+        <label for="username">Kid Name</label>
         <input type="text" id="username" v-model="user.name" required autofocus />
       </div>
       <div class="form-input-group">
@@ -17,8 +17,9 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit" id="registerButton">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <button type="submit" id="registerButton">Add Kid</button>
+      <button type="button" id="cancelButton" v-on:click="goBack">Cancel</button>
+      </div>
     </form>
   </div>
 </template>
@@ -78,6 +79,9 @@ export default {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
     },
+    goBack() {
+      this.$router.go(-1);
+    },
   },
 };
 </script>
@@ -107,8 +111,7 @@ select {
   font-size: 1rem;
   border-radius: 0.25rem;
   border: 1px solid var(--primary800);
-  box-shadow: none;
-  transition-duration: 0.2s;
+  transition-duration: 0.4s;
 }
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -117,11 +120,20 @@ select:focus {
   border-color: var(--primary400);
   box-shadow: 0 0 0 0.125rem rgba(33, 150, 243, 0.25);
 }
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
 label {
   margin-bottom: 0.5rem;
   text-align: center;
   color: var(--primary800);
   font: bold;
+  margin-bottom: 0.75rem;
+
 }
 button {
   width: 100%;
@@ -147,30 +159,11 @@ form {
   justify-content: center;
   height: 100vh;
 }
-#registerButton {
+#registerButton, #cancelButton {
   display: flex;
   justify-content: center;
-  width: 100%;
-  align-items: center;
-}
-#selectBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#selectBox select {
-    display: flex;
-  flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 2rem;
-  padding-top: 0%;
-  padding-top: 4px;
-}
-#selectBox label {
-  display: block;
-  text-align: center;
-  color: var(--primary800);
 }
 * {
   font-family: 'Montserrat', sans-serif;

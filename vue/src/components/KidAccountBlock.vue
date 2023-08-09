@@ -1,7 +1,7 @@
 <template>
   <div>
+    <button v-on:click="addKid">Add Kid</button>
       <div class="kid-block">
-        <button v-on:click="addKid">add kids</button>
         <ul>
           <li v-for="kid in kids" v-bind:key="kid.id">
               <h2>{{ kid.name }}</h2>
@@ -18,12 +18,12 @@
           </li>
         </ul>
         <form v-on:submit.prevent="updateKidActivity" class="log-hours-form"  v-if="isFormShown">
-          <label for="steps">steps: </label>
+          <label for="steps">Steps: </label>
           <input type="number" id="steps" v-model="activityForm.steps">
-          <label for="hours">hours: </label>
+          <label for="hours">Hours: </label>
           <input type="number" id="hours" v-model="activityForm.hours">
-          <button v-on:click="hideForm">Cancel</button>
           <input type="submit">
+          <button v-on:click="hideForm">Cancel</button>
         </form>
       </div>
   </div>
@@ -86,7 +86,12 @@ export default {
 </script>
 
 <style>
-  button, input[type="submit"] {
+.kid-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  button {
     background-color: #47d7ac;
     border: 2px solid;
     border-color: #1dc5ba;
@@ -94,9 +99,21 @@ export default {
     font-size: 18px;
     color: white;
     font-weight: bold;
+    transition-duration: 0.4s;
   }
-  button:active {
-    background-color: #26f1b4;
+  button:hover {
+    background-color: var(--primary800);
+    border: 3px solid var(--primary400);
+    color: white;
+  }
+  input[type="submit"] {
+    background-color: #47d7ac;
+    border: 2px solid;
+    border-color: #1dc5ba;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
   }
   li {
     display: flex;
