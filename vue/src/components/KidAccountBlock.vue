@@ -32,14 +32,14 @@
 </template>
 
 <script>
+// import KidsService from "../services/KidService.js";
 
 export default {
+  components: {
+    // KidsService,
+  },
   data() {
     return {
-      // newKid: {
-      //   name: "jean",
-      //   steps: 1
-      // },
       activityForm: {
         steps: 0,
         hours: 0
@@ -49,6 +49,9 @@ export default {
     }
   },
   methods: {
+    // getKids() {
+    //   KidsService.getKids(this.parentId)
+    // },
     addKid() {
       this.$router.push('/parents/register')
       // KidService.createKid(this.$store.state.user.id, this.newKid).then(
