@@ -17,5 +17,8 @@ export default {
     },
     createKid(parentID, kid) {
         return axios.post(`/users/${parentID}/kids`,kid);
+    },
+    getActivity(kidID) {
+        return axios.get(`/kids/${kidID}/activity`)
     }
 }

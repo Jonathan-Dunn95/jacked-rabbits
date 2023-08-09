@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Activity;
 import com.techelevator.model.Kid;
 import com.techelevator.model.KidRequestDto;
 import com.techelevator.model.User;
@@ -75,6 +76,17 @@ public class JdbcKidDao implements KidDao {
         jdbcTemplate.update(sql, kid.getUsername());
     }
 
+    @Override
+    public Activity getActivityById(int id) {
+        Activity activity = null;
+        String sql = "SELECT * FROM activity WHERE kids_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,id);
+        if (results.next()) {
+            activity = mapRowToActivity(results);
+        }
+        return activity;
+    }
+
     private Kid mapRowToKid(SqlRowSet rs) {
         Kid kid = new Kid();
         kid.setKidId(rs.getInt("kids_id"));
@@ -82,5 +94,13 @@ public class JdbcKidDao implements KidDao {
         kid.setUsername(rs.getString("username"));
         kid.setCarrots(rs.getInt("carrots"));
         return kid;
+    }
+
+    private Activity mapRowToActivity(SqlRowSet rs) {
+        Activity activity = new Activity();
+        activity.setKidId(rs.getInt("kids_id"));
+        activity.setSteps(rs.getInt("steps"));
+        activity.setMinutes(rs.getInt("minutes"));
+        return activity;
     }
 }

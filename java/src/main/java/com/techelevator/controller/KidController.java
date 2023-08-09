@@ -65,6 +65,12 @@ public class KidController {
         kidDao.deleteKid(kidId);
     }
 
+    @PreAuthorize("permitAll")
+    @RequestMapping(path = "/kids/{id}/activity", method = RequestMethod.GET)
+    public Activity getActivityById(@PathVariable int id){
+
+        return kidDao.getActivityById(id);
+    }
 
 
 
