@@ -1,6 +1,5 @@
 <template>
-  <div>
-      <h1>Item Store View</h1>
+  <div class="container">
 
   </div>
 </template>

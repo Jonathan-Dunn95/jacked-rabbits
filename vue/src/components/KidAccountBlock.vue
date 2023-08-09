@@ -24,7 +24,8 @@
           <input type="number" id="steps" v-model="activityForm.steps">
           <label for="minutes">Minutes: </label>
           <input type="number" id="minutes" v-model="activityForm.minutes">
-          <button type="submit">Submit</button>
+          <input type="submit">
+          <!-- <button v-on:click="resetActivityForm">Reset</button> -->
           <button v-on:click="hideForm">Cancel</button>
         </form>
       </div>
@@ -65,11 +66,17 @@ export default {
       this.currentKidId = 0;
     },
     updateKidActivity() {
-      let newKid = this.kids[this.currentKidId-1]
-      newKid.steps = this.activityForm.steps;
-      newKid.minutes = this.activityForm.minutes;
-      //this.$store.commit('UPDATE_ACTIVITY', newKid, this.activityForm)
-      this.hideForm();
+      
+  let updatedKid = this.kids.find(kid => kid.id === this.currentKidId);
+
+  if (updatedKid) {
+    updatedKid.steps += parseInt(this.activityForm.steps);
+    updatedKid.minutes += parseFloat(this.activityForm.minutes);
+  }
+
+  this.hideForm();
+
+    
     },
     deleteKid(kidId) {
       let currentKid = this.kids.find( kid => {
