@@ -8,6 +8,7 @@ import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -21,6 +22,7 @@ import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -37,9 +39,33 @@ public class KidController {
         return kidDao.getKidById(kidId);
     }
 
+
+    @PreAuthorize("permitAll()")
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public List<Kid> getAllKids(){
+        return kidDao.getAllKids();
+    }
+
+    @PreAuthorize("hasRole('ROLE_PARENT)")
     @RequestMapping(path = "/kids", method = RequestMethod.POST)
     public void createKid(@RequestBody KidRequestDto kidRequestDto) {
         kidDao.createKid(kidRequestDto);
     }
+
+
+    @PreAuthorize("hasRole('ROLE_PARENT)")
+    @RequestMapping(path = "/update/{kidId}", method = RequestMethod.PUT)
+    public void updateKid (@RequestBody Kid kid) {
+        this.kidDao.updateKid(kid);
+    }
+
+    @PreAuthorize("hasRole('ROLE_PARENT)")
+    @RequestMapping(path = "/kids/{kidId}", method = RequestMethod.DELETE)
+    public void deleteKid (@PathVariable int kidId) {
+        kidDao.deleteKid(kidId);
+    }
+
+
+
 
 }

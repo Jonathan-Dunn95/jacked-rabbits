@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -35,9 +36,18 @@ public class JdbcKidDao implements KidDao {
     }
 
     @Override
-    public List<Kid> listKidsById(int id) {
-        return null;
+    public List<Kid> getAllKids() {
+        List<Kid> allKids  = new ArrayList<>();
+        String sql = "SELECT * from kids;";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+        while(result.next()) {
+            Kid kid = mapRowToKid(result);
+            allKids.add(kid);
+        }
+        return allKids;
     }
+
+
 
     @Override
     public Kid createKid(KidRequestDto kidRequest) {
@@ -49,6 +59,20 @@ public class JdbcKidDao implements KidDao {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public void deleteKid(int kidId) {
+        String sql = "DELETE FROM kids WHERE kids_id = ?";
+        jdbcTemplate.update(sql, kidId);
+    }
+
+    @Override
+    public void updateKid(Kid kid) {
+        String sql = "UPDATE kids " +
+                "SET username = ? " +
+                "WHERE user_id = ?;";
+        jdbcTemplate.update(sql, kid.getUsername());
     }
 
     private Kid mapRowToKid(SqlRowSet rs) {
