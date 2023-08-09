@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      selectedCategory: null,
+      selectedCategory: 'Shirts',
       items : [
         {
           category: 'Shirts',

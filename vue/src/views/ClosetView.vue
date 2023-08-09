@@ -1,10 +1,17 @@
 <template>
   <div class="container">
-      <h1>PLACEHOLDER Kid's Closet Page PLACEHOLDER</h1>
-      <div class="content-layout">
+    <div class="button-container">
+      <!-- <router-link v-bind:to="{ name: 'games' }">
+        <button>Play Games</button>
+      </router-link> --> 
+      <router-link v-bind:to="{ name: 'item-store' }">
+        <button>Visit The Shop</button>
+      </router-link>
+    </div>
+    <div class="content-layout">
       <mascot-block />
       <closet-block />
-      </div>
+    </div>
   </div>
 </template>
 
@@ -32,6 +39,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.button-container {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  margin-left: auto;
 }
 .content-layout {
     display: flex;
