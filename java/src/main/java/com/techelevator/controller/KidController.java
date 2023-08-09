@@ -41,25 +41,25 @@ public class KidController {
 
 
     @PreAuthorize("permitAll()")
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "/users/{id}", method = RequestMethod.GET)
     public List<Kid> getAllKids(){
         return kidDao.getAllKids();
     }
 
-    @PreAuthorize("hasRole('ROLE_PARENT)")
+    @PreAuthorize("hasRole(ROLE_PARENT)")
     @RequestMapping(path = "/kids", method = RequestMethod.POST)
     public void createKid(@RequestBody KidRequestDto kidRequestDto) {
         kidDao.createKid(kidRequestDto);
     }
 
 
-    @PreAuthorize("hasRole('ROLE_PARENT)")
+    @PreAuthorize("hasRole(ROLE_PARENT)")
     @RequestMapping(path = "/update/{kidId}", method = RequestMethod.PUT)
     public void updateKid (@RequestBody Kid kid) {
         this.kidDao.updateKid(kid);
     }
 
-    @PreAuthorize("hasRole('ROLE_PARENT)")
+    @PreAuthorize("hasRole(ROLE_PARENT)")
     @RequestMapping(path = "/kids/{kidId}", method = RequestMethod.DELETE)
     public void deleteKid (@PathVariable int kidId) {
         kidDao.deleteKid(kidId);
