@@ -11,6 +11,7 @@ public class MascotController {
     public MascotController(MascotDao mascotDao) {
         this.mascotDao = mascotDao;
     }
-    
+
+
 
 }
