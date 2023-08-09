@@ -13,9 +13,9 @@
             </div>
           </div>
           <div class="buttons">
-            <button v-on:click="showForm(kid.id)">Log Minutes/Steps</button>
+            <button v-on:click="showForm(kid.kidId)">Log Minutes/Steps</button>
             <!-- <button>View Account</button> -->
-            <button v-on:click="deleteKid(kid.id)">Remove Kid</button>
+            <button v-on:click="deleteKid(kid)">Remove Kid</button>
           </div>
           </li>
         </ul>
@@ -78,12 +78,16 @@ export default {
 
     
     },
-    deleteKid(kidId) {
-      let currentKid = this.kids.find( kid => {
-        return kid.id === kidId;
-      });
-      if(confirm(`Are you sure you want to delete ${currentKid.name}`)) {
-        this.$store.commit('DELETE_KID',currentKid)
+    deleteKid(kid) {
+      // let currentKid = this.$store.state.kids.find( kid => {
+      //   return kid.id === kidId;
+      // });
+      console.log(kid)
+      if(confirm(`Are you sure you want to delete ${kid.username}`)) {
+        KidService.deleteKid(kid.kidId).then( () => {
+          this.$store.commit('DELETE_KID',kid)
+        })
+        
       }
     }
   },

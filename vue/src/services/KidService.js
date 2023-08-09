@@ -18,6 +18,9 @@ export default {
     createKid(kid) {
         return axios.post(`/kids`,kid);
     },
+    deleteKid(kidID) {
+        return axios.delete(`/kids/${kidID}`)
+    },
     getActivity(kidID) {
         return axios.get(`/kids/${kidID}/activity`)
     }
