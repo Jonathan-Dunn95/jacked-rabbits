@@ -54,8 +54,8 @@ public class JdbcKidDao implements KidDao {
     public Kid createKid(KidRequestDto kidRequest) {
         String sql = "INSERT INTO kids (user_id, username, password_hash, carrots) VALUES (?, ?, ?, ?) RETURNING kids_id;";
         Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getPasswordHash(), kidRequest.getCarrots());
-
         if (kidId != null) {
+            createActivity(kidId);
             return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash());
         } else {
             return null;
@@ -102,5 +102,14 @@ public class JdbcKidDao implements KidDao {
         activity.setSteps(rs.getInt("steps"));
         activity.setMinutes(rs.getInt("minutes"));
         return activity;
+    }
+
+    private void createActivity(int kidId) {
+        System.out.println('1');
+        String sql = "INSERT INTO activity (kids_id,steps,minutes) VALUES (?,?,?)";
+        Activity activity = new Activity();
+        activity.setSteps(0);
+        activity.setMinutes(0);
+        jdbcTemplate.update(sql,kidId,activity.getSteps(),activity.getMinutes());
     }
 }
