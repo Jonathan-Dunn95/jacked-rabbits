@@ -15,13 +15,14 @@ Create table kids (
 	username varchar(50) NOT NULL,
 	password_hash varchar(200) NOT NULL,
 	carrots int,
+	play_time_seconds int,
 	CONSTRAINT PK_kids_id PRIMARY KEY (kids_id),
 	CONSTRAINT FK_kids_users FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 create table activity (
 	kids_id int NOT NULL,
 	steps int,
-	hours int,
+	minutes int,
 	CONSTRAINT FK_kids_id FOREIGN KEY (kids_id) REFERENCES kids (kids_id)
 );
 Create table items_store (
