@@ -1,9 +1,10 @@
 <template>
   <div class="container">
-      <h1>Kid's Closet Page</h1>
-      <h4>View Mascot and Closet from here</h4>
+      <h1>PLACEHOLDER Kid's Closet Page PLACEHOLDER</h1>
+      <div class="content-layout">
       <mascot-block />
       <closet-block />
+      </div>
   </div>
 </template>
 
@@ -31,6 +32,10 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+}
+.content-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 </style>
