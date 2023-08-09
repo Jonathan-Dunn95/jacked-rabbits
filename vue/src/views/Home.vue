@@ -31,11 +31,10 @@ export default {
     } else {
       this.$router.push('/kids')
     }
-    setTimeout(() => {
-      this.isLoading = false; 
-    }, 100000); 
-  }
-};
+  setTimeout(() => {
+    this.isLoading = false; 
+  }, 100000); 
+}};
 // computed: { 
 //   userType() {
 //     return this.$store.state.userType;

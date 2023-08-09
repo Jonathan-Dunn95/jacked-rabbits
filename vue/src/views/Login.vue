@@ -11,6 +11,7 @@
       <div class="successfulRegister" role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
+      <div class="input-container">
       <div class="form-input-group">
         <label for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
@@ -21,6 +22,7 @@
       </div>
       <button type="submit" id ="signInButton" :disabled="isLoading">Sign In</button>
       <p><router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      </div>
     </form>
   </div>
 </template>
@@ -88,7 +90,7 @@ h1 {
 input[type="text"],
 input[type="password"],
 select {
-  width: 110%;
+  width: 100%;
   height: 1rem;
   padding: 0.5rem;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -103,6 +105,13 @@ select:focus {
   outline: none;
   border-color: var(--primary400);
   box-shadow: 0 0 0 0.125rem rgba(33, 150, 243, 0.25);
+}
+.input-container { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 label {
   margin-right: 0.5rem;
@@ -138,8 +147,8 @@ form {
 #signInButton {
   display: flex;
   justify-content: center;
-  width: 100%;
   align-items: center;
+  width: 100%;
 }
 p {
   justify-content: center;
