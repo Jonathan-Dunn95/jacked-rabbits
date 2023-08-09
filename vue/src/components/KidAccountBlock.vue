@@ -23,6 +23,7 @@
           <label for="hours">Hours: </label>
           <input type="number" id="hours" v-model="activityForm.hours">
           <input type="submit">
+          <!-- <button v-on:click="resetActivityForm">Reset</button> -->
           <button v-on:click="hideForm">Cancel</button>
         </form>
       </div>
@@ -61,11 +62,17 @@ export default {
       this.currentKidId = 0;
     },
     updateKidActivity() {
-      let newKid = this.kids[this.currentKidId-1]
-      newKid.steps = this.activityForm.steps;
-      newKid.hours = this.activityForm.hours;
-      //this.$store.commit('UPDATE_ACTIVITY', newKid, this.activityForm)
-      this.hideForm();
+      
+  let updatedKid = this.kids.find(kid => kid.id === this.currentKidId);
+
+  if (updatedKid) {
+    updatedKid.steps += parseInt(this.activityForm.steps);
+    updatedKid.hours += parseFloat(this.activityForm.hours);
+  }
+
+  this.hideForm();
+
+    
     },
     deleteKid(kidId) {
       let currentKid = this.kids.find( kid => {
@@ -80,7 +87,11 @@ export default {
     isFormShown() {
       return this.currentKidId > 0;
     }
-  }
+  },
+  // resetActivityForm(){
+  //   this.activityForm.steps = 0;
+  //   this.activityForm.hours = 0;
+  // }
 }
 
 </script>
