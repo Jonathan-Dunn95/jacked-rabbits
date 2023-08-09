@@ -47,7 +47,7 @@ public class KidController {
     }
 
     //@PreAuthorize("hasRole(ROLE_PARENT)")
-    @RequestMapping(path = "/users/{id}/kids", method = RequestMethod.POST)
+    @RequestMapping(path = "/kids", method = RequestMethod.POST)
     public void createKid(@RequestBody KidRequestDto kidRequestDto) {
         kidDao.createKid(kidRequestDto);
     }

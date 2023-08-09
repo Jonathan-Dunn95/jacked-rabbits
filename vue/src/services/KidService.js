@@ -15,8 +15,8 @@ export default {
             return kids.find(kid => kid.id == kidID);
         })
     },
-    createKid(parentID, kid) {
-        return axios.post(`/users/${parentID}/kids`,kid);
+    createKid(kid) {
+        return axios.post(`/kids`,kid);
     },
     getActivity(kidID) {
         return axios.get(`/kids/${kidID}/activity`)
