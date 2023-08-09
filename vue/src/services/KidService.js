@@ -16,6 +16,6 @@ export default {
         })
     },
     createKid(parentID, kid) {
-        return axios.post(`/users/${parentID}/add-kid`,kid);
+        return axios.post(`/users/${parentID}/kids`,kid);
     }
 }
