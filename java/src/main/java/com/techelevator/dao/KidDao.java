@@ -11,8 +11,12 @@ public interface KidDao {
 
     Kid getKidById(int id);
 
-    List<Kid> listKidsById(int id);
+    List<Kid> getAllKids();
 
     Kid createKid(KidRequestDto kidRequest);
+
+    void deleteKid(int kidId);
+
+    void updateKid(Kid kid);
 
 }
