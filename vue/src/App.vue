@@ -65,7 +65,7 @@ body {
   opacity: 0;
 }
 #app {
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   --primary200: #daffe9;
   --primary400: #47d7ac;
