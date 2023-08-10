@@ -5,7 +5,6 @@ public class ActivityRequestDto {
     private int steps;
     private int minutes;
 
-
     public int getSteps() {
         return steps;
     }

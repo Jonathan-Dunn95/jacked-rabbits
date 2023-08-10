@@ -7,8 +7,8 @@
           <div class="kid-info">
             <h2>{{ kid.username }}</h2>
             <div class="kid-details">
-              <p>Steps: {{ kid.steps }}</p> <!-- TODO: a=connect activity to this -->
-              <p>Minutes of Activity: {{ kid.minutes }}</p>
+              <p>Steps: {{ getActivity(kid).steps }}</p> <!-- TODO: a=connect activity to this -->
+              <p>Minutes of Activity: {{ getActivity(kid).minutes }}</p>
               <p>Carrots: {{ kid.carrots }}</p>
             </div>
           </div>
@@ -82,13 +82,20 @@ export default {
       // let currentKid = this.$store.state.kids.find( kid => {
       //   return kid.id === kidId;
       // });
-      console.log(kid)
+      // console.log(kid)
       if(confirm(`Are you sure you want to delete ${kid.username}`)) {
         KidService.deleteKid(kid.kidId).then( () => {
           this.$store.commit('DELETE_KID',kid)
         })
         
       }
+    },
+    getActivity(kid) {
+      // console.log(this.$store.state.activities)
+      return this.$store.state.activities.find( activity => {
+        console.log(activity)
+        return activity.kidId === kid.kidId
+      })
     }
   },
   computed: {
@@ -97,6 +104,9 @@ export default {
     },
     kids() {
       return this.$store.state.kids;
+    },
+    activties() {
+      return this.$store.state.activties
     }
   },
   created() {
@@ -104,7 +114,14 @@ export default {
       if(response.status === 200) {
         //success
         this.$store.commit("SET_KIDS", response.data);
-        console.log(this.$store.state.kids)
+        // console.log(this.$store.state.kids)
+      }
+    })
+    KidService.getActivities(this.$store.state.user.id).then(response => {
+      if(response.status === 200) {
+        //success
+        this.$store.commit("SET_ACTIVITIES", response.data);
+        // console.log(this.$store.state.activties)
       }
     })
   }

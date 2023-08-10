@@ -49,6 +49,22 @@ public class JdbcMascotDao implements MascotDao{
     }
 
     @Override
+    public Mascot getMascotByKidId(int kidId) {
+        Mascot mascot = null;
+        String sql = "SELECT * FROM mascot JOIN kids ON mascot.kids_id = kids.kids_id" +
+                "WHERE kids.kids_id = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, kidId);
+            if (results.next()) {
+                mascot = mapRowToMascot(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return mascot;
+    }
+
+    @Override
     public Mascot createMascot(Mascot mascot) {
         String sql = "INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING mascot_id;";
@@ -59,23 +75,7 @@ public class JdbcMascotDao implements MascotDao{
         return getMascotById(newId);
     }
 
-    @Override
-    public Mascot getMascotByKidId(int kidId) {
-        return null;
-    }
 
-//    @Override
-//    public Mascot getMascotByKidId(int kidId) {
-//        List<Mascot> mascotList = new ArrayList<>();
-//        String sql = "SELECT mascot_id, kids_id, shirt, shoes, hat, accessory, background, " +
-//                "closet_id FROM mascot WHERE kids_id = ?;";
-//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-//        while(results.next()){
-//            Mascot mascot = mapRowToMascot(results);
-//            mascotList.add(mascot);
-//        }
-//        return mascotList;
-//    }
 
     @Override
     public void updateMascot(Mascot mascot) {

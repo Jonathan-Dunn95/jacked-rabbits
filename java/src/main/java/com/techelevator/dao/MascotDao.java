@@ -9,9 +9,9 @@ public interface MascotDao {
 
     Mascot getMascotById(int mascotId);
 
-    Mascot createMascot(Mascot mascot);
-
     Mascot getMascotByKidId(int kidId);
+
+    Mascot createMascot(Mascot mascot);
 
     void updateMascot(Mascot mascot);
 

@@ -63,7 +63,7 @@ public class KidController {
     }
 
     //@PreAuthorize("hasRole(ROLE_PARENT)")
-    @RequestMapping(path = "/users/{id}/kids/{kidId}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/kids/{kidId}", method = RequestMethod.DELETE)
     public void deleteKid (@PathVariable int kidId) {
         kidDao.deleteKid(kidId);
     }

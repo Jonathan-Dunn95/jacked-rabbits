@@ -21,6 +21,7 @@ public class Activity {
         return kidId;
     }
 
+
     public void setKidId(int kidId) {
         this.kidId = kidId;
     }
