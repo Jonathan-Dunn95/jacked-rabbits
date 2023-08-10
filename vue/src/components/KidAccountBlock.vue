@@ -67,12 +67,14 @@ export default {
     },
     updateKidActivity() {
       
-  let updatedKid = this.kids.find(kid => kid.id === this.currentKidId);
+  let updatedActivity = this.$store.state.activities.find(activity => activity.kidId === this.currentKidId);
 
-  if (updatedKid) {
-    updatedKid.steps += parseInt(this.activityForm.steps);
-    updatedKid.minutes += parseFloat(this.activityForm.minutes);
+  if (updatedActivity) {
+    updatedActivity.steps += parseInt(this.activityForm.steps);
+    updatedActivity.minutes += parseFloat(this.activityForm.minutes);
   }
+
+  KidService.updateActivity(updatedActivity)
 
   this.hideForm();
 
