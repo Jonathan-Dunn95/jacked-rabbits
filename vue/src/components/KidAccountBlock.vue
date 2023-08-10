@@ -3,19 +3,19 @@
     <button v-on:click="addKid">Add Kid</button>
     <div class="kid-block">
       <ul>
-        <li v-for="kid in kids" v-bind:key="kid.id" class="kid-item">
+        <li v-for="kid in kids" v-bind:key="kid.kidId" class="kid-item">
           <div class="kid-info">
-            <h2>{{ kid.name }}</h2>
+            <h2>{{ kid.username }}</h2>
             <div class="kid-details">
-              <p>Steps: {{ kid.steps }}</p>
+              <p>Steps: {{ kid.steps }}</p> <!-- TODO: a=connect activity to this -->
               <p>Minutes of Activity: {{ kid.minutes }}</p>
               <p>Carrots: {{ kid.carrots }}</p>
             </div>
           </div>
           <div class="buttons">
-            <button v-on:click="showForm(kid.id)">Log Minutes/Steps</button>
+            <button v-on:click="showForm(kid.kidId)">Log Minutes/Steps</button>
             <!-- <button>View Account</button> -->
-            <button v-on:click="deleteKid(kid.id)">Remove Kid</button>
+            <button v-on:click="deleteKid(kid)">Remove Kid</button>
           </div>
           </li>
         </ul>
@@ -24,7 +24,8 @@
           <input type="number" id="steps" v-model="activityForm.steps">
           <label for="minutes">Minutes: </label>
           <input type="number" id="minutes" v-model="activityForm.minutes">
-          <button type="submit">Submit</button>
+          <input type="submit">
+          <!-- <button v-on:click="resetActivityForm">Reset</button> -->
           <button v-on:click="hideForm">Cancel</button>
         </form>
       </div>
@@ -32,7 +33,7 @@
 </template>
 
 <script>
-// import KidsService from "../services/KidService.js";
+import KidService from "../services/KidService.js";
 
 export default {
   components: {
@@ -45,7 +46,6 @@ export default {
         minutes: 0
       },
       currentKidId: 0,
-      kids: this.$store.state.kids
     }
   },
   methods: {
@@ -66,25 +66,47 @@ export default {
       this.currentKidId = 0;
     },
     updateKidActivity() {
-      let newKid = this.kids[this.currentKidId-1]
-      newKid.steps = this.activityForm.steps;
-      newKid.minutes = this.activityForm.minutes;
-      //this.$store.commit('UPDATE_ACTIVITY', newKid, this.activityForm)
-      this.hideForm();
+      
+  let updatedKid = this.kids.find(kid => kid.id === this.currentKidId);
+
+  if (updatedKid) {
+    updatedKid.steps += parseInt(this.activityForm.steps);
+    updatedKid.minutes += parseFloat(this.activityForm.minutes);
+  }
+
+  this.hideForm();
+
+    
     },
-    deleteKid(kidId) {
-      let currentKid = this.kids.find( kid => {
-        return kid.id === kidId;
-      });
-      if(confirm(`Are you sure you want to delete ${currentKid.name}`)) {
-        this.$store.commit('DELETE_KID',currentKid)
+    deleteKid(kid) {
+      // let currentKid = this.$store.state.kids.find( kid => {
+      //   return kid.id === kidId;
+      // });
+      console.log(kid)
+      if(confirm(`Are you sure you want to delete ${kid.username}`)) {
+        KidService.deleteKid(kid.kidId).then( () => {
+          this.$store.commit('DELETE_KID',kid)
+        })
+        
       }
     }
   },
   computed: {
     isFormShown() {
       return this.currentKidId > 0;
+    },
+    kids() {
+      return this.$store.state.kids;
     }
+  },
+  created() {
+    KidService.getKids(this.$store.state.user.id).then(response => {
+      if(response.status === 200) {
+        //success
+        this.$store.commit("SET_KIDS", response.data);
+        console.log(this.$store.state.kids)
+      }
+    })
   }
 }
 

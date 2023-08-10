@@ -60,17 +60,22 @@ public class JdbcMascotDao implements MascotDao{
     }
 
     @Override
-    public List<Mascot> getMascotByKidId(int kidId) {
-        List<Mascot> mascotList = new ArrayList<>();
-        String sql = "SELECT mascot_id, kids_id, shirt, shoes, hat, accessory, background, " +
-                "closet_id FROM mascot WHERE kids_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        while(results.next()){
-            Mascot mascot = mapRowToMascot(results);
-            mascotList.add(mascot);
-        }
-        return mascotList;
+    public Mascot getMascotByKidId(int kidId) {
+        return null;
     }
+
+//    @Override
+//    public Mascot getMascotByKidId(int kidId) {
+//        List<Mascot> mascotList = new ArrayList<>();
+//        String sql = "SELECT mascot_id, kids_id, shirt, shoes, hat, accessory, background, " +
+//                "closet_id FROM mascot WHERE kids_id = ?;";
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+//        while(results.next()){
+//            Mascot mascot = mapRowToMascot(results);
+//            mascotList.add(mascot);
+//        }
+//        return mascotList;
+//    }
 
     @Override
     public void updateMascot(Mascot mascot) {

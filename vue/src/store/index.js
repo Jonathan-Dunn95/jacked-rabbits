@@ -11,6 +11,7 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
+const currentKids = localStorage.getItem('kids');
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -20,30 +21,31 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    kids: currentKids || []
     //remove this when connecting to DB
-    kids: [
-      {
-        id: 1,
-        name: "Timmy",
-        steps: 0,
-        minutes: 0,
-        carrots: 4
-      },
-      {
-        id: 2,
-        name: "Jimmy",
-        steps: 0,
-        minutes: 0,
-        carrots: 23
-      },
-      {
-        id: 3,
-        name: "Tommy",
-        steps: 0,
-        minutes: 0,
-        carrots: 135
-      }
-    ]
+    // kids: [
+    //   {
+    //     id: 1,
+    //     name: "Timmy",
+    //     steps: 0,
+    //     minutes: 0,
+    //     carrots: 4
+    //   },
+    //   {
+    //     id: 2,
+    //     name: "Jimmy",
+    //     steps: 0,
+    //     minutes: 0,
+    //     carrots: 23
+    //   },
+    //   {
+    //     id: 3,
+    //     name: "Tommy",
+    //     steps: 0,
+    //     minutes: 0,
+    //     carrots: 135
+    //   }
+    // ]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -69,6 +71,10 @@ export default new Vuex.Store({
     //remove this when connecting to DB
     DELETE_KID(state,kid) {
       state.kids.splice(state.kids.indexOf(kid),1);
+    },
+    SET_KIDS(state,kids) {
+      state.kids = kids
+      localStorage.setItem('kids', kids)
     }
   }
 })

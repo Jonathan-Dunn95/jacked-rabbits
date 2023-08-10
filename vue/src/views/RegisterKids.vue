@@ -7,7 +7,7 @@
       <div class="input-container">
       <div class="form-input-group">
         <label for="username">Kid Name</label>
-        <input type="text" id="username" v-model="user.name" required autofocus />
+        <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
         <label for="password">Password</label>
@@ -25,14 +25,14 @@
 </template>
 
 <script>
-// import kidService from '../services/kidService';
+import kidService from '../services/KidService';
 
 export default {
   name: 'register',
   data() {
     return {
       user: {
-        name: '',
+        username: '',
         password: '',
         confirmPassword: '',
         role: 'child',
@@ -48,13 +48,13 @@ export default {
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
         let kid = {
-          id: this.$store.state.kids.length,
-          name: this.user.name,
-          steps: 0,
-          hours: 0,
-          carrots: 0
+          username: this.user.username,
+          parentId: this.$store.state.user.id,
+          carrots: 0,
+          passwordHash: this.user.password
         }
-        this.$store.commit('ADD_KID', kid);
+        // this.$store.commit('ADD_KID', kid);
+        kidService.createKid(kid)
         this.$router.push('/parents');
         // kidService
         //   .register(this.user)

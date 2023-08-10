@@ -15,10 +15,6 @@ public class Activity {
         this.minutes = minutes;
     }
 
-    public Activity() {
-
-    }
-
     public int getKidId() {
         return kidId;
     }

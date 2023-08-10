@@ -1,8 +1,12 @@
 <template>
     <div id="app">
       <logo-header />
+
     <div class="contentLayout">
-    <router-view />
+      <router-view />
+    </div>
+    <div class="loading" v-if="isLoading">
+      <img src="@/assets/game_loading.gif" />
     </div>
   </div>
 </template>
@@ -14,6 +18,25 @@ export default {
   components: { 
     LogoHeader 
     },
+
+    data() {
+      return {
+        isLoading: false,
+      }
+    },
+
+    created() {
+    // Set up navigation guards
+    this.$router.beforeEach((to, from, next) => {
+      // Set isLoading to true when navigating to a new page
+      this.isLoading = true;
+      next();
+    });
+    this.$router.afterEach(() => {
+      // Set isLoading back to false after navigation is complete
+      this.isLoading = false;
+    });
+  },
 }
 </script>
 
@@ -24,7 +47,7 @@ body {
   margin: 0;
 }
 .contentLayout {
-  padding: 2rem;
+  padding: 1rem;
 }
 #app {
   width: 100vw;
@@ -43,5 +66,4 @@ body {
   --neutral800: hsl(218, 23%, 27%);
   font-family: 'Montserrat', sans-serif;
 }
-
 </style>
