@@ -9,8 +9,8 @@
       </router-link>
     </div>
     <div class="content-layout">
-      <mascot-block />
-      <closet-block />
+      <mascot-block class="content-block" />
+      <closet-block class="content-block" />
     </div>
   </div>
 </template>
@@ -45,10 +45,12 @@ export default {
   gap: 2rem;
   margin-bottom: 1rem;
   margin-left: auto;
+  margin-top: 1rem;
 }
 .content-layout {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-grow: 1;
 }
 </style>

@@ -1,12 +1,11 @@
 <template>
-    <div id="app">
-      <logo-header />
-
-    <div class="contentLayout">
-      <router-view />
-    </div>
+  <div id="app">
     <div class="loading" v-if="isLoading">
       <img src="@/assets/game_loading.gif" />
+    </div>
+    <div class="contentLayout" v-else>
+      <logo-header />
+      <router-view />
     </div>
   </div>
 </template>
@@ -24,18 +23,17 @@ export default {
         isLoading: false,
       }
     },
-
     created() {
-    // Set up navigation guards
-    this.$router.beforeEach((to, from, next) => {
-      // Set isLoading to true when navigating to a new page
-      this.isLoading = true;
-      next();
-    });
-    this.$router.afterEach(() => {
-      // Set isLoading back to false after navigation is complete
-      this.isLoading = false;
-    });
+      this.$router.beforeEach((to, from, next) => {
+      this.isLoading = true; // Show the loading GIF
+        next();
+      });
+      this.$router.afterEach(() => {
+        // Show the loading GIF for a short moment before hiding it
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 300); // You can adjust the delay as needed
+      });
   },
 }
 </script>
@@ -46,11 +44,28 @@ export default {
 body {
   margin: 0;
 }
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+}
 .contentLayout {
-  padding: 1rem;
+  padding: 1rem;    
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.contentLayout.loading {
+  opacity: 0;
 }
 #app {
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   --primary200: #daffe9;
   --primary400: #47d7ac;

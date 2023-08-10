@@ -24,7 +24,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     border-bottom: var(--primary400) 0.5rem solid;
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.5rem;
 }
 .logo {
   margin-left: 1rem;
@@ -33,11 +33,9 @@ export default {
 }
 .spacer {
   display: flex;
-  align-items: center;
   align-self: flex-end;
   color: var(--primary600);
   margin: 0.5rem;
-  margin-right: 3.5rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 </style>
