@@ -22,6 +22,6 @@ export default {
         return axios.delete(`/kids/${kidID}`)
     },
     getActivity(kidID) {
-        return axios.get(`/kids/${kidID}/activity`)
+        return axios.get(`/activity/${kidID}/`)
     }
 }
