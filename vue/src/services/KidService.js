@@ -23,5 +23,8 @@ export default {
     },
     getActivity(kidID) {
         return axios.get(`/activity/${kidID}/`)
+    },
+    getActivities(parentID) {
+        return axios.get(`activities/${parentID}`)
     }
 }
