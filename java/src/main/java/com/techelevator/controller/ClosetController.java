@@ -21,6 +21,12 @@ public class ClosetController {
         return closetDao.getAllClosetItems();
     }
 
+    
+    @RequestMapping(path = "/closet/{kidId}", method = RequestMethod.GET)
+    public List<Closet> getItemsByKidId(@PathVariable int kidId) {
+        return closetDao.getItemsByKidId(kidId);
+    }
+
 
     @RequestMapping(path = "/closet/add", method = RequestMethod.POST)
     public void addItemToCloset(@RequestParam int item_id, int mascot_id){
