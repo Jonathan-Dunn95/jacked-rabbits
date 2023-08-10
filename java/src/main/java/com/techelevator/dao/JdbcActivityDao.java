@@ -34,6 +34,7 @@ public class JdbcActivityDao implements ActivityDao{
         }
         return activity;
     }
+
     @Override
     public void updateActivity(Activity activity) {
         String sql = "UPDATE activity " +
