@@ -37,9 +37,9 @@ public class JdbcActivityDao implements ActivityDao{
     @Override
     public void updateActivity(Activity activity) {
         String sql = "UPDATE activity " +
-                "SET minutes = ? " +
+                "SET steps = ?, minutes = ? " +
                 "WHERE kids_id = ?;";
-        jdbcTemplate.update(sql, activity.getMinutes(),activity.getSteps());
+        jdbcTemplate.update(sql, activity.getSteps(), activity.getMinutes(), activity.getKidId());
     }
 
     @Override
