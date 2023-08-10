@@ -12,11 +12,9 @@ import java.util.List;
 public class MascotController {
     private MascotDao mascotDao;
 
-
     public MascotController(MascotDao mascotDao) {
         this.mascotDao = mascotDao;
     }
-
 
     @RequestMapping(path = "/mascot", method = RequestMethod.GET)
     public List<Mascot> getAllMascot(){
@@ -34,11 +32,10 @@ public class MascotController {
         return mascotDao.createMascot(mascot);
     }
 
-    @RequestMapping(path = "/mascot/{kidId}", method = RequestMethod.GET)
-    public Mascot getMascotByKidId(@PathVariable int kidId) {
-        return mascotDao.getMascotByKidId(kidId);
-    }
-
+//    @RequestMapping(path = "/mascot/{kidId}", method = RequestMethod.GET)
+//    public Mascot getMascotByKidId(@PathVariable int kidId) {
+//        return mascotDao.getMascotByKidId(kidId);
+//    }
 
     @RequestMapping(path = "/update/{mascotId}", method = RequestMethod.PUT)
     public void updateMascot(@RequestBody Mascot mascot){
@@ -48,7 +45,4 @@ public class MascotController {
     public void deleteMascot(@PathVariable int mascotId){
         mascotDao.deleteMascot(mascotId);
     }
-
-
-
 }

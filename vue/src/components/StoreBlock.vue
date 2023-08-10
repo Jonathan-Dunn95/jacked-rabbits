@@ -282,7 +282,6 @@ export default {
 .container { 
   display: flex;
   align-items: center;
-  justify-content: center;
   border: 10px solid var(--primary800);
   background-color: var(--primary400);
   width: 100%;
@@ -311,10 +310,7 @@ export default {
 }
 .item-grid img {
   flex: 0 1 calc(25% - 1rem);
-  max-width: calc(25% - 1rem);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: calc(35% - 1rem);
   border: 4px solid var(--primary800);
   margin-bottom: 1rem;
   border-radius: 0.5rem;

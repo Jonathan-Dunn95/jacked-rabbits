@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="button-container">
+      <!-- <button>Select Avatar</button> -->
       <!-- <router-link v-bind:to="{ name: 'games' }">
         <button>Play Games</button>
       </router-link> --> 
@@ -24,7 +25,7 @@ import ClosetBlock from "../components/ClosetBlock.vue";
 
 export default {
     name: "closet-view",
-    components: { 
+    components: {
         MascotBlock,
         ClosetBlock,
     },

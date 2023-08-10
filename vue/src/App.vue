@@ -25,11 +25,10 @@ export default {
     },
     created() {
       this.$router.beforeEach((to, from, next) => {
-      this.isLoading = true; // Show the loading GIF
+      this.isLoading = true;
         next();
       });
       this.$router.afterEach(() => {
-        // Show the loading GIF for a short moment before hiding it
         setTimeout(() => {
           this.isLoading = false;
         }, 300); // You can adjust the delay as needed

@@ -59,10 +59,6 @@ public class JdbcMascotDao implements MascotDao{
         return getMascotById(newId);
     }
 
-
-
-
-
     @Override
     public void updateMascot(Mascot mascot) {
         String sql = "UPDATE mascot "+
