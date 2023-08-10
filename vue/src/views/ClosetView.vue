@@ -53,9 +53,4 @@ export default {
     justify-content: space-evenly;
     flex-grow: 1;
 }
-.content-block {
-  flex: 1;
-  height: 50%;
-  width: 50%;
-}
 </style>
