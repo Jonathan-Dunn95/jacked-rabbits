@@ -7,6 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class JdbcActivityDao implements ActivityDao{
 
@@ -37,6 +40,21 @@ public class JdbcActivityDao implements ActivityDao{
                 "SET minutes = ? " +
                 "WHERE kids_id = ?;";
         jdbcTemplate.update(sql, activity.getMinutes(),activity.getSteps());
+    }
+
+    @Override
+    public List<Activity> getActivitiesByUserId(int userId) {
+        List<Activity> activities = new ArrayList<>();
+        String sql = "SELECT * FROM activity JOIN kids ON activity.kids_id = kids.kids_id WHERE kids.user_id = ?";
+        try{
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+            while(results.next()){
+                activities.add(mapRowToActivity(results));
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return activities;
     }
 
     private Activity mapRowToActivity(SqlRowSet rs){
