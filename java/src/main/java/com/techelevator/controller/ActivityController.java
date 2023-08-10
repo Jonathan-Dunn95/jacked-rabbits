@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class ActivityController {
@@ -23,6 +25,11 @@ public class ActivityController {
     @RequestMapping(path = "/activity/update/{kidId}", method = RequestMethod.PUT)
     public void updateActivity (@RequestBody Activity activity){
         this.activityDao.updateActivity(activity);
+    }
+
+    @RequestMapping(path = "/activities/{userId}", method = RequestMethod.GET)
+    public List<Activity> getActivitiesByUserId(@PathVariable int userId) {
+        return activityDao.getActivitiesByUserId(userId);
     }
 
 }
