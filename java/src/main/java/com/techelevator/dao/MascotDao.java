@@ -11,8 +11,6 @@ public interface MascotDao {
 
     Mascot createMascot(Mascot mascot);
 
-    Mascot getMascotByKidId(int kidId);
-
     void updateMascot(Mascot mascot);
 
     void deleteMascot(int mascotId);

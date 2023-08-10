@@ -7,4 +7,7 @@ public interface ClosetDao {
     List<Closet> getAllClosetItems();
     void addItemToCloset(int item_id, int mascot_id);
 
+    void deleteItem(int itemId);
+
+
 }

@@ -20,10 +20,7 @@ public class Activity {
     public int getKidId() {
         return kidId;
     }
-    //implement constructor without parameters
-    public Activity(){
 
-    }
 
     public void setKidId(int kidId) {
         this.kidId = kidId;
