@@ -9,21 +9,21 @@
       </router-link>
     </div>
     <div class="content-layout">
-      <mascot-block />
-      <store-block />
+      <mascot-selector id="mascot-selector-container" />
+      <store-block id="store-block-container" />
     </div>
   </div>
 </template>
 
 <script>
-import MascotBlock from "../components/MascotBlock.vue";
 import StoreBlock from "../components/StoreBlock.vue";
+import MascotSelector from "../components/MascotSelector.vue"
 
 export default {
-    name: "closet-view",
+    name: "store-view",
     components: {
-        MascotBlock,
         StoreBlock,
+        MascotSelector,
     },
     methods: {
 
@@ -35,7 +35,6 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .button-container {
   display: flex;
@@ -47,6 +46,11 @@ export default {
 .content-layout {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+}
+#mascot-selector-container {
+  flex-direction: row;
+}
+#store-block-container {
+  align-items: center;
 }
 </style>

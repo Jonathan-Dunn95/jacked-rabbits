@@ -10,6 +10,7 @@ import RegisterKids from '../views/RegisterKids.vue'
 import store from '../store/index'
 import ItemStore from '../views/StoreView.vue'
 import Closet from '../views/ClosetView.vue'
+import LoginKids from '../views/LoginKids.vue'
 
 Vue.use(Router)
 
@@ -98,6 +99,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/login/kids",
+      name: "kids-login",
+      component: LoginKids,
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 

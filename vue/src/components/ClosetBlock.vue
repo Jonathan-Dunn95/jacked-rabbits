@@ -313,7 +313,6 @@ export default {
   flex: 0 1 calc(25% - 1rem);
   max-width: calc(25% - 1rem);
   width: 100%;
-  height: 100%;
   object-fit: cover;
   border: 4px solid var(--primary800);
   margin-bottom: 1rem;

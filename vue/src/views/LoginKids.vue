@@ -21,8 +21,8 @@
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button type="submit" id ="signInButton" :disabled="isLoading">Sign In</button>
-      <button id="kidsSignIn" v-on:click="navToKidsLogin">Kids Sign in</button>
-      <p><router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <button id="parentSignIn" v-on:click="navToParentLogin">Parent Sign in</button>
+      <!-- <p><router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p> -->
       </div>
     </form>
   </div>
@@ -32,7 +32,7 @@
 import authService from "../services/AuthService";
 
 export default {
-  name: "login",
+  name: "kids-login",
   components: {},
   data() {
     return {
@@ -69,8 +69,8 @@ export default {
           }
         });
     },
-    navToKidsLogin() {
-      this.$router.push("/login/kids")
+    navToParentLogin() {
+        this.$router.push("/login")
     }
   }
 };
@@ -148,7 +148,7 @@ form {
   justify-content: center;
   height: 100vh;
 }
-#signInButton, #kidsSignIn {
+#signInButton, #parentSignIn {
   display: flex;
   justify-content: center;
   align-items: center;

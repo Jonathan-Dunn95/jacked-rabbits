@@ -7,7 +7,7 @@ import java.util.List;
 public interface MascotDao {
     List<Mascot> getAllMascot();
 
-    Mascot getMascotById(int mascotId);
+    Mascot getMascotByMascotId(int mascotId);
 
     Mascot getMascotByKidId(int kidId);
 
@@ -16,6 +16,8 @@ public interface MascotDao {
     void updateMascot(Mascot mascot);
 
     void deleteMascot(int mascotId);
+
+    void updateMascotCustomization(int mascotId, Mascot mascot);
 
 
 }

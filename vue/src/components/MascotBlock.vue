@@ -1,23 +1,29 @@
 <template>
   <div class="container">
-    <!-- <h1>Mascot here</h1> -->
-    <img src="../../img/mascotplaceholder.jpg" />
+    <img src="https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot1.jpg" />
   </div>
 </template>
 
 <script>
 
 export default {
+
   data() {
     return {
+      selectedMascot: null,
     };
   },
-  created() {
+  props: {
+    mascots: [
+
+    ]
   },
   methods: {
-
+    onMascotSelected() {
+      this.$emit('mascotSelected', this.selectedMascot);
+    }
   },
-};
+}
 </script>
 
 <style scoped>

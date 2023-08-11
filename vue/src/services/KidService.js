@@ -26,5 +26,8 @@ export default {
     },
     getActivities(parentID) {
         return axios.get(`activities/${parentID}`)
+    },
+    updateActivity(activity) {
+        return axios.put(`/activity/update/${activity.kidId}`, activity)
     }
 }

@@ -67,12 +67,14 @@ export default {
     },
     updateKidActivity() {
       
-  let updatedKid = this.kids.find(kid => kid.id === this.currentKidId);
+  let updatedActivity = this.$store.state.activities.find(activity => activity.kidId === this.currentKidId);
 
-  if (updatedKid) {
-    updatedKid.steps += parseInt(this.activityForm.steps);
-    updatedKid.minutes += parseFloat(this.activityForm.minutes);
+  if (updatedActivity) {
+    updatedActivity.steps += parseInt(this.activityForm.steps);
+    updatedActivity.minutes += parseFloat(this.activityForm.minutes);
   }
+
+  KidService.updateActivity(updatedActivity)
 
   this.hideForm();
 
@@ -189,7 +191,8 @@ export default {
   }
   li {
     display: flex;
-    margin: 40px
+    margin: 40px;
+    background-color: #a8c2e7;
   }
   li > h2 {
     margin-right: 20px

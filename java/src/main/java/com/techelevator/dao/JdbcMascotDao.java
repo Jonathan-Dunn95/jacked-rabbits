@@ -33,7 +33,7 @@ public class JdbcMascotDao implements MascotDao{
     }
 
     @Override
-    public Mascot getMascotById(int mascotId) {
+    public Mascot getMascotByMascotId(int mascotId) {
         Mascot mascot = null;
         String sql = "SELECT mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id " +
                 "FROM mascot WHERE mascot_id = ?;";
@@ -72,7 +72,7 @@ public class JdbcMascotDao implements MascotDao{
                 mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
                 mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId());
 
-        return getMascotById(newId);
+        return getMascotByMascotId(newId);
     }
 
 
@@ -92,6 +92,17 @@ public class JdbcMascotDao implements MascotDao{
         jdbcTemplate.update(sql, mascotId);
     }
 
+    @Override
+    public void updateMascotCustomization(int mascotId, Mascot mascot) {
+        String sql = "UPDATE mascot " +
+                "SET shirt = ?, shoes = ?, hat = ?, accessory = ?, background = ? " +
+                "WHERE mascot_id = ?";
+
+        jdbcTemplate.update(sql, mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
+                mascot.getAccessory(), mascot.getBackground(), mascotId);
+    }
+
+
 
     private Mascot mapRowToMascot(SqlRowSet rs) {
         Mascot mascot = new Mascot();
@@ -106,3 +117,4 @@ public class JdbcMascotDao implements MascotDao{
         return mascot;
     }
 }
+

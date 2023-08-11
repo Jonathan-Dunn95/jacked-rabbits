@@ -52,11 +52,11 @@ public class JdbcKidDao implements KidDao {
 
     @Override
     public Kid createKid(KidRequestDto kidRequest) {
-        String sql = "INSERT INTO kids (user_id, username, password_hash, carrots) VALUES (?, ?, ?, ?) RETURNING kids_id;";
-        Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getPasswordHash(), kidRequest.getCarrots());
+        String sql = "INSERT INTO kids (user_id, username, password_hash, carrots, play_time_seconds) VALUES (?, ?, ?, ?, ?) RETURNING kids_id;";
+        Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getPasswordHash(), kidRequest.getCarrots(), kidRequest.getPlayTime());
         if (kidId != null) {
             createActivity(kidId);
-            return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash());
+            return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash(), kidRequest.getPlayTime());
         } else {
             return null;
         }
