@@ -7,8 +7,18 @@ public class KidRequestDto {
     private int carrots;
     private String passwordHash;
 
+    private int playTime;
+
     public String getPasswordHash() {
         return passwordHash;
+    }
+
+    public int getPlayTime() {
+        return playTime;
+    }
+
+    public void setPlayTime(int playTime) {
+        this.playTime = playTime;
     }
 
     public void setPasswordHash(String passwordHash) {

@@ -21,7 +21,7 @@ public class ClosetController {
         return closetDao.getAllClosetItems();
     }
 
-    
+
     @RequestMapping(path = "/closet/{kidId}", method = RequestMethod.GET)
     public List<Closet> getItemsByKidId(@PathVariable int kidId) {
         return closetDao.getItemsByKidId(kidId);

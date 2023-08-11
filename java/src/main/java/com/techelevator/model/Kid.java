@@ -6,13 +6,25 @@ public class Kid {
     private String username;
     private int carrots;
     private String passwordHash;
+    private int playTime;
 
-    public Kid(int kidId, int parentId, String username, int carrots, String passwordHash) {
+    public Kid(int kidId, int parentId, String username, int carrots, String passwordHash, int playTime) {
         this.kidId = kidId;
         this.parentId = parentId;
         this.username = username;
         this.carrots = carrots;
         this.passwordHash = passwordHash;
+        this.playTime = playTime;
+    }
+
+
+
+    public int getPlayTime() {
+        return playTime;
+    }
+
+    public void setPlayTime(int playTime) {
+        this.playTime = playTime;
     }
 
     public Kid() {
