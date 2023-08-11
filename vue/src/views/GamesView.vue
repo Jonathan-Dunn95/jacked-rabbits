@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-      <h1>Kids Landing Page</h1>
-      <router-link v-bind:to="{ name: 'games' }">
-        <button>Play Games</button>
-      </router-link>      
+      <h1>Play Games Landing Page</h1>
       <router-link v-bind:to="{ name: 'item-store' }">
         <button>Visit The Shop</button>
       </router-link>
@@ -17,7 +14,7 @@
 
 
 export default {
-    name: "kids-landing-page",
+    name: "games",
     components: { 
 
     },

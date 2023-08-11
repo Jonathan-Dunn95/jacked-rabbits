@@ -7,16 +7,10 @@
 <script>
 
 export default {
-
   data() {
     return {
       selectedMascot: null,
     };
-  },
-  props: {
-    mascots: [
-
-    ]
   },
   methods: {
     onMascotSelected() {
@@ -37,7 +31,6 @@ export default {
 img { 
   border: 4px solid var(--primary800);
   border-radius: 0.25rem;
-  height: 75%;
-  width: 75%;
+  height: 60rem;
 }
 </style>

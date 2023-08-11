@@ -1,7 +1,7 @@
 <template>
     <div class="logoHeader">
         <router-link v-bind:to="{ name: 'home' }">
-        <img class="logo" src="../../img/Logo.jpeg" alt="logo">
+        <img class="logo" src="https://mykidswellnessapp-media.s3.amazonaws.com/logos/logoIdea2.jpg" alt="logo">
         </router-link>
         <div class="spacer">
         <router-link v-bind:to="{ name: 'home' }">Home</router-link>

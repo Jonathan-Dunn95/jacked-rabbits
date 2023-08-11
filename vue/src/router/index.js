@@ -10,6 +10,7 @@ import RegisterKids from '../views/RegisterKids.vue'
 import store from '../store/index'
 import ItemStore from '../views/StoreView.vue'
 import Closet from '../views/ClosetView.vue'
+import Games from '../views/GamesView.vue'
 
 Vue.use(Router)
 
@@ -94,6 +95,14 @@ const router = new Router({
       path: "/closet",
       name: "closet",
       component: Closet,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/games",
+      name: "games",
+      component: Games,
       meta: {
         requiresAuth: false
       }
