@@ -191,7 +191,8 @@ export default {
   }
   li {
     display: flex;
-    margin: 40px
+    margin: 40px;
+    background-color: #a8c2e7;
   }
   li > h2 {
     margin-right: 20px
