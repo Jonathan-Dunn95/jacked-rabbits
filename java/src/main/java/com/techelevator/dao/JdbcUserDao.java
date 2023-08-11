@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Kid;
 import com.techelevator.model.RegisterUserDto;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -88,12 +89,38 @@ public class JdbcUserDao implements UserDao {
         return newUser;
     }
 
+    @Override
+    public User getKidByUsername(String username) {
+        if (username == null) throw new IllegalArgumentException("Username cannot be null");
+        User user = null;
+        String sql = "SELECT kids_id, user_id, username, password_hash, carrots, play_time_seconds FROM kids WHERE username = ?;";
+        try {
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
+            if (rowSet.next()) {
+                user = mapKidsRowToUser(rowSet);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return user;
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
+        user.setActivated(true);
+        return user;
+    }
+
+    private User mapKidsRowToUser(SqlRowSet rs) {
+        User user = new User();
+        user.setId(rs.getInt("kids_id"));
+        user.setUsername(rs.getString("username"));
+        user.setPassword(rs.getString("password_hash"));
+        user.setAuthorities("KID");
         user.setActivated(true);
         return user;
     }
