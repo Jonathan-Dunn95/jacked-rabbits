@@ -114,4 +114,20 @@ public class JdbcKidDao implements KidDao {
         activity.setMinutes(0);
         jdbcTemplate.update(sql,kidId,activity.getSteps(),activity.getMinutes());
     }
+
+    @Override
+    public Kid getKidByUsername(String username) {
+        if (username == null) throw new IllegalArgumentException("Username cannot be null");
+        Kid kid = null;
+        String sql = "SELECT kids_id, user_id, username, password_hash, carrots, play_time_seconds FROM kids WHERE username = ?;";
+        try {
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
+            if (rowSet.next()) {
+                kid = mapRowToKid(rowSet);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return kid;
+    }
 }

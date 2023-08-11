@@ -17,4 +17,6 @@ public interface KidDao {
     void updateKid(Kid kid);
 
     Activity getActivityById(int id);
+
+    Kid getKidByUsername(String username);
 }
