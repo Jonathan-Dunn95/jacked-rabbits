@@ -8,6 +8,7 @@ import com.techelevator.model.User;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -53,7 +54,8 @@ public class JdbcKidDao implements KidDao {
     @Override
     public Kid createKid(KidRequestDto kidRequest) {
         String sql = "INSERT INTO kids (user_id, username, password_hash, carrots, play_time_seconds) VALUES (?, ?, ?, ?, ?) RETURNING kids_id;";
-        Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getPasswordHash(), kidRequest.getCarrots(), kidRequest.getPlayTime());
+        String password_hash = new BCryptPasswordEncoder().encode(kidRequest.getPasswordHash());
+        Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, kidRequest.getParentId(), kidRequest.getUsername(), password_hash, kidRequest.getCarrots(), kidRequest.getPlayTime());
         if (kidId != null) {
             createActivity(kidId);
             return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash(), kidRequest.getPlayTime());
@@ -115,19 +117,4 @@ public class JdbcKidDao implements KidDao {
         jdbcTemplate.update(sql,kidId,activity.getSteps(),activity.getMinutes());
     }
 
-    @Override
-    public Kid getKidByUsername(String username) {
-        if (username == null) throw new IllegalArgumentException("Username cannot be null");
-        Kid kid = null;
-        String sql = "SELECT kids_id, user_id, username, password_hash, carrots, play_time_seconds FROM kids WHERE username = ?;";
-        try {
-            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
-            if (rowSet.next()) {
-                kid = mapRowToKid(rowSet);
-            }
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        }
-        return kid;
-    }
 }

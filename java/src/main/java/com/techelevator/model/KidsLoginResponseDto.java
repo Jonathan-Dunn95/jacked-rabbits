@@ -22,11 +22,11 @@ public class KidsLoginResponseDto {
     }
 
     @JsonProperty("user")
-    public Kid getKid() {
+    public Kid getUser() {
         return kid;
     }
 
-    public void setKid(Kid kid) {
+    public void setUser(Kid kid) {
         this.kid = kid;
     }
 }

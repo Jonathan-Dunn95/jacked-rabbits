@@ -48,7 +48,7 @@ export default {
     login() {
       this.isLoading = true;
       authService
-        .login(this.user)
+        .kidsLogin(this.user)
         .then(response => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
