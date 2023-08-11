@@ -3,14 +3,14 @@ BEGIN TRANSACTION;
 Drop table IF EXISTS users,kids,activity,mascot,items_store,closet CASCADE;
 
 CREATE TABLE users (
-	user_id int,
+	user_id serial,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 Create table kids (
-	kids_id int NOT NULL,
+	kids_id serial NOT NULL,
 	user_id int NOT NULL,
 	username varchar(50) NOT NULL,
 	password_hash varchar(200) NOT NULL,
