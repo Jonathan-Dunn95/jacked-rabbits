@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class MascotController {
+
     private MascotDao mascotDao;
 
     private KidDao kidDao;

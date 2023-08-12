@@ -21,17 +21,17 @@ public class JdbcItemStoreDao implements ItemStoreDao {
 
     @Override
     public ItemStore getItemByItemId(int itemId) {
-        ItemStore itemStore = null;
-        String sql = "SELECT img_url FROM items_store WHERE item_id =?";
+        ItemStore storeItem = null;
+        String sql = "SELECT * FROM items_store WHERE item_id = ?;";
         try{
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, itemId);
             if(results.next()){
-                itemStore = mapRowToItemStore(results);
+                storeItem = mapRowToItemStore(results);
             }
         } catch (CannotGetJdbcConnectionException e){
             throw new DaoException("Unable to connect server to Item Store database", e);
         }
-        return itemStore;
+        return storeItem;
     }
 
     public List<ItemStore> listAllStoreItems() {
@@ -48,7 +48,6 @@ public class JdbcItemStoreDao implements ItemStoreDao {
         }
         return storeItems;
     }
-
 
     private ItemStore mapRowToItemStore(SqlRowSet rs) {
         ItemStore itemStore = new ItemStore();
