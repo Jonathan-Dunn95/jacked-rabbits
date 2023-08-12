@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
 
   kidsLogin(kid) {
-    return axios.post('/kids/login', kid)
+    return axios.post('/login/kids', kid)
   },
 
   login(user) {
