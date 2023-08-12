@@ -68,8 +68,10 @@ public class JdbcKidDao implements KidDao {
     public void deleteKid(int kidId) {
         String sqlActivity = "DELETE FROM activity WHERE kids_id = ?;";
         String sqlKids = "DELETE FROM kids WHERE kids_id = ?;";
+        String sqlUser = "DELETE FROM users WHERE user_id = ?;";
         jdbcTemplate.update(sqlActivity, kidId);
         jdbcTemplate.update(sqlKids, kidId);
+        jdbcTemplate.update(sqlUser, kidId);
     }
 
     @Override
