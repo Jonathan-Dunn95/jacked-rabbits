@@ -29,7 +29,7 @@ export default {
   margin: 20px;
 }
 img { 
-  border: 4px solid var(--primary800);
+  border: 10px solid var(--primary800);
   border-radius: 0.25rem;
   height: 60rem;
 }

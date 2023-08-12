@@ -7,16 +7,14 @@
       <router-link v-bind:to="{ name: 'closet' }">
         <button>Your Closet</button>
       </router-link>
-      </div>
+  </div>
 </template>
 
 <script>
 
-
 export default {
     name: "games",
-    components: { 
-
+    components: {
     },
     methods: {
 
@@ -28,6 +26,7 @@ export default {
 <style scoped>
 .container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
