@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/closet")
+@RequestMapping("/closet/")
 @CrossOrigin
 public class ClosetController {
 
@@ -17,22 +17,22 @@ public class ClosetController {
         this.closetDao = closetDao;
     }
 
-    @GetMapping
+    @RequestMapping(path = "", method = RequestMethod.GET)
     public List<Closet> getAllClosetItems() {
         return closetDao.getAllClosetItems();
     }
 
-    @GetMapping("/{closetId}")
+    @RequestMapping(path = "{closetId}", method = RequestMethod.GET)
     public Closet getClosetItemById(@PathVariable int closetId) {
         return closetDao.getClosetItemById(closetId);
     }
-
-    @PostMapping("/add")
+// Needs review
+    @RequestMapping(path = "add/{mascotId}", method = RequestMethod.POST)
     public void addItemToCloset(@RequestParam int item_id, @RequestParam int mascot_id) {
         closetDao.addItemToCloset(item_id, mascot_id);
     }
 
-    @PutMapping("/{closetId}")
+    @RequestMapping(path = "{closetId}", method = RequestMethod.PUT)
     public void updateClosetItem(@PathVariable int closetId, @RequestBody Closet closetItem) {
         closetItem.setCloset_id(closetId);
         closetDao.updateClosetItem(closetItem);
