@@ -31,6 +31,14 @@ Create table items_store (
 	img_url varchar(300),
 	CONSTRAINT PK_item_id PRIMARY KEY (item_id)
 );
+Create table mascot_selection(
+	mascot_selection_id int,
+	mascot_id int,
+	mascot_img_url varchar(300),
+	CONSTRAINT PK_mascot_selection_id PRIMARY KEY (mascot_selection_id),
+	CONSTRAINT FK_mascot_selection_mascot FOREIGN KEY (mascot_id) REFERENCES mascot (mascot_id)
+);
+
 Create table mascot (
 	mascot_id int,
 	kids_id int NOT NULL,
