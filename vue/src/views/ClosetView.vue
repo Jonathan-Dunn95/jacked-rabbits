@@ -1,12 +1,11 @@
 <template>
   <div class="container">
     <div class="button-container">
-      <!-- <button>Select Avatar</button> -->
       <router-link v-bind:to="{ name: 'games' }">
         <button>Play Games</button>
-      </router-link> 
+      </router-link>
       <router-link v-bind:to="{ name: 'item-store' }">
-        <button>Visit The Shop</button>
+        <button>Customize Mascot</button>
       </router-link>
     </div>
     <div class="content-layout">
@@ -56,7 +55,6 @@ button {
 .content-layout {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   gap: 2rem;
 }
 .mascot-block-container {
