@@ -8,4 +8,6 @@ public interface ItemStoreDao {
 
     ItemStore getItemByItemId(int itemId);
 
+    List<ItemStore> listAllStoreItems();
+
 }
