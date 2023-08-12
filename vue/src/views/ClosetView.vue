@@ -10,8 +10,9 @@
       </router-link>
     </div>
     <div class="content-layout">
-      <mascot-block id="mascot-block-container" />
-      <closet-block id="closet-block-container" />
+      <mascot-block class="mascot-block-container" />
+      <equipment-block class="equipment-block-container" />
+      <closet-block class="closet-block-container" />
     </div>
   </div>
 </template>
@@ -22,12 +23,14 @@
 // import ClosetService from "../services/ClosetService.js";
 import MascotBlock from "../components/MascotBlock.vue";
 import ClosetBlock from "../components/ClosetBlock.vue";
+import EquipmentBlock from "../components/EquipmentBlock.vue"
 
 export default {
     name: "closet-view",
     components: {
         MascotBlock,
         ClosetBlock,
+        EquipmentBlock,
     },
     methods: {
 
@@ -47,16 +50,20 @@ export default {
   margin-left: auto;
   margin-top: 1rem;
 }
+button { 
+  cursor: pointer;
+}
 .content-layout {
-    display: flex;
-    align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
 }
-#mascot-block-container {
+.mascot-block-container {
   flex-direction: row;
-  height: 100%;
-  width: 50%;
 }
-#closet-block-container {
-  width: 50%;
+.equipment-block-container {
+  padding: 2rem;
+  gap: 2rem;
 }
 </style>

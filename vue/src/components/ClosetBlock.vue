@@ -290,7 +290,6 @@ export default {
   display: flex;
   border: 10px solid var(--primary800);
   background-color: var(--primary400);
-  margin: 20px;
   border-radius: 0.5rem;
 }
 .nav-tabs {
@@ -327,7 +326,7 @@ export default {
   color: white;
 }
 .item-grid img.selected {
-  border-color: var(--primary600);
+  border: 5px inset var(--primary600);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 </style>

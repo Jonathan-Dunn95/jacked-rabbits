@@ -26,7 +26,6 @@ export default {
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin: 20px;
 }
 img { 
   border: 10px solid var(--primary800);

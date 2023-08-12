@@ -59,7 +59,7 @@ img {
   cursor: pointer;
 }
 .selected {
-  border-color: var(--primary600);
+  border: 5px inset var(--primary600);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 </style>
