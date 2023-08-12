@@ -1,7 +1,9 @@
 package com.techelevator.model;
 
 public class ItemStore {
+
     private int itemId;
+
     private String imgURL;
 
     public ItemStore() {}

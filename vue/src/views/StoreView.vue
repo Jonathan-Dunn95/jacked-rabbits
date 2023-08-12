@@ -52,8 +52,10 @@ export default {
   flex-direction: row;
   height: 100%;
   width: 50%;
+  margin-right: 1.5rem;
 }
 #store-block-container {
   width: 50%;
+  margin-left: 1.5rem;
 }
 </style>

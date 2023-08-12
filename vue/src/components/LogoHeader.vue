@@ -29,7 +29,7 @@ export default {
 .logo {
   margin-left: 1rem;
   margin-top: 0.5rem;
-  height: 150px;
+  height: 10rem;
 }
 .spacer {
   display: flex;

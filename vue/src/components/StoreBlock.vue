@@ -290,12 +290,11 @@ export default {
   display: flex;
   border: 10px solid var(--primary800);
   background-color: var(--primary400);
-  margin: 20px;
   border-radius: 0.5rem;
 }
 .nav-tabs {
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   border-bottom: 10px solid var(--primary800);
   background-color: var(--primary800);
 }
@@ -309,7 +308,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-bottom: 1rem;
   background-color: var(--primary400);
 }
 .item-grid img {
@@ -317,9 +315,9 @@ export default {
   max-height: 275px;
   width: 100%;
   border: 4px solid var(--primary800);
-  margin-bottom: 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  margin-bottom: 1rem;
 }
 .nav-tabs button.active {
   background-color: var(--primary800);
@@ -327,7 +325,7 @@ export default {
   color: white;
 }
 .item-grid img.selected {
-  border-color: var(--primary600);
+  border: 5px inset var(--primary600);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 </style>
