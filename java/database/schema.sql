@@ -9,6 +9,7 @@ CREATE TABLE users (
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
+
 Create table kids (
 	kids_id int NOT NULL,
 	user_id int NOT NULL,
@@ -20,17 +21,20 @@ Create table kids (
 	CONSTRAINT FK_kids_id FOREIGN KEY (kids_id) REFERENCES users (user_id),
 	CONSTRAINT FK_kids_users FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
+
 create table activity (
 	kids_id int NOT NULL,
 	steps int,
 	minutes int,
 	CONSTRAINT FK_activity_id FOREIGN KEY (kids_id) REFERENCES users (user_id)
 );
+
 Create table items_store (
 	item_id int,
 	img_url varchar(300),
 	CONSTRAINT PK_item_id PRIMARY KEY (item_id)
 );
+
 Create table mascot (
 	mascot_id int,
 	kids_id int NOT NULL,
@@ -44,6 +48,7 @@ Create table mascot (
 	CONSTRAINT FK_mascot_kids FOREIGN KEY (kids_id) REFERENCES kids (kids_id),
 	CONSTRAINT UQ_mascot_id UNIQUE (mascot_id)
 );
+
 Create table mascot_selection(
 	mascot_selection_id int,
 	mascot_id int,
@@ -68,4 +73,5 @@ Create table closet (
 	CONSTRAINT FK_mascot_closet_accessory FOREIGN KEY (accessory) REFERENCES items_store (item_id),
 	CONSTRAINT FK_mascot_closet_background FOREIGN KEY (background) REFERENCES items_store (item_id)
 	);
+
 COMMIT TRANSACTION;

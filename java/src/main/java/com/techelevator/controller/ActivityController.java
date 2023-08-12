@@ -30,9 +30,10 @@ public class ActivityController {
     }
 
     @RequestMapping(path = "/activity/update/{kidId}", method = RequestMethod.PUT)
-    public void updateActivity (@RequestBody ActivityDto activityDto, @PathVariable int kidId){
-        int steps = activityDto.getSteps();
-        int minutes = activityDto.getMinutes();
+    public void updateActivity (@RequestBody Activity activity, @PathVariable int kidId){
+        activityDao.updateActivity(activity);
+        int steps = activity.getSteps();
+        int minutes = activity.getMinutes();
         int carrotsEarned = calculateCarrotsEarned(steps, minutes);
 
         // Update play time and carrot balance in the database
