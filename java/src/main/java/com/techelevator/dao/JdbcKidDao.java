@@ -77,9 +77,9 @@ public class JdbcKidDao implements KidDao {
     @Override
     public void updateKid(Kid kid) {
         String sql = "UPDATE kids " +
-                "SET username = ? " +
-                "WHERE user_id = ?;";
-        jdbcTemplate.update(sql, kid.getUsername());
+                "SET username = ?, carrots = ?, play_time_seconds = ?" +
+                "WHERE kids_id = ?;";
+        jdbcTemplate.update(sql, kid.getUsername(), kid.getCarrots(), kid.getPlayTime(), kid.getKidId());
     }
 
     @Override

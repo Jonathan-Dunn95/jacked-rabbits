@@ -40,17 +40,17 @@ public class JdbcActivityDao implements ActivityDao{
         String sql = "UPDATE activity " +
                 "SET steps = ?, minutes = ? " +
                 "WHERE kids_id = ?;";
-        String sqlRewards = "UPDATE kids " +
-                "SET carrots = ?, play_time_seconds = ? " +
-                "WHERE kids_id = ?;";
+//        String sqlRewards = "UPDATE kids " +
+//                "SET carrots = ?, play_time_seconds = ? " +
+//                "WHERE kids_id = ?;";
         int steps = activity.getSteps();
         int minutes = activity.getMinutes();
         jdbcTemplate.update(sql, steps, minutes, activity.getKidId());
-        int playTimeEarned = 0;
-        for(;steps >= 10;steps -= 10) {
-            playTimeEarned++;
-        }
-        jdbcTemplate.update(sqlRewards, minutes, playTimeEarned, activity.getKidId());
+//        int playTimeEarned = 0;
+//        for(;steps >= 10;steps -= 10) {
+//            playTimeEarned++;
+//        }
+//        jdbcTemplate.update(sqlRewards, minutes, playTimeEarned, activity.getKidId());
     }
 
     @Override
