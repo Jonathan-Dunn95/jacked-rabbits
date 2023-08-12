@@ -10,20 +10,21 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 Create table kids (
-	kids_id serial NOT NULL,
+	kids_id int NOT NULL,
 	user_id int NOT NULL,
 	username varchar(50) NOT NULL,
 	password_hash varchar(200) NOT NULL,
 	carrots int,
 	play_time_seconds int,
-	CONSTRAINT PK_kids_id PRIMARY KEY (kids_id),
+	CONSTRAINT PK_kids PRIMARY KEY (kids_id),
+	CONSTRAINT FK_kids_id FOREIGN KEY (kids_id) REFERENCES users (user_id),
 	CONSTRAINT FK_kids_users FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 create table activity (
 	kids_id int NOT NULL,
 	steps int,
 	minutes int,
-	CONSTRAINT FK_kids_id FOREIGN KEY (kids_id) REFERENCES kids (kids_id)
+	CONSTRAINT FK_activity_id FOREIGN KEY (kids_id) REFERENCES users (user_id)
 );
 Create table items_store (
 	item_id int,

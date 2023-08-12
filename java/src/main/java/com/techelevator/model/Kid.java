@@ -1,5 +1,8 @@
 package com.techelevator.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Kid {
     private int kidId;
     private int parentId;
@@ -8,13 +11,16 @@ public class Kid {
     private String passwordHash;
     private int playTime;
 
-    public Kid(int kidId, int parentId, String username, int carrots, String passwordHash, int playTime) {
+    private Set<Authority> authorities = new HashSet<>();
+
+    public Kid(int kidId, int parentId, String username, int carrots, String passwordHash, int playTime, String authorities) {
         this.kidId = kidId;
         this.parentId = parentId;
         this.username = username;
         this.carrots = carrots;
         this.passwordHash = passwordHash;
         this.playTime = playTime;
+        if (authorities != null) this.setAuthorities(authorities);
     }
 
 
@@ -70,5 +76,21 @@ public class Kid {
 
     public void setParentId(int parentId) {
         this.parentId = parentId;
+    }
+
+    public Set<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
+    }
+
+    public void setAuthorities(String authorities) {
+        String[] roles = authorities.split(",");
+        for (String role : roles) {
+            String authority = role.contains("ROLE_") ? role : "ROLE_" + role;
+            this.authorities.add(new Authority(authority));
+        }
     }
 }

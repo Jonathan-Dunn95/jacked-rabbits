@@ -19,18 +19,10 @@ public class ItemStoreController {
     }
 
     @RequestMapping(path = "/item_store/{itemId}", method = RequestMethod.GET)
-    public ItemStore getItemById(@PathVariable int itemId) {
+    public ItemStore getItemByItemId(@PathVariable int itemId) {
         return itemStoreDao.getItemByItemId(itemId);
     }
 
-    @RequestMapping(path = "/item_store/{itemName}", method = RequestMethod.GET)
-    public ItemStore getItemByName(@PathVariable String itemName) {
-        return itemStoreDao.getItemByItemName(itemName);
-    }
 
-    @RequestMapping(path = "/users/{itemType}", method = RequestMethod.GET)
-    public List<ItemStore> getAllItemsByType(@PathVariable String itemType){
-        return itemStoreDao.getItemsByType(itemType);
-    }
 }
 

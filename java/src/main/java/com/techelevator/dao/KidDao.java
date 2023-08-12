@@ -10,7 +10,7 @@ public interface KidDao {
 
     List<Kid> getAllKids();
 
-    Kid createKid(KidRequestDto kidRequest);
+    Kid createKid(KidRequestDto kidRequest, int userId);
 
     void deleteKid(int kidId);
 

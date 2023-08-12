@@ -36,7 +36,7 @@ public class AuthenticationController {
         this.userDao = userDao;
     }
 
-    @RequestMapping(path = "/kids/login", method = RequestMethod.POST)
+    @RequestMapping(path = "/login/kids", method = RequestMethod.POST)
     public ResponseEntity<LoginResponseDto> kidsLogin(@Valid @RequestBody LoginDto loginDto) {
 
         UsernamePasswordAuthenticationToken authenticationToken =

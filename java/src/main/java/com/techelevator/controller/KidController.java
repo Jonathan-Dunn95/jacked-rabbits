@@ -30,8 +30,11 @@ public class KidController {
 
     private KidDao kidDao;
 
-    public KidController(KidDao kidDao) {
+    private UserDao userDao;
+
+    public KidController(KidDao kidDao, UserDao userDao) {
         this.kidDao = kidDao;
+        this.userDao = userDao;
     }
 
     @RequestMapping(path = "/kids/{kidId}", method = RequestMethod.GET)
@@ -52,7 +55,13 @@ public class KidController {
     //@PreAuthorize("hasRole(ROLE_PARENT)")
     @RequestMapping(path = "/kids", method = RequestMethod.POST)
     public void createKid(@RequestBody KidRequestDto kidRequestDto) {
-        kidDao.createKid(kidRequestDto);
+        RegisterUserDto registerUserDto = new RegisterUserDto();
+        registerUserDto.setUsername(kidRequestDto.getUsername());
+        registerUserDto.setPassword(kidRequestDto.getPasswordHash());
+        registerUserDto.setConfirmPassword(kidRequestDto.getPasswordHash());
+        registerUserDto.setRole("ROLE_KID");
+        User user = userDao.createUser(registerUserDto);
+        kidDao.createKid(kidRequestDto,user.getId());
     }
 
 

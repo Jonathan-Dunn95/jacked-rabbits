@@ -52,13 +52,13 @@ public class JdbcKidDao implements KidDao {
 
 
     @Override
-    public Kid createKid(KidRequestDto kidRequest) {
-        String sql = "INSERT INTO kids (user_id, username, password_hash, carrots, play_time_seconds) VALUES (?, ?, ?, ?, ?) RETURNING kids_id;";
+    public Kid createKid(KidRequestDto kidRequest, int userId) {
+        String sql = "INSERT INTO kids (kids_id, user_id, username, password_hash, carrots, play_time_seconds) VALUES (?, ?, ?, ?, ?, ?) RETURNING kids_id;";
         String password_hash = new BCryptPasswordEncoder().encode(kidRequest.getPasswordHash());
-        Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, kidRequest.getParentId(), kidRequest.getUsername(), password_hash, kidRequest.getCarrots(), kidRequest.getPlayTime());
+        Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, userId, kidRequest.getParentId(), kidRequest.getUsername(), password_hash, kidRequest.getCarrots(), kidRequest.getPlayTime());
         if (kidId != null) {
             createActivity(kidId);
-            return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash(), kidRequest.getPlayTime());
+            return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash(), kidRequest.getPlayTime(), "ROLE_KID");
         } else {
             return null;
         }
