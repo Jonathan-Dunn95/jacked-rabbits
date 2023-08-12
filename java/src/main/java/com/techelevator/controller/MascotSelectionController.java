@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/mascot-selection")
+@RequestMapping("/api/mascot_selection")
 @CrossOrigin
 public class MascotSelectionController {
 
@@ -27,7 +27,7 @@ public class MascotSelectionController {
         return mascotSelectionDao.getMascotSelectionById(mascotSelectionId);
     }
 
-    @GetMapping("/img-url/{imgURL}")
+    @GetMapping("/img_url/{imgURL}")
     public MascotSelection getMascotSelectionByImgURL(@PathVariable String imgURL) {
         return mascotSelectionDao.getMascotSelectionByImgURL(imgURL);
     }

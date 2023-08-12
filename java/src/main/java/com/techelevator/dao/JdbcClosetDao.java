@@ -33,8 +33,7 @@ public class JdbcClosetDao implements ClosetDao {
                 allClosetItems.add(closet);
             });
         } catch (Exception e) {
-            System.err.println("An error occurred while retrieving all closet items: " +e.getMessage());
-            e.printStackTrace();
+            System.err.println("An error occurred while retrieving all closet items: ");
         }
         return allClosetItems;
     }
@@ -56,8 +55,7 @@ public class JdbcClosetDao implements ClosetDao {
                 return closet;
             });
         } catch (Exception e) {
-            System.err.println("An error occurred while retrieving closet item" +e.getMessage());
-            e.printStackTrace();
+            System.err.println("An error occurred while retrieving closet item");
         }
         return closetItem;
     }
@@ -70,8 +68,7 @@ public class JdbcClosetDao implements ClosetDao {
             jdbcTemplate.update(sql, closetItem.getMascot_id(), closetItem.getShirt(), closetItem.getShoes(),
                     closetItem.getHat(), closetItem.getAccessory(), closetItem.getBackground(), closetItem.getCloset_id());
         } catch (Exception e) {
-            System.err.println("An error occurred while updating item" +e.getMessage());
-            e.printStackTrace();
+            System.err.println("An error occurred while updating item");
         }
     }
 
@@ -81,8 +78,7 @@ public class JdbcClosetDao implements ClosetDao {
         try {
             jdbcTemplate.update(sql, item_id, mascot_id);
         } catch (Exception e) {
-            System.err.println("An error occurred while adding item to closet" +e.getMessage());
-            e.printStackTrace();
+            System.err.println("An error occurred while adding item to closet");
         }
     }
 
