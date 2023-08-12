@@ -21,7 +21,7 @@
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button type="submit" id ="signInButton" :disabled="isLoading">Sign In</button>
-      <button id="kidsSignIn" v-on:click="navToKidsLogin">Kids Sign in</button>
+      <!-- <button id="kidsSignIn" v-on:click="navToKidsLogin">Kids Sign in</button> -->
       <p><router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
       </div>
     </form>
