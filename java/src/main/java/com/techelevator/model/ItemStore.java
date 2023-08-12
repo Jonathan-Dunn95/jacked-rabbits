@@ -2,17 +2,13 @@ package com.techelevator.model;
 
 public class ItemStore {
     private int itemId;
-    private String itemType;
-    private String itemName;
+    private String imgURL;
 
-    public ItemStore(int itemId, String itemType, String itemName) {
+    public ItemStore() {}
+
+    public ItemStore(int itemId, String imgURL) {
         this.itemId = itemId;
-        this.itemType = itemType;
-        this.itemName = itemName;
-    }
-
-
-    public ItemStore() {
+        this.imgURL = imgURL;
     }
 
     public int getItemId() {
@@ -23,19 +19,11 @@ public class ItemStore {
         this.itemId = itemId;
     }
 
-    public String getItemType() {
-        return itemType;
+    public String getImgURL() {
+        return imgURL;
     }
 
-    public void setItemType(String itemType) {
-        this.itemType = itemType;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
     }
 }

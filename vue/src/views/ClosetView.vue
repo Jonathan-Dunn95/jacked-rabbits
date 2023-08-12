@@ -2,16 +2,16 @@
   <div class="container">
     <div class="button-container">
       <!-- <button>Select Avatar</button> -->
-      <!-- <router-link v-bind:to="{ name: 'games' }">
+      <router-link v-bind:to="{ name: 'games' }">
         <button>Play Games</button>
-      </router-link> --> 
+      </router-link> 
       <router-link v-bind:to="{ name: 'item-store' }">
         <button>Visit The Shop</button>
       </router-link>
     </div>
     <div class="content-layout">
-      <mascot-block class="content-block" />
-      <closet-block class="content-block" />
+      <mascot-block id="mascot-block-container" />
+      <closet-block id="closet-block-container" />
     </div>
   </div>
 </template>
@@ -39,7 +39,6 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .button-container {
   display: flex;
@@ -50,8 +49,14 @@ export default {
 }
 .content-layout {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-grow: 1;
+    align-items: flex-start;
+}
+#mascot-block-container {
+  flex-direction: row;
+  height: 100%;
+  width: 50%;
+}
+#closet-block-container {
+  width: 50%;
 }
 </style>
