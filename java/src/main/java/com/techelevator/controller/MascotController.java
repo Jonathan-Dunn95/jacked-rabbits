@@ -32,7 +32,7 @@ public class MascotController {
     public Mascot getMascotById(@PathVariable int mascotId){
         return mascotDao.getMascotByMascotId(mascotId);
     }
-
+// Review
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/mascot", method = RequestMethod.POST)
     public Mascot createMascot(@RequestBody Mascot mascot){
@@ -44,7 +44,7 @@ public class MascotController {
         return mascotDao.getMascotByKidId(kidId);
     }
 
-    @RequestMapping(path = "/update/{mascotId}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/mascot/update/{mascotId}", method = RequestMethod.PUT)
     public void updateMascot(@RequestBody Mascot mascot){
         this.mascotDao.updateMascot(mascot);
     }
@@ -60,6 +60,7 @@ public class MascotController {
 //    public ResponseEntity<Integer> calculateCarrotsRequired(@PathVariable int optionId) {
 //
 //    }
+
     @RequestMapping(path = "/mascot/{mascotId}/customize", method = RequestMethod.PUT)
     public void customizeMascot(@PathVariable int mascotId, @RequestBody Mascot mascot) {
         // Check if the child has enough carrots
