@@ -112,7 +112,7 @@ export default {
   max-width: 275px;
   max-height: 275px;
   width: 100%;
-  border: 4px solid var(--primary800);
+  border: 5px solid var(--primary800);
   border-radius: 0.5rem;
   cursor: pointer;
   margin-bottom: 1rem;
