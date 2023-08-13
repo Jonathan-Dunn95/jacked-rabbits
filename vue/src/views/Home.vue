@@ -21,6 +21,15 @@ export default {
 
     };
   },
+  created() {
+    let userType = this.$store.state.user.authorities[0].name;
+    if(userType === "ROLE_PARENT") {
+      this.$router.push("/parents")
+    }
+    else if(userType === "ROLE_KID") {
+      this.$router.push("/kids")
+    }
+  }
 };
 // computed: { 
 //   userType() {
