@@ -1,7 +1,6 @@
 package com.techelevator.model;
 
-public class Mascot {
-    private int mascotId;
+public class MascotRequestDto {
     private int kidId;
     private int shirt;
 
@@ -11,13 +10,8 @@ public class Mascot {
     private int background;
 
     private int closetId;
-private int mascotSelectionId;
-    public Mascot(){
 
-    }
-
-    public Mascot(int mascotId, int kidId, int shirt, int shoes, int hat, int accessory, int background, int closetId) {
-        this.mascotId = mascotId;
+    public MascotRequestDto(int kidId, int shirt, int shoes, int hat, int accessory, int background, int closetId) {
         this.kidId = kidId;
         this.shirt = shirt;
         this.shoes = shoes;
@@ -25,30 +19,10 @@ private int mascotSelectionId;
         this.accessory = accessory;
         this.background = background;
         this.closetId = closetId;
-        this.mascotSelectionId = mascotSelectionId;
-    }
-
-    public Mascot(Integer newId, int mascotId, int kidId, int shirt, int shoes, int hat, int accessory, int background, int closetId) {
-    }
-
-    public int getMascotId() {
-        return mascotId;
-    }
-
-    public void setMascotId(int mascotId) {
-        this.mascotId = mascotId;
     }
 
     public int getKidId() {
         return kidId;
-    }
-
-    public int getMascotSelectionId() {
-        return mascotSelectionId;
-    }
-
-    public void setMascotSelectionId(int mascotSelectionId) {
-        this.mascotSelectionId = mascotSelectionId;
     }
 
     public void setKidId(int kidId) {
@@ -102,20 +76,4 @@ private int mascotSelectionId;
     public void setClosetId(int closetId) {
         this.closetId = closetId;
     }
-
-    @Override
-    public String toString() {
-        return "Mascot{" +
-                "mascotId=" + mascotId +
-                ", kidId=" + kidId +
-                ", shirt=" + shirt +
-                ", shoes=" + shoes +
-                ", hat=" + hat +
-                ", accessory=" + accessory +
-                ", background=" + background +
-                ", closetId=" + closetId +
-                '}';
-    }
-
-
 }

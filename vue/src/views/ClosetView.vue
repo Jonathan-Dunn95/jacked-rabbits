@@ -5,7 +5,7 @@
         <button>Play Games</button>
       </router-link>
       <router-link v-bind:to="{ name: 'item-store' }">
-        <button>Customize Mascot</button>
+        <button>View Store</button>
       </router-link>
     </div>
     <div class="content-layout">

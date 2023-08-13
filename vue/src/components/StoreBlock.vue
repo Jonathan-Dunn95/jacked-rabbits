@@ -35,6 +35,8 @@ export default {
     .then(response => {
         // success!
         this.items = response.data;
+        // preload images once the items are loaded
+        this.preloadImages();
       })
       .catch(error => {
         console.error('An error occurred trying to load items!', error);
@@ -70,7 +72,13 @@ export default {
       } else {
         this.selectedItems = [item];
       }
-    }
+    },
+    preloadImages() {
+      for (const item of this.items) {
+        const img = new Image();
+        img.src = item.imgURL;
+      }
+    },
   }
 }
 </script>
@@ -104,7 +112,7 @@ export default {
   max-width: 275px;
   max-height: 275px;
   width: 100%;
-  border: 4px solid var(--primary800);
+  border: 5px solid var(--primary800);
   border-radius: 0.5rem;
   cursor: pointer;
   margin-bottom: 1rem;

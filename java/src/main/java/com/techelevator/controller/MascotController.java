@@ -28,8 +28,12 @@ public class MascotController {
         return mascotDao.getAllMascot();
     }
 
-    @RequestMapping(path = "/get-mascot/{mascotId}", method = RequestMethod.GET)
-    public Mascot getMascotById(int mascotId){
+
+
+
+    @RequestMapping(path = "/mascot/{mascotId}", method = RequestMethod.GET)
+    public Mascot getMascotById(@PathVariable int mascotId){
+
         return mascotDao.getMascotByMascotId(mascotId);
     }
 
@@ -39,7 +43,7 @@ public class MascotController {
         return mascotDao.createMascot(mascot);
     }
 
-    @RequestMapping(path = "/mascot/{kidId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/mascot/by-kid/{kidId}", method = RequestMethod.GET)
     public Mascot getMascotByKidId(@PathVariable int kidId) {
         return mascotDao.getMascotByKidId(kidId);
     }

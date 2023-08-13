@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img src="https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot1.jpg" />
+    <img :src="equippedMascotUrl" />
   </div>
 </template>
 
@@ -11,6 +11,11 @@ export default {
     return {
       selectedMascot: null,
     };
+  },
+  computed: {
+    equippedMascotUrl() {
+      return this.$store.state.equippedMascot[0].url;
+    }
   },
   methods: {
     onMascotSelected() {
@@ -30,6 +35,7 @@ export default {
 img { 
   border: 10px solid var(--primary800);
   border-radius: 0.25rem;
-  height: 60rem;
+  height: 50rem;
+  width: auto;
 }
 </style>
