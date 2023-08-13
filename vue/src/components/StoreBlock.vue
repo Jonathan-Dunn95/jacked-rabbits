@@ -30,22 +30,22 @@ export default {
     };
   },
   created() { 
-  ItemStoreService.getAllItems()
-  .then(response => {
-      // success
-      this.items = response.data;
-    })
-    .catch(error => {
-      console.error('An error occurred trying to load items!', error);
-    })
-    .finally(() => console.log(this.items));
-},
-  computed: {
-  filteredItems() {
-    return this.items.filter(item => this.getCategoryFromItemId(item.itemId) === this.selectedCategory);
+    ItemStoreService.getAllItems()
+    .then(response => {
+        // success!
+        this.items = response.data;
+      })
+      .catch(error => {
+        console.error('An error occurred trying to load items!', error);
+      });
   },
+  computed: {
+    filteredItems() {
+      return this.items.filter(item => this.getCategoryFromItemId(item.itemId) === this.selectedCategory);
+    },
   },
   methods: {
+    // items in the items_store don't have categories so this is how they're set to be displayed
     getCategoryFromItemId(itemId) {
       if (itemId >= 1 && itemId <= 12) { 
         return 'Shirts';
