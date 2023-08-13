@@ -85,6 +85,8 @@ INSERT INTO items_store (item_id,img_url) VALUES (58,'https://mykidswellnessapp-
 INSERT INTO items_store (item_id,img_url) VALUES (59,'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back11.jpg');
 INSERT INTO items_store (item_id,img_url) VALUES (60,'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back12.jpg');
 
+-- Mascot Selection
+
 
 
 COMMIT TRANSACTION;
