@@ -13,7 +13,6 @@ const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 const currentKids = localStorage.getItem('kids');
 const currentActivities = localStorage.getItem('activities');
-const currentItems = localStorage.getItem('items');
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -25,7 +24,160 @@ export default new Vuex.Store({
     user: currentUser || {},
     kids: currentKids || [],
     activities: currentActivities || [],
-    items: currentItems || [],
+    equippedItems: [
+      {
+        id: 1,
+        category: "Hats",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat1.jpg'
+      },
+      {
+        id: 2,
+        category: "Shirts",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt1.jpg'
+      },
+      {
+        id: 3,
+        category: "Shoes",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes1.jpg'
+      },
+      {
+        id: 4,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc1.jpg'
+      },
+      {
+        id: 5,
+        category: "Backgrounds",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back1.jpg'
+      },
+    ],
+    closetItems: [
+      {
+        id: 1,
+        category: "Hats",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat1.jpg'
+      },
+      {
+        id: 2,
+        category: "Hats",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat2.jpg'
+      },
+      {
+        id: 3,
+        category: "Hats",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat3.jpg'
+      },
+      {
+        id: 4,
+        category: "Hats",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat4.jpg'
+      },
+      {
+        id: 5,
+        category: "Hats",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat5.jpg'
+      },
+      {
+        id: 6,
+        category: "Shirts",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt1.jpg'
+      },
+      {
+        id: 7,
+        category: "Shirts",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt2.jpg'
+      },
+      {
+        id: 8,
+        category: "Shirts",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt3.jpg'
+      },
+      {
+        id: 9,
+        category: "Shirts",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt4.jpg'
+      },
+      {
+        id: 10,
+        category: "Shirts",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt5.jpg'
+      },
+      {
+        id: 11,
+        category: "Shoes",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes1.jpg'
+      },
+      {
+        id: 12,
+        category: "Shoes",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes2.jpg'
+      },
+      {
+        id: 13,
+        category: "Shoes",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes3.jpg'
+      },
+      {
+        id: 14,
+        category: "Shoes",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes4.jpg'
+      },
+      {
+        id: 15,
+        category: "Shoes",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes5.jpg'
+      },
+      {
+        id: 16,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc1.jpg'
+      },
+      {
+        id: 17,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc2.jpg'
+      },
+      {
+        id: 18,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc3.jpg'
+      },
+      {
+        id: 19,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc4.jpg'
+      },
+      {
+        id: 20,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc5.jpg'
+      },
+      {
+        id: 21,
+        category: "Backgrounds",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back1.jpg'
+      },
+      {
+        id: 22,
+        category: "Backgrounds",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back2.jpg'
+      },
+      {
+        id: 23,
+        category: "Backgrounds",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back3.jpg'
+      },
+      {
+        id: 24,
+        category: "Backgrounds",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back4.jpg'
+      },
+      {
+        id: 25,
+        category: "Backgrounds",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back5.jpg'
+      },
+    ],
     //remove this when connecting to DB
     // kids: [
     //   {
@@ -84,9 +236,16 @@ export default new Vuex.Store({
       state.activities = activties
       localStorage.setItem('activities', activties)
     },
-    SET_STORE_ITEMS(state, items) {
-      state.items = items
-      localStorage.setItem('items', items)
+    EQUIP_ITEM(state, item) {
+      const index = state.equippedItems.findIndex(
+        (equippedItem) => equippedItem.category === item.category
+      );
+  
+      if (index !== -1) {
+        state.equippedItems.splice(index, 1, item);
+      } else {
+        state.equippedItems.push(item);
+      }
     },
-  }
+  },
 })
