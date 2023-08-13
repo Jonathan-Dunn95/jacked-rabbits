@@ -33,7 +33,14 @@ export default {
       return this.$store.state.closetItems;
     },
     displayedItems() {
-      return this.allClosetItems.filter(item => item.category === this.selectedCategory);
+      return this.allClosetItems.filter(
+        (item) =>
+          item.category === this.selectedCategory &&
+          !this.$store.state.equippedItems.some(
+            (equippedItem) =>
+              equippedItem.category === this.selectedCategory && equippedItem.id === item.id
+          )
+      );
     },
   },
   methods: {
@@ -47,6 +54,11 @@ export default {
       this.$store.commit("EQUIP_ITEM", item);
     }
   },
+  // created() {
+  //   this.$store.state.equippedItems.forEach((item) => {
+  //     this.equipItem(item);
+  //   });
+  // },
 };
 </script>
 
