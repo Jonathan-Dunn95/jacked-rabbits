@@ -95,10 +95,10 @@ public class JdbcMascotDao implements MascotDao {
     @Override
     public void updateMascot(Mascot mascot) {
         String sql = "UPDATE mascot "+
-                "SET kids_id = ?, shirt = ?, shoes = ?, hat = ?, accessory = ?, background = ?, closet_id = ?, mascot_selection_id = ? " +
+                "SET mascot_id = ?, kids_id = ?, shirt = ?, shoes = ?, hat = ?, accessory = ?, background = ?, closet_id = ?, mascot_selection_id = ? " +
                 "WHERE mascot_id = ?;";
-        jdbcTemplate.update(sql, mascot.getKidId(), mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
-                mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId(), mascot.getMascotSelectionId());
+        jdbcTemplate.update(sql, mascot.getMascotId(),mascot.getKidId(), mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
+                mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId(), mascot.getMascotSelectionId(), mascot.getMascotId());
     }
 
     @Override
