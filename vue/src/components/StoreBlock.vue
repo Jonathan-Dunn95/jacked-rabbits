@@ -12,7 +12,8 @@
       :key="item.itemId"
       :src="item.imgURL"
       @click="toggleItemSelected(item)"
-      :class="{ selected: selectedItems.includes(item) }" />
+      :class="{ selected: selectedItems.includes(item) }" 
+      />
     </div>
   </div>
 </template>

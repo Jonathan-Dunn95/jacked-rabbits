@@ -1,11 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.ItemStoreDao;
-import com.techelevator.dao.JdbcItemStoreDao;
-import com.techelevator.dao.KidDao;
-import com.techelevator.model.Closet;
 import com.techelevator.model.ItemStore;
-import com.techelevator.model.Kid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

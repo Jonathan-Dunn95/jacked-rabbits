@@ -1,5 +1,5 @@
 BEGIN TRANSACTION;
-
+-- Users Table
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 INSERT INTO users (username,password_hash,role) VALUES ('jason','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm','ROLE_PARENT'); -- password is password
@@ -7,14 +7,17 @@ INSERT INTO users (username,password_hash,role) VALUES ('timmy','$2a$10$tZSngHOS
 INSERT INTO users (username,password_hash,role) VALUES ('jimmy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm','ROLE_KID'); -- password is password
 INSERT INTO users (username,password_hash,role) VALUES ('tommy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm','ROLE_KID'); -- password is password
 
+-- Kids Table
 INSERT INTO kids (kids_id, user_id,username,password_hash,carrots) VALUES (4,3,'timmy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm',4);
 INSERT INTO kids (kids_id, user_id,username,password_hash,carrots) VALUES (5,3,'jimmy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm',23);
 INSERT INTO kids (kids_id, user_id,username,password_hash,carrots) VALUES (6,3,'tommy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm',135);
 
+-- Activity Table
 INSERT INTO activity (kids_id,steps,minutes) VALUES (4,'40',5);
 INSERT INTO activity (kids_id,steps,minutes) VALUES (5,'100',20);
 INSERT INTO activity (kids_id,steps,minutes) VALUES (6,'230',60);
 
+-- Items Store Table
 -- Shirts
 INSERT INTO items_store (item_id,img_url) VALUES (1,'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt1.jpg');
 INSERT INTO items_store (item_id,img_url) VALUES (2,'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt2.jpg');
@@ -85,8 +88,31 @@ INSERT INTO items_store (item_id,img_url) VALUES (58,'https://mykidswellnessapp-
 INSERT INTO items_store (item_id,img_url) VALUES (59,'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back11.jpg');
 INSERT INTO items_store (item_id,img_url) VALUES (60,'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back12.jpg');
 
+-- Mascot Selector Table
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (1,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot1.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (2,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot2.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (3,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot3.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (4,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot4.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (5,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot5.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (6,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot6.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (7,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot7.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (8,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot8.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (9,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot9.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (10,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot10.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (11,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg');
+INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (12,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot12.jpg');
 -- Mascot Selection
-
-
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (101,1,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot1.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (102,2,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot2.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (103,3,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot3.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (104,4,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot4.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (105,5,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot5.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (106,6,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot6.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (107,7,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot7.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (108,8,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot8.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (109,9,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot9.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (110,10,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot10.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (111,11,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (112,12,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot12.jpg');
 
 COMMIT TRANSACTION;
