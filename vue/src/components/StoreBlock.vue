@@ -8,280 +8,69 @@
       <button @click="selectCategory('Backgrounds')" :class="{ active: selectedCategory === 'Backgrounds' }">Backgrounds</button>
     </div>
     <div class="item-grid">
-      <img v-for="(item, index) in displayedItems" 
-      :key="index" 
-      :src="item.image"
-      :class="{ selected: index === selectedItemIndex }"
-      @click="selectItem(index)" />
+      <img v-for="item in filteredItems" 
+      :key="item.itemId"
+      :src="item.imgURL"
+      @click="toggleItemSelected(item)"
+      :class="{ selected: selectedItems.includes(item) }" />
     </div>
   </div>
 </template>
 
 <script>
+import ItemStoreService from '../services/ItemStoreService'
+
 export default {
   name: "store-block",
   data() {
     return {
       selectedCategory: 'Shirts',
-      selectedItemIndex: null,
-      items : [
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt1.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt2.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt3.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt4.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt5.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt6.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt7.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt8.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt9.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt10.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt11.jpg',
-        },
-        {
-          category: 'Shirts',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt12.jpg',
-        },
-        {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes1.jpg',
-        },
-        {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes2.jpg',
-        },
-        {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes3.jpg',
-        },
-                {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes4.jpg',
-        },
-        {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes5.jpg',
-        },
-        {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes6.jpg',
-        },
-        {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes7.jpg',
-        },
-        {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes8.jpg',
-        },
-        {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes9.jpg',
-        },
-                {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes10.jpg',
-        },
-        {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes11.jpg',
-        },
-        {
-          category: 'Shoes',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes12.jpg',
-        },
-        {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat1.jpg',
-        },
-        {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat2.jpg',
-        },
-        {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat3.jpg',
-        },
-        {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat4.jpg',
-        },
-        {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat5.jpg',
-        },
-        {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat6.jpg',
-        },
-                {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat7.jpg',
-        },
-        {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat8.jpg',
-        },
-        {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat9.jpg',
-        },
-                {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat10.jpg',
-        },
-        {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat11.jpg',
-        },
-        {
-          category: 'Hats',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat12.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc1.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc2.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc13.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc4.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc5.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc6.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc7.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc8.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc9.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc10.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc11.jpg',
-        },
-        {
-          category: 'Accessories',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc12.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back1.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back2.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back3.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back4.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back5.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back6.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back7.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back8.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back9.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back10.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back11.jpg',
-        },
-        {
-          category: 'Backgrounds',
-          image: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back12.jpg',
-        },
-      ],
+      items: [],
+      selectedItems: [],
     };
   },
+  created() { 
+    ItemStoreService.getAllItems()
+    .then(response => {
+        // success!
+        this.items = response.data;
+      })
+      .catch(error => {
+        console.error('An error occurred trying to load items!', error);
+      });
+  },
   computed: {
-    displayedItems() {
-      if (!this.selectedCategory) return this.items;
-      return this.items.filter(item => item.category === this.selectedCategory);
+    filteredItems() {
+      return this.items.filter(item => this.getCategoryFromItemId(item.itemId) === this.selectedCategory);
     },
   },
   methods: {
-    selectCategory(category) {
+    // items in the items_store don't have categories so this is how they're set to be displayed
+    getCategoryFromItemId(itemId) {
+      if (itemId >= 1 && itemId <= 12) { 
+        return 'Shirts';
+      } else if (itemId >= 13 && itemId <= 24) {
+        return 'Shoes';
+      } else if (itemId >= 25 && itemId <= 36) {
+        return 'Hats';
+      } else if (itemId >= 37 && itemId <= 48) { 
+        return 'Accessories';
+      } else { 
+        return 'Backgrounds';
+      }
+    },
+    selectCategory(category) { 
       this.selectedCategory = category;
+      this.selectedItems = [];
     },
-    selectItem(index) {
-      this.selectedItemIndex = index;
-    },
-  },
+    toggleItemSelected(item) {
+      if (this.selectedItems.includes(item)) {
+        this.selectedItems = [];
+      } else {
+        this.selectedItems = [item];
+      }
+    }
+  }
 }
 </script>
 

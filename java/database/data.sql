@@ -101,6 +101,8 @@ INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (9,'htt
 INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (10,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot10.jpg');
 INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (11,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg');
 INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (12,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot12.jpg');
+-- Mascot Selection
+
 
 
 COMMIT TRANSACTION;

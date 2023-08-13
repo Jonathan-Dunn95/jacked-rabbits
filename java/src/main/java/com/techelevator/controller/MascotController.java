@@ -24,7 +24,7 @@ public class MascotController {
     }
 
     @RequestMapping(path = "/mascot", method = RequestMethod.GET)
-    public List<Mascot> getAllMascot(){
+    public List<Mascot> getAllMascot() {
         return mascotDao.getAllMascot();
     }
 
@@ -48,6 +48,7 @@ public class MascotController {
     public void updateMascot(@RequestBody Mascot mascot){
         this.mascotDao.updateMascot(mascot);
     }
+
     @RequestMapping(path = "/mascot/{mascotId}", method = RequestMethod.DELETE)
     public void deleteMascot(@PathVariable int mascotId){
         mascotDao.deleteMascot(mascotId);

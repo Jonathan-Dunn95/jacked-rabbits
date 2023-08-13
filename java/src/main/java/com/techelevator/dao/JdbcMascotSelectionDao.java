@@ -4,6 +4,7 @@ import com.techelevator.exception.DaoException;
 import com.techelevator.model.MascotSelection;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,19 +21,18 @@ public class JdbcMascotSelectionDao implements MascotSelectionDao {
 
     @Override
     public List<MascotSelection> getAllMascotSelections() {
-        String sql = "SELECT * FROM mascot_selection";
         List<MascotSelection> mascotSelections = new ArrayList<>();
+        String sql = "SELECT * FROM mascot_selection";
         try {
-            jdbcTemplate.query(sql, resultSet -> {
-                MascotSelection mascotSelection = new MascotSelection();
-                mascotSelection.setMascotSelectionId(resultSet.getInt("mascot_selection_id"));
-                mascotSelection.setImgURL(resultSet.getString("img_url"));
-                mascotSelections.add(mascotSelection);
-            });
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()) {
+                MascotSelection mascot = mapRowToMascotSelection(results);
+                mascotSelections.add(mascot);
+            }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         }
-        return null;
+        return mascotSelections;
     }
 
     @Override
@@ -62,8 +62,13 @@ public class JdbcMascotSelectionDao implements MascotSelectionDao {
             });
         } catch (Exception e) {
             throw new DaoException("Unable to connect to server or database", e);
-
         }
+    }
 
+    private MascotSelection mapRowToMascotSelection(SqlRowSet rs) {
+        MascotSelection mascotSelection = new MascotSelection();
+        mascotSelection.setImgURL(rs.getString("img_url"));
+        mascotSelection.setMascotSelectionId(rs.getInt("item_id"));
+        return mascotSelection;
     }
 }

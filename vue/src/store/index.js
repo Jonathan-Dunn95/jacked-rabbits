@@ -13,6 +13,7 @@ const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 const currentKids = localStorage.getItem('kids');
 const currentActivities = localStorage.getItem('activities');
+const currentItems = localStorage.getItem('items');
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -23,7 +24,8 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     kids: currentKids || [],
-    activities: currentActivities || []
+    activities: currentActivities || [],
+    items: currentItems || [],
     //remove this when connecting to DB
     // kids: [
     //   {
@@ -81,6 +83,10 @@ export default new Vuex.Store({
     SET_ACTIVITIES(state,activties) {
       state.activities = activties
       localStorage.setItem('activities', activties)
-    }
+    },
+    SET_STORE_ITEMS(state, items) {
+      state.items = items
+      localStorage.setItem('items', items)
+    },
   }
 })

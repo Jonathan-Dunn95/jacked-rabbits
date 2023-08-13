@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcMascotDao implements MascotDao{
+public class JdbcMascotDao implements MascotDao {
+
     private final JdbcTemplate jdbcTemplate;
 
     public JdbcMascotDao(JdbcTemplate jdbcTemplate) {

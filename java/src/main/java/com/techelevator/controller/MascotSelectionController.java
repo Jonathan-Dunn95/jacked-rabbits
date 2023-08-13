@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/mascot_selection/")
+
 @CrossOrigin
 public class MascotSelectionController {
 
