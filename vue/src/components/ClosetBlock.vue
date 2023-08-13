@@ -33,15 +33,12 @@ export default {
       return this.$store.state.closetItems;
     },
     displayedItems() {
-      return this.allClosetItems.filter(
-        (item) =>
-          item.category === this.selectedCategory &&
-          !this.$store.state.equippedItems.some(
-            (equippedItem) =>
-              equippedItem.category === this.selectedCategory && equippedItem.id === item.id
-          )
-      );
+      return this.filterOutEquippedItems();
     },
+  },
+  created() {
+    // Prefetch the URLs of all items in the closet so no loading
+    this.preloadImages();
   },
   methods: {
     selectCategory(category) {
@@ -52,14 +49,25 @@ export default {
     },
     equipItem(item) {
       this.$store.commit("EQUIP_ITEM", item);
-    }
-  },
-  // created() {
-  //   this.$store.state.equippedItems.forEach((item) => {
-  //     this.equipItem(item);
-  //   });
-  // },
-};
+    },
+    filterOutEquippedItems() {
+      return this.allClosetItems.filter(item => {
+        for (const equippedItem of this.$store.state.equippedItems) {
+          if (equippedItem.category === this.selectedCategory && equippedItem.id === item.id) {
+            return false;
+          }
+        }
+        return item.category === this.selectedCategory;
+        });
+    },
+    preloadImages() {
+      for (const item of this.allClosetItems) {
+        const img = new Image();
+        img.src = item.url;
+      }
+    },
+  }
+}
 </script>
 
 <style scoped>
