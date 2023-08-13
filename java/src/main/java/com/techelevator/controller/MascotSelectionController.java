@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/mascot_selection")
+@RequestMapping("/mascot_selection/")
 @CrossOrigin
 public class MascotSelectionController {
 
@@ -17,17 +17,17 @@ public class MascotSelectionController {
         this.mascotSelectionDao = mascotSelectionDao;
     }
 
-    @GetMapping
+    @RequestMapping(path = "", method =  RequestMethod.GET)
     public List<MascotSelection> getAllMascotSelections() {
         return mascotSelectionDao.getAllMascotSelections();
     }
 
-    @GetMapping("/{mascotSelectionId}")
+    @RequestMapping(path = "{mascotSelectionId}", method = RequestMethod.GET)
     public MascotSelection getMascotSelectionById(@PathVariable int mascotSelectionId) {
         return mascotSelectionDao.getMascotSelectionById(mascotSelectionId);
     }
 
-    @GetMapping("/img_url/{imgURL}")
+    @RequestMapping(path = "{imgURL}", method = RequestMethod.GET)
     public MascotSelection getMascotSelectionByImgURL(@PathVariable String imgURL) {
         return mascotSelectionDao.getMascotSelectionByImgURL(imgURL);
     }
