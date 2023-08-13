@@ -35,6 +35,7 @@ export default {
 img { 
   border: 10px solid var(--primary800);
   border-radius: 0.25rem;
-  height: 60rem;
+  height: 50rem;
+  width: auto;
 }
 </style>

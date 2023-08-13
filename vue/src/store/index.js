@@ -181,7 +181,7 @@ export default new Vuex.Store({
     equippedMascot: [
       {
         id: 1,
-        url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot1.jpg"
+        url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg"
       },
     ],
     mascots: [
