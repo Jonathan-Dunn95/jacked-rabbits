@@ -35,6 +35,12 @@ Create table items_store (
 	CONSTRAINT PK_item_id PRIMARY KEY (item_id)
 );
 
+Create table mascot_selection(
+	mascot_selection_id int,
+	mascot_img_url varchar(300),
+	CONSTRAINT PK_mascot_selection_id PRIMARY KEY (mascot_selection_id)
+);
+
 Create table mascot (
 	mascot_id int,
 	kids_id int NOT NULL,
@@ -44,18 +50,13 @@ Create table mascot (
 	accessory int,
 	background int,
 	closet_id int,
+	mascot_selection_id int,
 	CONSTRAINT PK_mascot_id PRIMARY KEY (mascot_id),
 	CONSTRAINT FK_mascot_kids FOREIGN KEY (kids_id) REFERENCES kids (kids_id),
+	CONSTRAINT FK_mascot_mascot_selection FOREIGN KEY (mascot_selection_id) REFERENCES mascot_selection (mascot_selection_id),
 	CONSTRAINT UQ_mascot_id UNIQUE (mascot_id)
 );
 
-Create table mascot_selection(
-	mascot_selection_id int,
-	mascot_id int,
-	mascot_img_url varchar(300),
-	CONSTRAINT PK_mascot_selection_id PRIMARY KEY (mascot_selection_id),
-	CONSTRAINT FK_mascot_selection_mascot FOREIGN KEY (mascot_id) REFERENCES mascot (mascot_id)
-);
 
 Create table closet (
 	closet_id int,
