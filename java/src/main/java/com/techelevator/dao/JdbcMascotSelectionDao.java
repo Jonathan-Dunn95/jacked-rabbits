@@ -37,32 +37,32 @@ public class JdbcMascotSelectionDao implements MascotSelectionDao {
 
     @Override
     public MascotSelection getMascotSelectionById(int mascotSelectionId) {
+        MascotSelection mascot = null;
         String sql = "SELECT * FROM mascot_selection WHERE mascot_selection_id = ?";
         try {
-            return jdbcTemplate.queryForObject(sql, new Object[]{mascotSelectionId}, (resultSet, rowNum) -> {
-                MascotSelection mascotSelection = new MascotSelection();
-                mascotSelection.setMascotSelectionId(resultSet.getInt("mascot_selection_id"));
-                mascotSelection.setImgURL(resultSet.getString("img_url"));
-                return mascotSelection;
-            });
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, mascotSelectionId);
+            if(results.next()){
+                mascot = mapRowToMascotSelection(results);
+            };
         } catch (Exception e) {
             throw new DaoException("Unable to connect to server or database", e);
         }
+        return mascot;
     }
 
     @Override
     public MascotSelection getMascotSelectionByImgURL(String imgURL) {
+        MascotSelection mascot = null;
         String sql = "SELECT * FROM mascot_selection WHERE img_url = ?";
         try {
-            return jdbcTemplate.queryForObject(sql, new Object[]{imgURL}, (resultSet, rowNum) -> {
-                MascotSelection mascotSelection = new MascotSelection();
-                mascotSelection.setMascotSelectionId(resultSet.getInt("mascot_selection_id"));
-                mascotSelection.setImgURL(resultSet.getString("img_url"));
-                return mascotSelection;
-            });
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, imgURL);
+            if(results.next()){
+                mascot = mapRowToMascotSelection(results);
+            };
         } catch (Exception e) {
             throw new DaoException("Unable to connect to server or database", e);
         }
+        return mascot;
     }
 
     private MascotSelection mapRowToMascotSelection(SqlRowSet rs) {

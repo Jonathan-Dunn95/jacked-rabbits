@@ -86,7 +86,17 @@ INSERT INTO items_store (item_id,img_url) VALUES (59,'https://mykidswellnessapp-
 INSERT INTO items_store (item_id,img_url) VALUES (60,'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back12.jpg');
 
 -- Mascot Selection
-
-
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (101,1,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot1.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (102,2,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot2.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (103,3,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot3.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (104,4,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot4.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (105,5,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot5.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (106,6,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot6.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (107,7,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot7.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (108,8,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot8.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (109,9,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot9.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (110,10,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot10.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (111,11,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg');
+--INSERT INTO mascot_selection (mascot_selection_id,mascot_id,mascot_img_url) VALUES (112,12,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot12.jpg');
 
 COMMIT TRANSACTION;

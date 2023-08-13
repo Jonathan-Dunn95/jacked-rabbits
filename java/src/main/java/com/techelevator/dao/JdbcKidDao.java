@@ -1,10 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.Activity;
-import com.techelevator.model.Kid;
-import com.techelevator.model.KidRequestDto;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -58,6 +55,8 @@ public class JdbcKidDao implements KidDao {
         Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, userId, kidRequest.getParentId(), kidRequest.getUsername(), password_hash, kidRequest.getCarrots(), kidRequest.getPlayTime());
         if (kidId != null) {
             createActivity(kidId);
+//            createCloset();
+//            createMascot();
             return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash(), kidRequest.getPlayTime(), "ROLE_KID");
         } else {
             return null;
@@ -119,4 +118,23 @@ public class JdbcKidDao implements KidDao {
         jdbcTemplate.update(sql,kidId,activity.getSteps(),activity.getMinutes());
     }
 
+    private void createCloset(int kidId) {
+        System.out.println('3');
+        String sql = "INSERT INTO create (kids_id,steps,minutes) VALUES (?,?,?)";
+        Closet closet = new Closet();
+//        closet.setCloset_id();
+    }
+
+    private void createMascot(int kidId) {
+        System.out.println('3');
+        String sql = "INSERT INTO mascot (mascot_id,kids_id, shirt, shoes, hat, accessory, background, closet_id) VALUES (?,?,?,?,?,?)";
+        Mascot mascot = new Mascot();
+        mascot.setShirt(0);
+        mascot.setShoes(0);
+        mascot.setHat(0);
+        mascot.setAccessory(0);
+        mascot.setBackground(0);
+//        mascot.setClosetId(0);
+        jdbcTemplate.update(sql,kidId,kidId,mascot.getShirt(),mascot.getShoes(),mascot.getHat(),mascot.getAccessory(),mascot.getBackground());
+    }
 }
