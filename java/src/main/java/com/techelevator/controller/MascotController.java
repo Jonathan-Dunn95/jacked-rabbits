@@ -28,7 +28,7 @@ public class MascotController {
         return mascotDao.getAllMascot();
     }
 
-    @RequestMapping(path = "/mascot/{mascotId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/get-mascot/{mascotId}", method = RequestMethod.GET)
     public Mascot getMascotById(int mascotId){
         return mascotDao.getMascotByMascotId(mascotId);
     }
