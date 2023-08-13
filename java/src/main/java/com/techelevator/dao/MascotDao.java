@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Mascot;
+import com.techelevator.model.MascotRequestDto;
 
 import java.util.List;
 
