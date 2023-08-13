@@ -1,11 +1,12 @@
 <template>
   <div class="container">
-    <img v-for="(avatar, index) in avatars"
-      :key="index"
-      :src="avatar.url"
-      :class="{ selected: index === selectedIndex }"
-      @click="selectAvatar(index)"
-    />
+    <img v-for="mascot in allMascots"
+      :key="mascot.id"
+      :src="mascot.url"
+      :class="{ selected: mascot.id === selectedMascot }"
+      @click="selectMascot(mascot)"
+      @dblclick="equipMascot(mascot)"
+      />
   </div>
 </template>
 
@@ -14,27 +15,25 @@ export default {
   name: "mascot-selector",
   data() {
     return {
-      avatars: [
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot1.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot2.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot3.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot4.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot5.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot6.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot7.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot8.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot9.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot10.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg" },
-        { url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot12.jpg" },
-      ],
-      selectedIndex: null,
+      selectedMascot: null,
     };
   },
-  methods: { 
-    selectAvatar(index) { 
-      this.selectedIndex = index;
+  methods: {
+    selectMascot(mascot) { 
+      this.selectedMascot = mascot.id;
+    },
+    equipMascot(mascot) {
+      this.$store.commit("EQUIP_MASCOT", mascot);
     }
+  },
+  computed: {
+    allMascots() {
+      return this.$store.state.mascots;
+    }
+  },
+  created() {    
+    // set the selectedMascot to the ID of the initially equipped mascot
+    this.selectedMascot = this.$store.state.equippedMascot[0].id;
   }
 };
 </script>

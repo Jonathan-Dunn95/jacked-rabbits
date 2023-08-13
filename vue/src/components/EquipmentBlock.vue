@@ -1,16 +1,20 @@
 <template>
   <div id="equipment-container">
-      <img class="equipment-item" src="https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat1.jpg" alt="hat1" />
-      <img class="equipment-item" src="https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt4.jpg" alt="hat1" />
-      <img class="equipment-item" src="https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes4.jpg" alt="hat1" />
-      <img class="equipment-item" src="https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc12.jpg" alt="hat1" />
-      <img class="equipment-item" src="https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back6.jpg" alt="hat1" />
+      <img class="equippedItems" 
+      v-for="item in $store.state.equippedItems" 
+      v-bind:key="item.id"
+      :src="item.url" />
   </div>
 </template>
 
 <script>
 export default {
-    named: "equipment-block"
+    named: "equipment-block",
+    methods: {
+        equipItem(item) {
+        this.$store.commit("EQUIP_ITEM", item);
+        },
+    }
 }
 </script>
 
