@@ -28,8 +28,8 @@ export default {
     border-radius: 0.5rem;
 }
 #equipment-container > img {
-    height: 10rem;
-    width: 10rem;
+    height: 8rem;
+    width: 8rem;
     border: 10px ridge yellow;
     border-radius: 0.5rem;
 }

@@ -52,13 +52,13 @@ img {
   flex: 0 1 calc(25% - 1rem);
   max-width: calc(25% - 1rem);
   width: 100%;
-  border: 4px solid var(--primary800);
+  border: 5px solid var(--primary800);
   margin-bottom: 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
 }
 .selected {
-  border: 5px inset var(--primary600);
+  border: 5px inset yellow;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 </style>
