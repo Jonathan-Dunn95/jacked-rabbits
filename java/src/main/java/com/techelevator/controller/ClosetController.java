@@ -24,8 +24,8 @@ public class ClosetController {
     }
 // Needs review
     @RequestMapping(path = "add/{mascotId}", method = RequestMethod.POST)
-    public void addItemToCloset(@RequestParam int item_id, @RequestParam int mascot_id) {
-        closetDao.addItemToCloset(item_id, mascot_id);
+    public void addItemToCloset(@RequestBody Closet closet) {
+        closetDao.addItemToCloset(closet.getItemId(), closet.getMascotId());
     }
 
 //    @RequestMapping(path = "{closetId}", method = RequestMethod.PUT)
