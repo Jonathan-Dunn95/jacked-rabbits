@@ -5,7 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import ParentLandingPage from '../views/ParentLandingPage.vue'
-import KidsLandingPage from '../views/KidsLandingPage.vue'
+// import KidsLandingPage from '../views/KidsLandingPage.vue'
 import RegisterKids from '../views/RegisterKids.vue'
 import store from '../store/index'
 import ItemStore from '../views/StoreView.vue'
@@ -68,14 +68,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    {
-      path: "/kids",
-      name: "kids",
-      component: KidsLandingPage,
-      meta: {
-        requiresAuth: true
-      }
-    },
+    // {
+    //   path: "/kids",
+    //   name: "kids",
+    //   component: KidsLandingPage,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
     {
       path: "/parents/register",
       name: "register-kids",

@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="button-container">
-      <router-link v-bind:to="{ name: 'games' }">
+      <!-- <router-link v-bind:to="{ name: 'games' }">
         <button>Play Games</button>
-      </router-link>
+      </router-link> -->
       <router-link v-bind:to="{ name: 'closet' }">
         <button>Your Closet</button>
       </router-link>
