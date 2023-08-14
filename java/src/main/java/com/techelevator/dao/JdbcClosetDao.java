@@ -21,9 +21,13 @@ public class JdbcClosetDao implements ClosetDao {
 // Revise
     @Override
     public List<Integer> getItemsByMascotId(int mascotId) {
-        String sql = "SELECT * FROM closet WHERE mascot_id = ?;";
-        List<Integer> closetsItem = new ArrayList<>();
-        return null;
+        String sql = "SELECT item_id FROM closet WHERE mascot_id = ?;";
+        List<Integer> items = new ArrayList<>();
+        SqlRowSet itemIds =  jdbcTemplate.queryForRowSet(sql, mascotId);
+        while(itemIds.next()) {
+            items.add(itemIds.getInt("item_id"));
+        }
+        return items;
     }
 
 //    @Override
