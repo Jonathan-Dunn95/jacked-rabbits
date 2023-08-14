@@ -40,7 +40,7 @@ public class MascotController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/mascot", method = RequestMethod.POST)
     public Mascot createMascot(@RequestBody Mascot mascot){
-        return mascotDao.createMascot(mascot);
+        return mascotDao.createMascot(mascot, mascot.getMascotId());
     }
 
     @RequestMapping(path = "/mascot/by-kid/{kidId}", method = RequestMethod.GET)
@@ -65,6 +65,7 @@ public class MascotController {
 //
 //    }
 
+    // Review
     @RequestMapping(path = "/mascot/{mascotId}/customize", method = RequestMethod.PUT)
     public void customizeMascot(@PathVariable int mascotId, @RequestBody Mascot mascot) {
         // Check if the child has enough carrots
@@ -81,6 +82,7 @@ public class MascotController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Insufficient carrots for customization.");
         }
     }
+
     private int calculateCarrotsRequiredForCustomization(Mascot mascot) {
         int totalCarrotsRequired = 0;
 

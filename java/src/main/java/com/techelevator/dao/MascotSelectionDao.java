@@ -10,5 +10,5 @@ public interface MascotSelectionDao {
 
     MascotSelection getMascotSelectionById(int mascotSelectionId);
 
-    MascotSelection getMascotSelectionByImgURL(String imgURL);
+//    MascotSelection getMascotSelectionByImgURL(String imgURL);
 }
