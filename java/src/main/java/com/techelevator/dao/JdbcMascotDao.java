@@ -70,7 +70,7 @@ public class JdbcMascotDao implements MascotDao {
     // Ask Jason tomorrow
     @Override
     public Mascot createMascot(Mascot mascot, int mascotId) {
-        String sql = "INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id, mascot_selection_id = ? ) " +
+        String sql = "INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id, mascot_selection_id ) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING mascot_id;";
         Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, mascotId, mascot.getKidId(),
                 mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
