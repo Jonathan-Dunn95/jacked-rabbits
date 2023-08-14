@@ -37,7 +37,7 @@ public class JdbcMascotDao implements MascotDao {
     @Override
     public Mascot getMascotByMascotId(int mascotId) {
         Mascot mascot = null;
-        String sql = "SELECT mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id, mascot_selection_id " +
+        String sql = "SELECT mascot_id, kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id " +
                 "FROM mascot WHERE mascot_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, mascotId);
@@ -69,24 +69,24 @@ public class JdbcMascotDao implements MascotDao {
 
     @Override
     public Mascot createMascot(Mascot mascot, int mascotId) {
-        String sql = "INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id, mascot_selection_id ) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING mascot_id;";
+        String sql = "INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id ) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING mascot_id;";
         Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, mascotId, mascot.getKidId(),
                 mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
-                mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId(), mascot.getMascotSelectionId());
+                mascot.getAccessory(), mascot.getBackground(), mascot.getMascotSelectionId());
 
         return new Mascot(newId,mascot.getMascotId(), mascot.getKidId(),
                 mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
-                mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId(), mascot.getMascotSelectionId());
+                mascot.getAccessory(), mascot.getBackground(), mascot.getMascotSelectionId());
     }
 
     @Override
     public void updateMascot(Mascot mascot) {
         String sql = "UPDATE mascot "+
-                "SET mascot_id = ?, kids_id = ?, shirt = ?, shoes = ?, hat = ?, accessory = ?, background = ?, closet_id = ?, mascot_selection_id = ? " +
+                "SET mascot_id = ?, kids_id = ?, shirt = ?, shoes = ?, hat = ?, accessory = ?, background = ?, mascot_selection_id = ? " +
                 "WHERE mascot_id = ?;";
         jdbcTemplate.update(sql, mascot.getMascotId(),mascot.getKidId(), mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
-                mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId(), mascot.getMascotSelectionId(), mascot.getMascotId());
+                mascot.getAccessory(), mascot.getBackground(), mascot.getMascotSelectionId(), mascot.getMascotId());
     }
 
     @Override
@@ -117,7 +117,6 @@ public class JdbcMascotDao implements MascotDao {
         mascot.setHat(rs.getInt("hat"));
         mascot.setAccessory(rs.getInt("accessory"));
         mascot.setBackground(rs.getInt("background"));
-        mascot.setClosetId(rs.getInt("closet_id"));
         mascot.setMascotSelectionId(rs.getInt("mascot_selection_id"));
 
         return mascot;

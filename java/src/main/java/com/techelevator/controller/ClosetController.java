@@ -17,14 +17,10 @@ public class ClosetController {
         this.closetDao = closetDao;
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<Closet> getAllClosetItems() {
-        return closetDao.getAllClosetItems();
-    }
 
-    @RequestMapping(path = "{closetId}", method = RequestMethod.GET)
-    public Closet getClosetItemById(@PathVariable int closetId) {
-        return closetDao.getClosetItemById(closetId);
+    @RequestMapping(path = "{mascotId}", method = RequestMethod.GET)
+    public List<Integer> getClosetItemById(@PathVariable int mascotId) {
+        return closetDao.getItemsByMascotId(mascotId);
     }
 // Needs review
     @RequestMapping(path = "add/{mascotId}", method = RequestMethod.POST)
@@ -32,9 +28,9 @@ public class ClosetController {
         closetDao.addItemToCloset(item_id, mascot_id);
     }
 
-    @RequestMapping(path = "{closetId}", method = RequestMethod.PUT)
-    public void updateClosetItem(@PathVariable int closetId, @RequestBody Closet closetItem) {
-        closetItem.setCloset_id(closetId);
-        closetDao.updateClosetItem(closetItem);
-    }
+//    @RequestMapping(path = "{closetId}", method = RequestMethod.PUT)
+//    public void updateClosetItem(@PathVariable int closetId, @RequestBody Closet closetItem) {
+//        closetItem.setCloset_id(closetId);
+//        closetDao.updateClosetItem(closetItem);
+//    }
 }

@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface ClosetDao {
 
-    List<Closet> getAllClosetItems();
-    Closet getClosetItemById(int closetItemId);
-    void updateClosetItem(Closet closetItem);
+    List<Integer> getItemsByMascotId(int mascotId);
     void addItemToCloset(int item_id, int mascot_id);
 
 

@@ -57,10 +57,9 @@ Create table mascot (
 
 
 Create table closet (
-	closet_id int,
 	mascot_id int,
 	item_id int,
-	CONSTRAINT PK_closet_id PRIMARY KEY (closet_id),
+	CONSTRAINT PK_mascot_id_item_id PRIMARY KEY (mascot_id,item_id),
 	CONSTRAINT FK_kids_closet FOREIGN KEY (mascot_id) REFERENCES mascot (mascot_id),
 	CONSTRAINT FK_mascot_closet_item_id FOREIGN KEY (item_id) REFERENCES items_store (item_id)
 	);

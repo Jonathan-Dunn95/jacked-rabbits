@@ -18,68 +18,31 @@ public class JdbcClosetDao implements ClosetDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+// Revise
     @Override
-    public List<Closet> getAllClosetItems() {
-        String sql = "SELECT * FROM closet;";
-        List<Closet> allClosetItems = new ArrayList<>();
-        try {
-            jdbcTemplate.query(sql, resultSet -> {
-                Closet closet = new Closet();
-                closet.setCloset_id(resultSet.getInt("closet_id"));
-                closet.setMascot_id(resultSet.getInt("mascot_id"));
-                closet.setShirt(resultSet.getInt("shirt"));
-                closet.setShoes(resultSet.getInt("shoes"));
-                closet.setHat(resultSet.getInt("hat"));
-                closet.setAccessory(resultSet.getInt("accessory"));
-                closet.setBackground(resultSet.getInt("background"));
-                allClosetItems.add(closet);
-            });
-        } catch (Exception e) {
-            System.err.println("An error occurred while retrieving all closet items: ");
-        }
-        return allClosetItems;
+    public List<Integer> getItemsByMascotId(int mascotId) {
+        String sql = "SELECT * FROM closet WHERE mascot_id = ?;";
+        List<Integer> closetsItem = new ArrayList<>();
+        return null;
     }
 
-    @Override
-    public Closet getClosetItemById(int closetItemId) {
-        String sql = "SELECT * FROM closet WHERE closet_id = ?;";
-        Closet closetItem = null;
-        try {
-            closetItem = jdbcTemplate.queryForObject(sql, new Object[]{closetItemId}, (resultSet, rowNum) -> {
-                Closet closet = new Closet();
-                closet.setCloset_id(resultSet.getInt("closet_id"));
-                closet.setMascot_id(resultSet.getInt("mascot_id"));
-                closet.setShirt(resultSet.getInt("shirt"));
-                closet.setShoes(resultSet.getInt("shoes"));
-                closet.setHat(resultSet.getInt("hat"));
-                closet.setAccessory(resultSet.getInt("accessory"));
-                closet.setBackground(resultSet.getInt("background"));
-                return closet;
-            });
-        } catch (Exception e) {
-            System.err.println("An error occurred while retrieving closet item");
-        }
-        return closetItem;
-    }
+//    @Override
+//    public void updateClosetItem(Closet closetItem) {
+//        String sql = "UPDATE closet SET mascot_id = ?, shirt = ?, shoes = ?, hat = ?, accessory = ?, background = ? " +
+//                "WHERE closet_id = ?;";
+//        try {
+//            jdbcTemplate.update(sql, closetItem.getMascotId(), closetItem.getMascotId());
+//        } catch (Exception e) {
+//            System.err.println("An error occurred while updating item");
+//        }
+//    }
 
-    @Override
-    public void updateClosetItem(Closet closetItem) {
-        String sql = "UPDATE closet SET mascot_id = ?, shirt = ?, shoes = ?, hat = ?, accessory = ?, background = ? " +
-                "WHERE closet_id = ?;";
-        try {
-            jdbcTemplate.update(sql, closetItem.getMascot_id(), closetItem.getShirt(), closetItem.getShoes(),
-                    closetItem.getHat(), closetItem.getAccessory(), closetItem.getBackground(), closetItem.getCloset_id());
-        } catch (Exception e) {
-            System.err.println("An error occurred while updating item");
-        }
-    }
-
-
+// Revise
     @Override
     public void addItemToCloset(int item_id, int mascot_id) {
-        String sql = "INSERT INTO closet (item_id, mascot_id) VALUES (?, ?);";
+        String sql = "INSERT INTO closet (mascot_id, item_id) VALUES (?, ?);";
         try {
-            jdbcTemplate.update(sql, item_id, mascot_id);
+            jdbcTemplate.update(sql, mascot_id, item_id);
         } catch (Exception e) {
             System.err.println("An error occurred while adding item to closet");
         }
@@ -87,9 +50,9 @@ public class JdbcClosetDao implements ClosetDao {
 
     private Closet mapRowToCloset(SqlRowSet rs) {
         Closet closet = new Closet();
-        closet.setCloset_id(rs.getInt("closet_id"));
-        closet.setMascot_id(rs.getInt("mascot_id"));
+        closet.setMascotId(rs.getInt("mascot_id"));
+        closet.setItemId(rs.getInt("item_id"));
         return closet;
     }
-
 }
+
