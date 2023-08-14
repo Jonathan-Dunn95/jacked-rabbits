@@ -50,16 +50,14 @@ export default {
     equipItem(item) {
       this.$store.commit("EQUIP_ITEM", item);
     },
-    filterOutEquippedItems() {
-      return this.allClosetItems.filter(item => {
-        for (const equippedItem of this.$store.state.equippedItems) {
-          if (equippedItem.category === this.selectedCategory && equippedItem.id === item.id) {
-            return false;
-          }
-        }
-        return item.category === this.selectedCategory;
-        });
-    },
+  filterOutEquippedItems() {
+    return this.allClosetItems.filter(item => {
+      const isEquipped = this.$store.state.equippedItems.some(equippedItem => {
+        return equippedItem.category === this.selectedCategory && equippedItem.id === item.id;
+      });
+      return !isEquipped && item.category === this.selectedCategory;
+    });
+  },
     preloadImages() {
       for (const item of this.allClosetItems) {
         const img = new Image();
@@ -111,7 +109,7 @@ export default {
   color: white;
 }
 .item-grid img.selected {
-  border: 5px inset var(--primary600);
+  border: 5px inset yellow;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 </style>

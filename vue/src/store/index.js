@@ -180,7 +180,7 @@ export default new Vuex.Store({
     ],
     equippedMascot: [
       {
-        id: 1,
+        id: 11,
         url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg"
       },
     ],

@@ -11,7 +11,9 @@ public class Mascot {
     private int background;
 
     private int closetId;
-private int mascotSelectionId;
+    private int mascotSelectionId;
+
+
     public Mascot(){
 
     }
@@ -26,7 +28,9 @@ private int mascotSelectionId;
         this.background = background;
         this.closetId = closetId;
         this.mascotSelectionId = mascotSelectionId;
+
     }
+
 
 //    public Mascot(Integer newId, int mascotId, int kidId, int shirt, int shoes, int hat, int accessory, int background, int closetId) {
 //    }
@@ -119,6 +123,7 @@ private int mascotSelectionId;
                 ", closetId=" + closetId +
                 '}';
     }
+
 
 
 }
