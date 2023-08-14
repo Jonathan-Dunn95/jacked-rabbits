@@ -16,7 +16,7 @@ private int mascotSelectionId;
 
     }
 
-    public Mascot(int mascotId, int kidId, int shirt, int shoes, int hat, int accessory, int background, int closetId) {
+    public Mascot(int mascotId, int kidId, int shirt, int shoes, int hat, int accessory, int background, int closetId, int mascotSelectionId) {
         this.mascotId = mascotId;
         this.kidId = kidId;
         this.shirt = shirt;
@@ -28,7 +28,10 @@ private int mascotSelectionId;
         this.mascotSelectionId = mascotSelectionId;
     }
 
-    public Mascot(Integer newId, int mascotId, int kidId, int shirt, int shoes, int hat, int accessory, int background, int closetId) {
+//    public Mascot(Integer newId, int mascotId, int kidId, int shirt, int shoes, int hat, int accessory, int background, int closetId) {
+//    }
+
+    public Mascot(Integer newId, int mascotId, int kidId, int shirt, int shoes, int hat, int accessory, int background, int closetId, int mascotSelectionId) {
     }
 
     public int getMascotId() {

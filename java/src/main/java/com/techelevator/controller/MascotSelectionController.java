@@ -23,14 +23,14 @@ public class MascotSelectionController {
         return mascotSelectionDao.getAllMascotSelections();
     }
 
-    @RequestMapping(path = "/{mascotSelectionId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/select-by-id/{mascotSelectionId}", method = RequestMethod.GET)
     public MascotSelection getMascotSelectionById(@PathVariable int mascotSelectionId) {
         return mascotSelectionDao.getMascotSelectionById(mascotSelectionId);
     }
 
-    @RequestMapping(path = "/{imgURL}", method = RequestMethod.GET)
-    public MascotSelection getMascotSelectionByImgURL(@PathVariable String imgURL) {
-        return mascotSelectionDao.getMascotSelectionByImgURL(imgURL);
-    }
+//    @RequestMapping(path = "/{imgURL}", method = RequestMethod.GET)
+//    public MascotSelection getMascotSelectionByImgURL(@PathVariable String imgURL) {
+//        return mascotSelectionDao.getMascotSelectionByImgURL(imgURL);
+//    }
 }
 

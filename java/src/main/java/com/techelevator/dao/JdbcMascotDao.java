@@ -67,19 +67,21 @@ public class JdbcMascotDao implements MascotDao {
         return mascot;
     }
 
+    // Ask Jason tomorrow
     @Override
-    public Mascot createMascot(Mascot mascot) {
-        String sql = "INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING mascot_id;";
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, mascot.getMascotId(), mascot.getKidId(),
+    public Mascot createMascot(Mascot mascot, int mascotId) {
+        String sql = "INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id, mascot_selection_id = ? ) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING mascot_id;";
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, mascotId, mascot.getKidId(),
                 mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
-                mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId());
+                mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId(), mascot.getMascotSelectionId());
 
 //        return getMascotByMascotId(newId);
         return new Mascot(newId,mascot.getMascotId(), mascot.getKidId(),
                 mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
-                mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId());
+                mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId(), mascot.getMascotSelectionId());
     }
+
 //    @Override
 //    public Mascot createMascot(MascotRequestDto mascotRequest, int kidId) {
 //        String sql = "INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id) " +
@@ -107,14 +109,15 @@ public class JdbcMascotDao implements MascotDao {
         jdbcTemplate.update(sql, mascotId);
     }
 
+    // Do a join table with table kids to implement carrots and the purchase of items
     @Override
     public void updateMascotCustomization(int mascotId, Mascot mascot) {
         String sql = "UPDATE mascot " +
-                "SET shirt = ?, shoes = ?, hat = ?, accessory = ?, background = ? " +
+                "SET shirt = ?, shoes = ?, hat = ?, accessory = ?, background = ?, mascot_selection_id = ? " +
                 "WHERE mascot_id = ?";
 
         jdbcTemplate.update(sql, mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
-                mascot.getAccessory(), mascot.getBackground(), mascotId);
+                mascot.getAccessory(), mascot.getBackground(), mascot.getMascotSelectionId(), mascotId);
     }
 
 

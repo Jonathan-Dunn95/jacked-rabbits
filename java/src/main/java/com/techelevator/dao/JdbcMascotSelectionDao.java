@@ -50,25 +50,25 @@ public class JdbcMascotSelectionDao implements MascotSelectionDao {
         return mascot;
     }
 
-    @Override
-    public MascotSelection getMascotSelectionByImgURL(String imgURL) {
-        MascotSelection mascot = null;
-        String sql = "SELECT * FROM mascot_selection WHERE img_url = ?";
-        try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, imgURL);
-            if(results.next()){
-                mascot = mapRowToMascotSelection(results);
-            };
-        } catch (Exception e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        }
-        return mascot;
-    }
+//    @Override
+//    public MascotSelection getMascotSelectionByImgURL(String imgURL) {
+//        MascotSelection mascot = null;
+//        String sql = "SELECT * FROM mascot_selection WHERE img_url = ?";
+//        try {
+//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, imgURL);
+//            if(results.next()){
+//                mascot = mapRowToMascotSelection(results);
+//            };
+//        } catch (Exception e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        }
+//        return mascot;
+//    }
 
     private MascotSelection mapRowToMascotSelection(SqlRowSet rs) {
         MascotSelection mascotSelection = new MascotSelection();
-        mascotSelection.setImgURL(rs.getString("img_url"));
-        mascotSelection.setMascotSelectionId(rs.getInt("item_id"));
+        mascotSelection.setMascotSelectionId(rs.getInt("mascot_selection_id"));
+        mascotSelection.setImgURL(rs.getString("mascot_img_url"));
         return mascotSelection;
     }
 }

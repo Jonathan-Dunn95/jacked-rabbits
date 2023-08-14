@@ -29,7 +29,7 @@ public class ActivityController {
         return activityDao.getActivityByKidId(kidId);
     }
 
-    @RequestMapping(path = "/activity/update/{kidId}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/activity/calculate-carrots/{kidId}", method = RequestMethod.PUT)
     public void updateActivity (@RequestBody Activity activity, @PathVariable int kidId){
         activityDao.updateActivity(activity);
         int steps = activity.getSteps();

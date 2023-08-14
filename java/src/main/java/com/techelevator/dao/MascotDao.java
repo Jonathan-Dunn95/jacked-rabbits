@@ -12,7 +12,7 @@ public interface MascotDao {
 
     Mascot getMascotByKidId(int kidId);
 
-    Mascot createMascot(Mascot mascot);
+    Mascot createMascot(Mascot mascot, int mascotId);
 
     void updateMascot(Mascot mascot);
 
