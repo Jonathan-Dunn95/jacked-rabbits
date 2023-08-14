@@ -19,7 +19,7 @@ public class ClosetController {
 
 
     @RequestMapping(path = "{mascotId}", method = RequestMethod.GET)
-    public List<Integer> getClosetItemById(@PathVariable int mascotId) {
+    public List<Integer> getItemsByMascotId(@PathVariable int mascotId) {
         return closetDao.getItemsByMascotId(mascotId);
     }
 // Needs review
