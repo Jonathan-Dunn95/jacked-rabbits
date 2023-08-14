@@ -2,7 +2,7 @@
   <div class="container">
     <button v-on:click="addKid">Add Kid</button>
     <div class="kid-block">
-      <ul>
+      <ul v-if="kids.length > 0">
         <li v-for="kid in kids" v-bind:key="kid.kidId" class="kid-item">
           <div class="kid-info">
             <h2>{{ kid.username }}</h2>
@@ -95,7 +95,7 @@ export default {
     getActivity(kid) {
       // console.log(this.$store.state.activities)
       return this.$store.state.activities.find( activity => {
-        console.log(activity)
+        // console.log(activity)
         return activity.kidId === kid.kidId
       })
     }
@@ -123,7 +123,7 @@ export default {
       if(response.status === 200) {
         //success
         this.$store.commit("SET_ACTIVITIES", response.data);
-        // console.log(this.$store.state.activties)
+        console.log(this.$store.state.kids)
       }
     })
   }
