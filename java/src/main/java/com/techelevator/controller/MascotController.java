@@ -4,6 +4,7 @@ import com.techelevator.dao.KidDao;
 import com.techelevator.dao.MascotDao;
 import com.techelevator.model.Kid;
 import com.techelevator.model.Mascot;
+import com.techelevator.model.MascotSelection;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.parameters.P;
@@ -19,6 +20,8 @@ public class MascotController {
 
     private KidDao kidDao;
 
+
+
     public MascotController(MascotDao mascotDao) {
         this.mascotDao = mascotDao;
     }
@@ -28,8 +31,12 @@ public class MascotController {
         return mascotDao.getAllMascot();
     }
 
+
+
+
     @RequestMapping(path = "/mascot/{mascotId}", method = RequestMethod.GET)
     public Mascot getMascotById(@PathVariable int mascotId){
+
         return mascotDao.getMascotByMascotId(mascotId);
     }
 // Review
@@ -63,7 +70,14 @@ public class MascotController {
 
     // Review
     @RequestMapping(path = "/mascot/{mascotId}/customize", method = RequestMethod.PUT)
-    public void customizeMascot(@PathVariable int mascotId, @RequestBody Mascot mascot) {
+    public void customizeMascot(@PathVariable int mascotId, @RequestBody MascotSelection selection) {
+        // get the mascot --> customized
+        Mascot mascot = mascotDao.getMascotByMascotId(mascotId);
+        // check if mascot exists
+        if (mascot == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Mascot not found.");
+        }
+
         // Check if the child has enough carrots
         Kid kid = kidDao.getKidById(mascot.getKidId());
         int requiredCarrots = calculateCarrotsRequiredForCustomization(mascot);
@@ -71,6 +85,13 @@ public class MascotController {
         if (kid.getCarrots() >= requiredCarrots) {
             // Deduct carrots and update mascot customization in the database
             kid.setCarrots(kid.getCarrots() - requiredCarrots);
+            // update mascot
+            mascot.setShirt(selection.getMascotSelectionId());
+            mascot.setShoes(selection.getMascotSelectionId());
+            mascot.setHat(selection.getMascotSelectionId());
+            mascot.setAccessory(selection.getMascotSelectionId());
+            mascot.setBackground(selection.getMascotSelectionId());
+            mascot.setMascotSelectionId(selection.getMascotSelectionId());
             mascotDao.updateMascotCustomization(mascotId, mascot);
             kidDao.updateKid(kid);
         } else {
