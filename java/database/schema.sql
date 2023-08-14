@@ -49,11 +49,9 @@ Create table mascot (
 	hat int,
 	accessory int,
 	background int,
-	closet_id int,
 	mascot_selection_id int,
 	CONSTRAINT PK_mascot_id PRIMARY KEY (mascot_id),
 	CONSTRAINT FK_mascot_kids FOREIGN KEY (kids_id) REFERENCES kids (kids_id),
-	CONSTRAINT FK_mascot_mascot_selection FOREIGN KEY (mascot_selection_id) REFERENCES mascot_selection (mascot_selection_id),
 	CONSTRAINT UQ_mascot_id UNIQUE (mascot_id)
 );
 
@@ -61,18 +59,10 @@ Create table mascot (
 Create table closet (
 	closet_id int,
 	mascot_id int,
-	shirt int,
-	shoes int,
-	hat int,
-	accessory int,
-	background int,
+	item_id int,
 	CONSTRAINT PK_closet_id PRIMARY KEY (closet_id),
 	CONSTRAINT FK_kids_closet FOREIGN KEY (mascot_id) REFERENCES mascot (mascot_id),
-	CONSTRAINT FK_mascot_closet_shirt FOREIGN KEY (shirt) REFERENCES items_store (item_id),
-	CONSTRAINT FK_mascot_closet_shoes FOREIGN KEY (shoes) REFERENCES items_store (item_id),
-	CONSTRAINT FK_mascot_closet_hat FOREIGN KEY (hat) REFERENCES items_store (item_id),
-	CONSTRAINT FK_mascot_closet_accessory FOREIGN KEY (accessory) REFERENCES items_store (item_id),
-	CONSTRAINT FK_mascot_closet_background FOREIGN KEY (background) REFERENCES items_store (item_id)
+	CONSTRAINT FK_mascot_closet_item_id FOREIGN KEY (item_id) REFERENCES items_store (item_id)
 	);
 
 COMMIT TRANSACTION;
