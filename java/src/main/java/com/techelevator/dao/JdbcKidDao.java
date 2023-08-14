@@ -35,10 +35,10 @@ public class JdbcKidDao implements KidDao {
     }
 
     @Override
-    public List<Kid> getAllKids() {
+    public List<Kid> getAllKids(int parentId) {
         List<Kid> allKids  = new ArrayList<>();
-        String sql = "SELECT * from kids;";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+        String sql = "SELECT * from kids WHERE user_id = ?;";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, parentId);
         while(result.next()) {
             Kid kid = mapRowToKid(result);
             allKids.add(kid);

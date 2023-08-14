@@ -49,7 +49,7 @@ public class KidController {
     @PreAuthorize("permitAll")
     @RequestMapping(path = "/users/{id}", method = RequestMethod.GET)
     public List<Kid> getAllKids(@PathVariable int id){
-        return kidDao.getAllKids();
+        return kidDao.getAllKids(id);
     }
 
     //@PreAuthorize("hasRole(ROLE_PARENT)")

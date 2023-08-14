@@ -8,7 +8,7 @@ public interface KidDao {
 
     Kid getKidById(int id);
 
-    List<Kid> getAllKids();
+    List<Kid> getAllKids(int id);
 
     Kid createKid(KidRequestDto kidRequest, int userId);
 
