@@ -39,12 +39,12 @@ public class JdbcClosetDao implements ClosetDao {
 
 // Revise
     @Override
-    public void addItemToCloset(int item_id, int mascot_id) {
+    public void addItemToCloset(int itemId, int mascotId) {
         String sql = "INSERT INTO closet (mascot_id, item_id) VALUES (?, ?);";
         try {
-            jdbcTemplate.update(sql, mascot_id, item_id);
+            jdbcTemplate.update(sql, mascotId, itemId);
         } catch (Exception e) {
-            System.err.println("An error occurred while adding item to closet");
+            System.out.println ("An error occurred while adding item to closet" + e.getCause());
         }
     }
 
