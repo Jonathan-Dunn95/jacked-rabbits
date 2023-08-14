@@ -22,8 +22,9 @@ public class MascotController {
 
 
 
-    public MascotController(MascotDao mascotDao) {
+    public MascotController(MascotDao mascotDao, KidDao kidDao) {
         this.mascotDao = mascotDao;
+        this.kidDao = kidDao;
     }
 
     @RequestMapping(path = "/mascot", method = RequestMethod.GET)
@@ -39,7 +40,6 @@ public class MascotController {
 
         return mascotDao.getMascotByMascotId(mascotId);
     }
-// Review
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/mascot", method = RequestMethod.POST)
     public Mascot createMascot(@RequestBody Mascot mascot){
@@ -112,8 +112,10 @@ public class MascotController {
 
         return totalCarrotsRequired;
     }
-    // for front end: when user click on option id to choose what id items they want to buy.
-    // for backend: optionId use for calculate carrot required for the option
+    // for front end: when user click on item id to choose what id items they want to buy.
+
+    // for backend: itemId use for calculate carrot required for the option
+
     private int getCarrotsForOption(int itemId) {
         int carrotsRequired = 0;
 
@@ -123,15 +125,23 @@ public class MascotController {
         } else if (itemId >= 13 && itemId <= 24) {
             // Shoes (251-300): 3 carrots
             carrotsRequired = 3;
+
         } else if (itemId >= 25 && itemId<= 36) {
             // Hat  (301-350): 4 carrots
             carrotsRequired = 4;
         } else if (itemId >= 49 && itemId <= 60) {
             // Accessory  (351-400): 5 carrots
             carrotsRequired = 5;
-//        } else if (itemId >= 401 && itemId <= 450) {
-//            // Background  (401-450): 6 carrots
-//            carrotsRequired = 6;
+
+        } else if (itemId >= 25 && itemId <= 36) {
+            // Hat  (301-350): 4 carrots
+            carrotsRequired = 4;
+        } else if (itemId >= 37 && itemId <= 48) {
+            // Accessory  (351-400): 5 carrots
+            carrotsRequired = 5;
+        } else if (itemId >= 49 && itemId <= 60) {
+            // Background  (401-450): 6 carrots
+            carrotsRequired = 6;
         }
         return carrotsRequired;
     }
