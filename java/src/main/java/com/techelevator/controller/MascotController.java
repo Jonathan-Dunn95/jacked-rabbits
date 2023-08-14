@@ -70,7 +70,7 @@ public class MascotController {
 
     // Review
     @RequestMapping(path = "/mascot/{mascotId}/customize", method = RequestMethod.PUT)
-    public void customizeMascot(@PathVariable int mascotId, @RequestBody MascotSelection selection) {
+    public void customizeMascot(@PathVariable int mascotId, @RequestBody Mascot mascots) {
         // get the mascot --> customized
         Mascot mascot = mascotDao.getMascotByMascotId(mascotId);
         // check if mascot exists
@@ -86,12 +86,12 @@ public class MascotController {
             // Deduct carrots and update mascot customization in the database
             kid.setCarrots(kid.getCarrots() - requiredCarrots);
             // update mascot
-            mascot.setShirt(selection.getMascotSelectionId());
-            mascot.setShoes(selection.getMascotSelectionId());
-            mascot.setHat(selection.getMascotSelectionId());
-            mascot.setAccessory(selection.getMascotSelectionId());
-            mascot.setBackground(selection.getMascotSelectionId());
-            mascot.setMascotSelectionId(selection.getMascotSelectionId());
+            mascot.setShirt(mascots.getShirt());
+            mascot.setShoes(mascots.getShoes());
+            mascot.setHat(mascots.getHat());
+            mascot.setAccessory(mascots.getAccessory());
+            mascot.setBackground(mascots.getBackground());
+            mascot.setMascotSelectionId(mascots.getMascotSelectionId());
             mascotDao.updateMascotCustomization(mascotId, mascot);
             kidDao.updateKid(kid);
         } else {
@@ -114,24 +114,24 @@ public class MascotController {
     }
     // for front end: when user click on option id to choose what id items they want to buy.
     // for backend: optionId use for calculate carrot required for the option
-    private int getCarrotsForOption(int optionId) {
+    private int getCarrotsForOption(int itemId) {
         int carrotsRequired = 0;
 
-        if (optionId >= 200 && optionId <= 250) {
+        if (itemId >= 1 && itemId <= 12) {
             // Shirt id (200-250): 2 carrot
             carrotsRequired = 2;
-        } else if (optionId >= 251 && optionId <= 300) {
+        } else if (itemId >= 13 && itemId <= 24) {
             // Shoes (251-300): 3 carrots
             carrotsRequired = 3;
-        } else if (optionId >= 301 && optionId <= 350) {
+        } else if (itemId >= 25 && itemId<= 36) {
             // Hat  (301-350): 4 carrots
             carrotsRequired = 4;
-        } else if (optionId >= 351 && optionId <= 400) {
+        } else if (itemId >= 49 && itemId <= 60) {
             // Accessory  (351-400): 5 carrots
             carrotsRequired = 5;
-        } else if (optionId >= 401 && optionId <= 450) {
-            // Background  (401-450): 6 carrots
-            carrotsRequired = 6;
+//        } else if (itemId >= 401 && itemId <= 450) {
+//            // Background  (401-450): 6 carrots
+//            carrotsRequired = 6;
         }
         return carrotsRequired;
     }
