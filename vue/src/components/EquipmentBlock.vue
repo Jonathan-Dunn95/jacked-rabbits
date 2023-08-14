@@ -3,7 +3,8 @@
       <img class="equippedItems" 
       v-for="item in $store.state.equippedItems" 
       v-bind:key="item.id"
-      :src="item.url" />
+      :src="item.url"
+      @click="selectCategory(item.category)" />
   </div>
 </template>
 
@@ -14,6 +15,9 @@ export default {
         equipItem(item) {
         this.$store.commit("EQUIP_ITEM", item);
         },
+        selectCategory(category) { 
+            this.$store.commit("SET_SELECTED_CATEGORY", category);
+        }
     }
 }
 </script>
@@ -32,5 +36,6 @@ export default {
     width: 8rem;
     border: 10px ridge yellow;
     border-radius: 0.5rem;
+    cursor: pointer;
 }
 </style>
