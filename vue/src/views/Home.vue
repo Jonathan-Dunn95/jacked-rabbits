@@ -27,7 +27,7 @@ export default {
       this.$router.push("/parents")
     }
     else if(userType === "ROLE_KID") {
-      this.$router.push("/kids")
+      this.$router.push("/closet")
     }
   }
 };
