@@ -1,7 +1,9 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Closet;
+import com.techelevator.model.MascotSelection;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -72,6 +74,7 @@ public class JdbcClosetDao implements ClosetDao {
         }
     }
 
+
     @Override
     public void addItemToCloset(int item_id, int mascot_id) {
         String sql = "INSERT INTO closet (item_id, mascot_id) VALUES (?, ?);";
@@ -82,5 +85,11 @@ public class JdbcClosetDao implements ClosetDao {
         }
     }
 
+    private Closet mapRowToCloset(SqlRowSet rs) {
+        Closet closet = new Closet();
+        closet.setCloset_id(rs.getInt("closet_id"));
+        closet.setMascot_id(rs.getInt("mascot_id"));
+        return closet;
+    }
 
 }

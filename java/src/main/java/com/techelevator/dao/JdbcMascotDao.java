@@ -67,7 +67,6 @@ public class JdbcMascotDao implements MascotDao {
         return mascot;
     }
 
-    // Ask Jason tomorrow
     @Override
     public Mascot createMascot(Mascot mascot, int mascotId) {
         String sql = "INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id, mascot_selection_id ) " +
@@ -76,23 +75,10 @@ public class JdbcMascotDao implements MascotDao {
                 mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
                 mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId(), mascot.getMascotSelectionId());
 
-//        return getMascotByMascotId(newId);
         return new Mascot(newId,mascot.getMascotId(), mascot.getKidId(),
                 mascot.getShirt(), mascot.getShoes(), mascot.getHat(),
                 mascot.getAccessory(), mascot.getBackground(), mascot.getClosetId(), mascot.getMascotSelectionId());
     }
-
-//    @Override
-//    public Mascot createMascot(MascotRequestDto mascotRequest, int kidId) {
-//        String sql = "INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, closet_id) " +
-//                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING mascot_id;";
-//        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, kidId, mascotRequest.getKidId(),
-//                mascotRequest.getShirt(), mascotRequest.getShoes(), mascotRequest.getHat(),
-//                mascotRequest.getAccessory(), mascotRequest.getBackground(), mascotRequest.getClosetId());
-//        return new Mascot(newId, mascotRequest.getKidId(),
-//                mascotRequest.getShirt(), mascotRequest.getShoes(), mascotRequest.getHat(),
-//                mascotRequest.getAccessory(), mascotRequest.getBackground(), mascotRequest.getClosetId());
-//    }
 
     @Override
     public void updateMascot(Mascot mascot) {
