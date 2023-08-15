@@ -74,4 +74,21 @@ export default {
   border: 5px solid var(--primary800);
   cursor: pointer;
 }
+  button {
+    border-radius: 0.25rem;
+    background-color: var(--primary400);
+    border: 2px solid;
+    border-color: #1dc5ba;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    color: var(--primary800);
+    border: 3px solid var(--primary800);
+    font-weight: bold;
+    transition-duration: 0.4s;
+  }
+  button:hover {
+    background-color: var(--primary800);
+    border: 3px solid var(--primary400);
+    color: white;
+  }
 </style>

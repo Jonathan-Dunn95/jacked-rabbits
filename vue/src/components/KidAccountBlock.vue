@@ -131,7 +131,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
   .kid-block {
     display: flex;
     flex-direction: column;
