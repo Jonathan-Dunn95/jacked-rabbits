@@ -46,9 +46,8 @@ export default {
   width: 100%;
 }
 img { 
+  flex: 0 1 calc(25% - 1rem);
   border: 10px solid var(--primary800);
   border-radius: 0.25rem;
-  height: 50rem;
-  width: auto;
 }
 </style>

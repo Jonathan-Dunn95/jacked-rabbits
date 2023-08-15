@@ -9,13 +9,13 @@
     </div>
     <div class="item-grid">
       <img v-for="item in displayedItems" 
-      :key="item.id" 
+      :key="item.id"
       :src="item.url"
       :class="{ selected: item === selectedItem }"
       @click="selectItem(item)"
       />
     </div>
-    <button id="equip-item-btn" @click="equipItem(selectedItem)">Equip Item</button>
+    <button id="equip-item-btn" @click="equipItem(selectedItem)">Equip Selected Item</button>
   </div>
 </template>
 
@@ -75,7 +75,7 @@ export default {
 .nav-tabs button {
   flex: 1;
   border-radius: 0.5rem;
-  height: 5rem;
+  height: 5.5rem;
   cursor: pointer;
 }
 .item-grid {
@@ -86,8 +86,8 @@ export default {
   background-color: var(--primary400);
 }
 .item-grid img {
-  max-width: 275px;
-  max-height: 275px;
+  flex: 0 1 calc(25% - 1rem);
+  max-width: calc(25% - 1rem);
   width: 100%;
   border: 5px solid var(--primary800);
   margin-bottom: 1rem;

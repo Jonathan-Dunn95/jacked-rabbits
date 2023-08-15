@@ -1,12 +1,14 @@
 <template>
   <div class="container">
-    <img v-for="mascot in allMascots"
-      :key="mascot.id"
-      :src="mascot.url"
-      :class="{ selected: mascot.id === selectedMascot }"
-      @click="selectMascot(mascot)"
-      @dblclick="equipMascot(mascot)"
-      />
+    <div class="mascot-grid">
+      <img v-for="mascot in allMascots"
+        :key="mascot.id"
+        :src="mascot.url"
+        :class="{ selected: mascot === selectedMascot }"
+        @click="selectMascot(mascot)"
+        />
+    </div>
+    <button id="equip-mascot-btn" @click="equipMascot(selectedMascot)">Equip Selected Mascot</button>
   </div>
 </template>
 
@@ -20,7 +22,7 @@ export default {
   },
   methods: {
     selectMascot(mascot) { 
-      this.selectedMascot = mascot.id;
+      this.selectedMascot = mascot;
     },
     equipMascot(mascot) {
       this.$store.commit("EQUIP_MASCOT", mascot);
@@ -29,26 +31,31 @@ export default {
   computed: {
     allMascots() {
       return this.$store.state.mascots;
-    }
+    },
   },
-  created() {    
-    // set the selectedMascot to the ID of the initially equipped mascot
-    this.selectedMascot = this.$store.state.equippedMascot[0].id;
-  }
+    created() {    
+      // set the selectedMascot to the ID of the initially equipped mascot
+      this.selectedMascot = this.$store.state.equippedMascot[0].id;
+  },
 };
 </script>
 
 <style scoped>
 .container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
   border: 10px solid var(--primary800);
   background-color: var(--primary400);
   border-radius: 0.5rem;
   padding: 1rem;
 }
-img {
+.mascot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: var(--primary400);
+}
+.mascot-grid img {
   flex: 0 1 calc(25% - 1rem);
   max-width: calc(25% - 1rem);
   width: 100%;
@@ -57,8 +64,12 @@ img {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.selected {
+.mascot-grid .selected {
   border: 5px inset yellow;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+#equip-mascot-btn {
+  border: 5px solid var(--primary800);
+  cursor: pointer;
 }
 </style>
