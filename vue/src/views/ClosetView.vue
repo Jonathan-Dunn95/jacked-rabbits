@@ -1,9 +1,6 @@
 <template>
   <div class="container">
     <div class="button-container">
-      <!-- <router-link v-bind:to="{ name: 'games' }">
-        <button>Play Games</button>
-      </router-link> -->
       <router-link v-bind:to="{ name: 'item-store' }">
         <button>View Store</button>
       </router-link>
