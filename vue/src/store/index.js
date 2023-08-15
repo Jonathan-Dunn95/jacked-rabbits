@@ -178,12 +178,11 @@ export default new Vuex.Store({
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back5.jpg'
       },
     ],
-    equippedMascot: [
+    equippedMascot:
       {
-        id: 11,
-        url: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg"
+        mascotSelectionId: 11,
+        imgURL: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg"
       },
-    ],
     mascots: [
       {
         id: 1,
@@ -314,6 +313,16 @@ export default new Vuex.Store({
     },
     SELECT_ITEM(state, item) {
       state.selectedItem = item;
+    },
+
+
+
+
+    SET_MASCOT_ID(state, id) {
+      state.equippedMascot.mascotSelectionId = id
+    },
+    SET_SELECTED_MASCOT(state, mascot){
+      state.equippedMascot = mascot;
     }
   },
 })
