@@ -1,5 +1,37 @@
 <template>
-  <div id="app">
+   <div id="app" v-bind:class="currentTheme">
+    <div class="theme-options">
+      <div
+        id="theme-white"
+        v-bind:class="{'active':currentTheme === 'theme-white'}"
+        v-on:click="switchTheme('theme-white')"
+      ></div>
+      <div
+        id="theme-blue"
+        v-bind:class="{'active':currentTheme === 'theme-blue'}"
+        v-on:click="switchTheme('theme-blue')"
+      ></div>
+      <div
+        id="theme-orange"
+        v-bind:class="{'active':currentTheme === 'theme-orange'}"
+        v-on:click="switchTheme('theme-orange')"
+      ></div>
+      <div
+        id="theme-purple"
+        v-bind:class="{'active':currentTheme === 'theme-purple'}"
+        v-on:click="switchTheme('theme-purple')"
+      ></div>
+      <div
+        id="theme-green"
+        v-bind:class="{'active':currentTheme === 'theme-green'}"
+        v-on:click="switchTheme('theme-green')"
+      ></div>
+      <div
+        id="theme-pink"
+        v-bind:class="{'active':currentTheme === 'theme-pink'}"
+        v-on:click="switchTheme('theme-pink')"
+      ></div>
+    </div>
     <div class="loading" v-if="isLoading">
       <img src="@/assets/game_loading.gif" />
     </div>
@@ -26,7 +58,15 @@ export default {
     data() {
       return {
         isLoading: false,
-      }
+        currentTheme: localStorage.getItem('theme-color')
+      };
+      },
+      methods: {
+        switchTheme(theme) {
+          localStorage.setItem('theme-color', theme);
+          this.currentTheme = localStorage.getItem('theme-color')
+          
+        }
     },
     created() {
       this.$router.beforeEach((to, from, next) => {
@@ -68,6 +108,49 @@ body {
 .contentLayout.loading {
   opacity: 0;
 }
+.theme-options {
+
+
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
+  text-align: right;
+}
+.theme-options div {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin: 2px 10px;
+  border: 1px solid #fff;
+  display: inline-block;
+  opacity: 0.5;
+}
+.theme-options div.active {
+  opacity: 1;
+}
+.theme-options div#theme-white {
+  background-color: #eee;
+}
+.theme-options div#theme-blue {
+  background-color: #1e41c1;
+}
+.theme-options div#theme-orange {
+  background-color: #b64b1e;
+}
+.theme-options div#theme-purple {
+  background-color: #7852ae;
+}
+.theme-options div#theme-green {
+  background-color: #5faf3b;
+}
+.theme-options div#theme-pink {
+  background-color: rgb(209, 143, 189);
+}
+
+
+
 #app {
   /* width: 100vw; */
   height: 100vh;
@@ -85,4 +168,5 @@ body {
   --neutral800: hsl(218, 23%, 27%);
   font-family: 'Montserrat', sans-serif;
 }
+
 </style>
