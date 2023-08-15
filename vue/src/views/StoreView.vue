@@ -1,10 +1,5 @@
 <template>
   <div class="container">
-    <div class="button-container">
-      <router-link v-bind:to="{ name: 'closet' }">
-        <button>Your Closet</button>
-      </router-link>
-    </div>
     <div class="content-layout">
       <mascot-selector id="mascot-selector-container" />
       <store-block id="store-block-container" />
@@ -32,6 +27,7 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
 }
 .button-container {
   display: flex;
