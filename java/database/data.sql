@@ -103,9 +103,9 @@ INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (11,'ht
 INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (12,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot12.jpg');
 
 -- Mascot Table
-INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id) VALUES(1,4,1,13,25,37,49,1);
-INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id) VALUES(2,5,2,14,26,38,50,2);
-INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id) VALUES(3,6,3,15,27,39,51,3);
+INSERT INTO mascot (kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id) VALUES(4,1,13,25,37,49,1);
+INSERT INTO mascot (kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id) VALUES(5,2,14,26,38,50,2);
+INSERT INTO mascot (kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id) VALUES(6,3,15,27,39,51,3);
 
 -- Closet Table
 INSERT INTO closet (mascot_id, item_id) VALUES (1,1);

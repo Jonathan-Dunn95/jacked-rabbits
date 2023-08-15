@@ -120,10 +120,10 @@ public class MascotController {
         int carrotsRequired = 0;
 
         if (itemId >= 1 && itemId <= 12) {
-            // Shirt id (200-250): 2 carrot
+            // Shirt id (1-12): 2 carrot
             carrotsRequired = 2;
         } else if (itemId >= 13 && itemId <= 24) {
-            // Shoes (251-300): 3 carrots
+            // Shoes (13-24): 3 carrots
             carrotsRequired = 3;
 
         } else if (itemId >= 25 && itemId<= 36) {
@@ -134,13 +134,13 @@ public class MascotController {
             carrotsRequired = 5;
 
         } else if (itemId >= 25 && itemId <= 36) {
-            // Hat  (301-350): 4 carrots
+            // Hat  (25-36): 4 carrots
             carrotsRequired = 4;
         } else if (itemId >= 37 && itemId <= 48) {
-            // Accessory  (351-400): 5 carrots
+            // Accessory  (37-48): 5 carrots
             carrotsRequired = 5;
         } else if (itemId >= 49 && itemId <= 60) {
-            // Background  (401-450): 6 carrots
+            // Background  (49-60): 6 carrots
             carrotsRequired = 6;
         }
         return carrotsRequired;
