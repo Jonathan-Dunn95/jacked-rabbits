@@ -14,6 +14,7 @@
 
 <script>
 import MascotSelectionService from '../services/MascotSelectionService';
+import MascotService from '../services/MascotService';
 export default {
   name: "mascot-selector",
   data() {
@@ -25,8 +26,14 @@ export default {
     selectMascot(mascot) { 
       this.selectedMascot = mascot;
     },
-    equipMascot(mascot) {
-      this.$store.commit("EQUIP_MASCOT", mascot);
+    equipMascot(mascotSelection) {
+      this.$store.commit("EQUIP_MASCOT", mascotSelection);
+      MascotService.getMascotByKidId(this.$store.state.user.id).then(response => {
+        let mascot = response.data 
+        mascot.mascotSelectionId = mascotSelection.mascotSelectionId
+      MascotService.updateMascotById(mascot)  
+      console.log(mascot)
+      })
     }
   },
   computed: {
@@ -36,7 +43,7 @@ export default {
   },
     created() {    
       // set the selectedMascot to the ID of the initially equipped mascot
-      this.selectedMascot = this.$store.state.equippedMascot.id;
+      this.selectedMascot = this.$store.state.equippedMascot;
       MascotSelectionService.getAllMascotSelector().then( response => {
         this.$store.commit('SET_MASCOTS', response.data)
       });
