@@ -118,6 +118,7 @@ public class JdbcKidDao implements KidDao {
         jdbcTemplate.update(sql,kidId,activity.getSteps(),activity.getMinutes());
     }
 
+    //Store all default items using this method
     private void createCloset(int kidId) {
         System.out.println('3');
         String sql = "INSERT INTO create (kids_id,steps,minutes) VALUES (?,?,?)";

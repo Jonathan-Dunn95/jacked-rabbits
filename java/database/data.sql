@@ -102,5 +102,36 @@ INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (10,'ht
 INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (11,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg');
 INSERT INTO mascot_selection (mascot_selection_id,mascot_img_url) VALUES (12,'https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot12.jpg');
 
+-- Mascot Table
+INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id) VALUES(1,4,1,13,25,37,49,1);
+INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id) VALUES(2,5,2,14,26,38,50,2);
+INSERT INTO mascot (mascot_id, kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id) VALUES(3,6,3,15,27,39,51,3);
+
+-- Closet Table
+INSERT INTO closet (mascot_id, item_id) VALUES (1,1);
+INSERT INTO closet (mascot_id, item_id) VALUES (1,13);
+INSERT INTO closet (mascot_id, item_id) VALUES (1,25);
+INSERT INTO closet (mascot_id, item_id) VALUES (1,37);
+INSERT INTO closet (mascot_id, item_id) VALUES (1,49);
+INSERT INTO closet (mascot_id, item_id) VALUES (2,1);
+INSERT INTO closet (mascot_id, item_id) VALUES (2,13);
+INSERT INTO closet (mascot_id, item_id) VALUES (2,25);
+INSERT INTO closet (mascot_id, item_id) VALUES (2,37);
+INSERT INTO closet (mascot_id, item_id) VALUES (2,49);
+INSERT INTO closet (mascot_id, item_id) VALUES (2,2);
+INSERT INTO closet (mascot_id, item_id) VALUES (2,14);
+INSERT INTO closet (mascot_id, item_id) VALUES (2,26);
+INSERT INTO closet (mascot_id, item_id) VALUES (2,38);
+INSERT INTO closet (mascot_id, item_id) VALUES (2,50);
+INSERT INTO closet (mascot_id, item_id) VALUES (3,1);
+INSERT INTO closet (mascot_id, item_id) VALUES (3,13);
+INSERT INTO closet (mascot_id, item_id) VALUES (3,25);
+INSERT INTO closet (mascot_id, item_id) VALUES (3,37);
+INSERT INTO closet (mascot_id, item_id) VALUES (3,49);
+INSERT INTO closet (mascot_id, item_id) VALUES (3,3);
+INSERT INTO closet (mascot_id, item_id) VALUES (3,15);
+INSERT INTO closet (mascot_id, item_id) VALUES (3,27);
+INSERT INTO closet (mascot_id, item_id) VALUES (3,39);
+INSERT INTO closet (mascot_id, item_id) VALUES (3,51);
 
 COMMIT TRANSACTION;
