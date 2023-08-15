@@ -9,11 +9,8 @@ export default {
     getKids(parentID) { 
         return axios.get(`/users/${parentID}`)
     },
-    getKid(parentID, kidID) { 
-        return axios.get(`/users/${parentID}`).then((response) => {
-            const kids = response.data.kids;
-            return kids.find(kid => kid.id == kidID);
-        })
+    getKid(kidID) { 
+        return axios.get(`/kids/${kidID}`)
     },
     createKid(kid) {
         return axios.post(`/kids`,kid);
