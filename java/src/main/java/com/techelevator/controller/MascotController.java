@@ -109,8 +109,10 @@ public class MascotController {
 
         return totalCarrotsRequired;
     }
-    // for front end: when user click on option id to choose what id items they want to buy.
+    // for front end: when user click on item id to choose what id items they want to buy.
+
     // for backend: itemId use for calculate carrot required for the option
+
     private int getCarrotsForOption(int itemId) {
         int carrotsRequired = 0;
 
@@ -120,6 +122,14 @@ public class MascotController {
         } else if (itemId >= 13 && itemId <= 24) {
             // Shoes (13-24): 3 carrots
             carrotsRequired = 3;
+
+        } else if (itemId >= 25 && itemId<= 36) {
+            // Hat  (301-350): 4 carrots
+            carrotsRequired = 4;
+        } else if (itemId >= 49 && itemId <= 60) {
+            // Accessory  (351-400): 5 carrots
+            carrotsRequired = 5;
+
         } else if (itemId >= 25 && itemId <= 36) {
             // Hat  (25-36): 4 carrots
             carrotsRequired = 4;
