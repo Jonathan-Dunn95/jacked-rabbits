@@ -49,6 +49,5 @@ img {
   flex: 0 1 calc(25% - 1rem);
   border: 10px solid var(--primary800);
   border-radius: 0.25rem;
-  /* max-width: 90000px */
 }
 </style>

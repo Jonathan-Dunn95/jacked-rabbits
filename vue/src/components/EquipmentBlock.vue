@@ -2,18 +2,46 @@
   <div class="container">
     <div class="equipped-items-grid">
       <img v-for="item in $store.state.equippedItems" 
-      v-bind:key="item.id"
-      :src="item.url"
+      v-bind:key="item.itemId"
+      :src="item.imgURL"
       @click="selectCategory(item.category)" />
     </div>
   </div>
 </template>
 
 <script>
+import ItemStoreService from '../services/ItemStoreService'
+import MascotService from '../services/MascotService'
 export default {
     named: "equipment-block",
     methods: {
     },
+    created() {
+      let equippedItems = [];
+      MascotService.getMascotByKidId(this.$store.state.user.id).then( mascot => {
+        console.log(mascot.data.background)
+        ItemStoreService.getImage(mascot.data.shirt).then(response => {
+          equippedItems.push(response.data)
+          ItemStoreService.getImage(mascot.data.shoes).then(response => {
+          equippedItems.push(response.data)
+          ItemStoreService.getImage(mascot.data.hat).then(response => {
+          equippedItems.push(response.data)
+          ItemStoreService.getImage(mascot.data.accessory).then(response => {
+          equippedItems.push(response.data)
+          ItemStoreService.getImage(mascot.data.background).then(response => {
+          equippedItems.push(response.data)
+          this.$store.commit('SET_EQUIPED_ITEMS', equippedItems)
+          })
+          })
+          })
+          })
+        })
+        
+        
+        
+        
+      })
+    }
 }
 </script>
 

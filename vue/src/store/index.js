@@ -25,31 +25,31 @@ export default new Vuex.Store({
     kids: currentKids || [],
     activities: currentActivities || [],
     equippedItems: [
-      {
-        id: 1,
-        category: "Hats",
-        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat1.jpg'
-      },
-      {
-        id: 2,
-        category: "Shirts",
-        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt1.jpg'
-      },
-      {
-        id: 3,
-        category: "Shoes",
-        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes1.jpg'
-      },
-      {
-        id: 4,
-        category: "Accessories",
-        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc1.jpg'
-      },
-      {
-        id: 5,
-        category: "Backgrounds",
-        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back1.jpg'
-      },
+      // {
+      //   id: 1,
+      //   category: "Hats",
+      //   url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat1.jpg'
+      // },
+      // {
+      //   id: 2,
+      //   category: "Shirts",
+      //   url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt1.jpg'
+      // },
+      // {
+      //   id: 3,
+      //   category: "Shoes",
+      //   url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes1.jpg'
+      // },
+      // {
+      //   id: 4,
+      //   category: "Accessories",
+      //   url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc1.jpg'
+      // },
+      // {
+      //   id: 5,
+      //   category: "Backgrounds",
+      //   url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back1.jpg'
+      // },
     ],
     closetItems: [
       {
@@ -311,6 +311,9 @@ export default new Vuex.Store({
     },
     SET_MASCOTS(state, mascotArray) {
       state.mascots = mascotArray
+    },
+    SET_EQUIPED_ITEMS(state, items) {
+      state.equippedItems = items
     }
   },
 })
