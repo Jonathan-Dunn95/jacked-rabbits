@@ -42,7 +42,7 @@ Create table mascot_selection(
 );
 
 Create table mascot (
-	mascot_id int,
+	mascot_id SERIAL,
 	kids_id int NOT NULL,
 	shirt int,
 	shoes int,

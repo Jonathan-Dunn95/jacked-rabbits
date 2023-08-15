@@ -52,10 +52,10 @@ public class JdbcKidDao implements KidDao {
         String sql = "INSERT INTO kids (kids_id, user_id, username, password_hash, carrots, play_time_seconds) VALUES (?, ?, ?, ?, ?, ?) RETURNING kids_id;";
         String password_hash = new BCryptPasswordEncoder().encode(kidRequest.getPasswordHash());
         Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, userId, kidRequest.getParentId(), kidRequest.getUsername(), password_hash, kidRequest.getCarrots(), kidRequest.getPlayTime());
+        Integer mascotId = createMascot(kidId);
         if (kidId != null) {
             createActivity(kidId);
-            createCloset(kidId);
-            createMascot(kidId);
+            createCloset(mascotId);
             return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash(), kidRequest.getPlayTime(), "ROLE_KID");
         } else {
             return null;
@@ -118,16 +118,16 @@ public class JdbcKidDao implements KidDao {
     }
 
     //Store all default items using this method
-    private void createCloset(int kidId) {
+    private void createCloset(int mascotId) {
         System.out.println('3');
         String sql = "INSERT INTO closet (mascot_id, item_id) VALUES (?,?),(?,?),(?,?),(?,?),(?,?)";
-        jdbcTemplate.update(sql, kidId, 1,kidId,13,kidId,25,kidId,37,kidId,49);
+        jdbcTemplate.update(sql, mascotId, 1,mascotId,13,mascotId,25,mascotId,37,mascotId,49);
 //        closet.setCloset_id();
     }
 
-    private void createMascot(int kidId) {
+    private int createMascot(int kidId) {
         System.out.println('3');
-        String sql = "INSERT INTO mascot (mascot_id,kids_id, shirt, shoes, hat, accessory, background, closet_id) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO mascot (kids_id, shirt, shoes, hat, accessory, background, mascot_selection_id) VALUES (?,?,?,?,?,?,?) RETURNING (mascot_id)";
         Mascot mascot = new Mascot();
         mascot.setShirt(1);
         mascot.setShoes(13);
@@ -136,6 +136,7 @@ public class JdbcKidDao implements KidDao {
         mascot.setBackground(49);
         mascot.setMascotSelectionId(1);
 //        mascot.setClosetId(0);
-        jdbcTemplate.update(sql,kidId,kidId,mascot.getShirt(),mascot.getShoes(),mascot.getHat(),mascot.getAccessory(),mascot.getBackground());
+        return jdbcTemplate.queryForObject(sql,int.class,kidId,mascot.getShirt(),mascot.getShoes(),mascot.getHat(),mascot.getAccessory(),mascot.getBackground(),mascot.getMascotSelectionId());
+
     }
 }
