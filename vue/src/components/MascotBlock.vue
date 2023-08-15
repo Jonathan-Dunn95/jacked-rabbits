@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import mascotSelectionService from '../services/MascotSelectionService';
+import mascotService from '../services/MascotService';
 
 export default {
   data() {
@@ -14,7 +16,7 @@ export default {
   },
   computed: {
     equippedMascotUrl() {
-      return this.$store.state.equippedMascot[0].url;
+      return this.$store.state.equippedMascot.imgURL;
     }
   },
   methods: {
@@ -22,6 +24,17 @@ export default {
       this.$emit('mascotSelected', this.selectedMascot);
     }
   },
+  created() {
+    // console.log(this.$store.state.user.id)
+    mascotService.getMascotByKidId(this.$store.state.user.id).then( response => {
+      // console.log(response.data.mascotId)
+      // this.$store.state.equippedMascot.id = response.data.mascotId;
+      this.$store.commit('SET_MASCOT_ID', response.data.mascotId)
+      mascotSelectionService.getMascotSelectionByMascotId(this.$store.state.equippedMascot.mascotSelectionId).then( response2 => {
+      this.$store.commit('SET_SELECTED_MASCOT', response2.data)
+    })
+    })
+  }
 }
 </script>
 
@@ -33,9 +46,8 @@ export default {
   width: 100%;
 }
 img { 
+  flex: 0 1 calc(25% - 1rem);
   border: 10px solid var(--primary800);
   border-radius: 0.25rem;
-  height: 50rem;
-  width: auto;
 }
 </style>
