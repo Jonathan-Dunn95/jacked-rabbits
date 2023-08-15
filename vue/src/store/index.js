@@ -53,152 +53,152 @@ export default new Vuex.Store({
     ],
     closetItems: [
       {
-        id: 1,
+        id: 25,
         category: "Hats",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat1.jpg'
       },
       {
-        id: 2,
+        id: 26,
         category: "Hats",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat2.jpg'
       },
       {
-        id: 3,
+        id: 27,
         category: "Hats",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat3.jpg'
       },
       {
-        id: 4,
+        id: 28,
         category: "Hats",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat4.jpg'
       },
       {
-        id: 5,
+        id: 29,
         category: "Hats",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat5.jpg'
       },
       {
-        id: 6,
+        id: 1,
         category: "Shirts",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt1.jpg'
       },
       {
-        id: 7,
+        id: 2,
         category: "Shirts",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt2.jpg'
       },
       {
-        id: 8,
+        id: 3,
         category: "Shirts",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt3.jpg'
       },
       {
-        id: 9,
+        id: 4,
         category: "Shirts",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt4.jpg'
       },
       {
-        id: 10,
+        id: 5,
         category: "Shirts",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt5.jpg'
       },
       {
-        id: 11,
+        id: 13,
         category: "Shoes",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes1.jpg'
       },
       {
-        id: 12,
+        id: 14,
         category: "Shoes",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes2.jpg'
       },
       {
-        id: 13,
+        id: 15,
         category: "Shoes",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes3.jpg'
       },
       {
-        id: 14,
+        id: 16,
         category: "Shoes",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes4.jpg'
       },
       {
-        id: 15,
+        id: 17,
         category: "Shoes",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes5.jpg'
       },
       {
-        id: 16,
+        id: 37,
         category: "Accessories",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc1.jpg'
       },
       {
-        id: 17,
+        id: 38,
         category: "Accessories",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc2.jpg'
       },
       {
-        id: 18,
+        id: 39,
         category: "Accessories",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc3.jpg'
       },
       {
-        id: 19,
+        id: 40,
         category: "Accessories",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc4.jpg'
       },
       {
-        id: 20,
+        id: 41,
         category: "Accessories",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc5.jpg'
       },
       {
-        id: 21,
+        id: 42,
         category: "Accessories",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc6.jpg'
       },
       {
-        id: 22,
+        id: 43,
         category: "Accessories",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc7.jpg'
       },
       {
-        id: 23,
+        id: 44,
         category: "Accessories",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc8.jpg'
       },
       {
-        id: 24,
+        id: 45,
         category: "Accessories",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc9.jpg'
       },
       {
-        id: 25,
+        id: 46,
         category: "Accessories",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc10.jpg'
       },
       {
-        id: 26,
+        id: 51,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back1.jpg'
       },
       {
-        id: 27,
+        id: 52,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back2.jpg'
       },
       {
-        id: 28,
+        id: 53,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back3.jpg'
       },
       {
-        id: 29,
+        id: 54,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back4.jpg'
       },
       {
-        id: 30,
+        id: 55,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back5.jpg'
       },
@@ -273,8 +273,12 @@ export default new Vuex.Store({
     },
     EQUIP_ITEM(state, item) {
       const index = state.equippedItems.findIndex(
-        (equippedItem) => equippedItem.category === item.category
+        (equippedItem) => {
+          // console.log(equippedItem.itemId + ' ' + item.id)
+          return (equippedItem.itemId < 13 && item.id < 13) || (equippedItem.itemId >= 13 && equippedItem.itemId < 25 && item.id >= 13 && item.id < 25) || (equippedItem.itemId >= 37 && equippedItem.itemId < 25 && item.id >= 25 && item.id < 37) || (equippedItem.itemId >= 37 && equippedItem.itemId < 51 && item.id >= 37 && item.id < 51) || (equippedItem.itemId >= 51 && item.id >= 51)
+        }
       );
+      console.log(index)
       if (index !== -1) {
         state.equippedItems.splice(index, 1, item);
       } else {
