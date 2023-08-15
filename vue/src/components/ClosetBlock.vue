@@ -11,11 +11,11 @@
       <img v-for="item in displayedItems" 
       :key="item.id" 
       :src="item.url"
-      :class="{ selected: item.id === selectedItem }"
-      @click="equipItem(item)"
-      
+      :class="{ selected: item === selectedItem }"
+      @click="selectItem(item)"
       />
     </div>
+    <button id="equip-item-btn" @click="equipItem(selectedItem)">Equip Item</button>
   </div>
 </template>
 
@@ -41,7 +41,8 @@ export default {
       this.selectedCategory = category;
     },
     selectItem(item) {
-      this.selectedItem = item.id;
+      console.log("Selected item:", item);
+      this.selectedItem = item;
     },
     equipItem(item) {
       this.$store.commit("EQUIP_ITEM", item);
@@ -101,5 +102,8 @@ export default {
 .item-grid img.selected {
   border: 5px inset yellow;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+#equip-item-btn {
+  border: 5px solid var(--primary800);
 }
 </style>

@@ -311,6 +311,9 @@ export default new Vuex.Store({
     },
     SET_SELECTED_CATEGORY(state, category) {
       state.selectedCategory = category;
+    },
+    SELECT_ITEM(state, item) {
+      state.selectedItem = item;
     }
   },
 })
