@@ -29,7 +29,7 @@ export default {
     mascotService.getMascotByKidId(this.$store.state.user.id).then( response => {
       // console.log(response.data.mascotId)
       // this.$store.state.equippedMascot.id = response.data.mascotId;
-      this.$store.commit('SET_MASCOT_ID', response.data.mascotId)
+      this.$store.commit('SET_MASCOT_ID', response.data.mascotSelectionId)
       mascotSelectionService.getMascotSelectionByMascotId(this.$store.state.equippedMascot.mascotSelectionId).then( response2 => {
       this.$store.commit('SET_SELECTED_MASCOT', response2.data)
     })
