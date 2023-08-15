@@ -25,16 +25,9 @@ export default {
   background-color: var(--primary800);
   padding: 1rem 0;
 }
-.nav-list {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  justify-content: center;
-}
 .nav-list li {
-  margin: 0 1rem;
-  font-size: 1.2rem;
+  display: inline;
+  font-size: 2rem;
   color: white;
   cursor: pointer;
   transition: color 0.3s;
