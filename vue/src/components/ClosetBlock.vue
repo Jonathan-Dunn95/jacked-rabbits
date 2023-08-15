@@ -75,7 +75,7 @@ export default {
 .nav-tabs button {
   flex: 1;
   border-radius: 0.5rem;
-  height: 5rem;
+  height: 5.5rem;
   cursor: pointer;
 }
 .item-grid {
@@ -86,8 +86,8 @@ export default {
   background-color: var(--primary400);
 }
 .item-grid img {
-  max-width: 275px;
-  max-height: 275px;
+  flex: 0 1 calc(25% - 1rem);
+  max-width: calc(25% - 1rem);
   width: 100%;
   border: 5px solid var(--primary800);
   margin-bottom: 1rem;

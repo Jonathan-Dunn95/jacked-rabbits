@@ -106,6 +106,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin-bottom: 1rem;
   background-color: var(--primary400);
 }
 .item-grid img {

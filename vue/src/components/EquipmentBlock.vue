@@ -1,10 +1,11 @@
 <template>
-  <div id="equipment-container">
-      <img class="equippedItems" 
-      v-for="item in $store.state.equippedItems" 
+  <div class="container">
+    <div class="equipped-items-grid">
+      <img v-for="item in $store.state.equippedItems" 
       v-bind:key="item.id"
       :src="item.url"
       @click="selectCategory(item.category)" />
+    </div>
   </div>
 </template>
 
@@ -17,19 +18,25 @@ export default {
 </script>
 
 <style scoped>
-#equipment-container {
+.container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     border: 10px solid var(--primary800);
     background-color: var(--primary400);
     border-radius: 0.5rem;
+    padding: 1rem;
 }
-#equipment-container > img {
-    height: 8rem;
-    width: 8rem;
+.equipped-items-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--primary400);
+}
+.equipped-items-grid img {
+    flex: 0 1 calc(25% - 1rem);
+    max-width: calc(80% - 1rem);
     border: 10px ridge yellow;
-    border-radius: 0.5rem;
     cursor: pointer;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
 }
 </style>

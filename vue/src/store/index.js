@@ -154,26 +154,51 @@ export default new Vuex.Store({
       },
       {
         id: 21,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc6.jpg'
+      },
+      {
+        id: 22,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc7.jpg'
+      },
+      {
+        id: 23,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc8.jpg'
+      },
+      {
+        id: 24,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc9.jpg'
+      },
+      {
+        id: 25,
+        category: "Accessories",
+        url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc10.jpg'
+      },
+      {
+        id: 26,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back1.jpg'
       },
       {
-        id: 22,
+        id: 27,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back2.jpg'
       },
       {
-        id: 23,
+        id: 28,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back3.jpg'
       },
       {
-        id: 24,
+        id: 29,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back4.jpg'
       },
       {
-        id: 25,
+        id: 30,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back5.jpg'
       },

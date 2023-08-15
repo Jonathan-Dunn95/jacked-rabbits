@@ -39,6 +39,8 @@ export default {
   margin-bottom: 1rem;
   margin-left: auto;
   margin-top: 1rem;
+}
+button { 
   cursor: pointer;
 }
 .content-layout {

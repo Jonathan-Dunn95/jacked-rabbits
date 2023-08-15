@@ -6,9 +6,9 @@
       </router-link>
     </div>
     <div class="content-layout">
-      <mascot-block class="mascot-block-container" />
-      <equipment-block class="equipment-block-container" />
-      <closet-block class="closet-block-container" />
+      <mascot-block id="mascot-block-container" />
+      <equipment-block id="equipment-block-container" />
+      <closet-block id="closet-block-container" />
     </div>
   </div>
 </template>
@@ -28,9 +28,6 @@ export default {
         ClosetBlock,
         EquipmentBlock,
     },
-    methods: {
-
-    }
 }
 </script>
 
@@ -52,13 +49,20 @@ button {
 .content-layout {
   display: flex;
   align-items: flex-start;
-  gap: 2rem;
 }
-.mascot-block-container {
-  flex-direction: row;
+#mascot-block-container {
+  height: 100%;
+  width: 45%;
+  /* margin-right: 1.5rem; */
 }
-.equipment-block-container {
-  padding: 2rem;
-  gap: 2rem;
+#equipment-block-container {
+  height: 100%;
+  width: 10%;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+#closet-block-container {
+  width: 40%;
+  /* margin-left: 1.5rem; */
 }
 </style>
