@@ -8,7 +8,7 @@
       <button @click="selectCategory('Backgrounds')" :class="{ active: selectedCategory === 'Backgrounds' }">Backgrounds</button>
     </div>
     <div class="item-grid">
-      <img v-for="item in displayedItems" 
+      <img v-for="item in displayedItems"
       :key="item.id"
       :src="item.url"
       :class="{ selected: item === selectedItem }"

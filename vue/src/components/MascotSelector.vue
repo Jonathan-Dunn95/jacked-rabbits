@@ -15,6 +15,7 @@
 <script>
 import MascotSelectionService from '../services/MascotSelectionService';
 import MascotService from '../services/MascotService';
+
 export default {
   name: "mascot-selector",
   data() {

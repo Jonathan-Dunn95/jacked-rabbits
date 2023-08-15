@@ -152,8 +152,9 @@ body {
 
 
 #app {
-  /* width: 100vw; */
+  width: 100vw;
   height: 100vh;
+  max-width: 100%;
   --primary200: #daffe9;
   --primary400: #47d7ac;
   --primary500: #1dc5ba;
