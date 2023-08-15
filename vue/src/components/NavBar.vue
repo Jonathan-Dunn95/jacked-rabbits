@@ -2,11 +2,11 @@
 <div class="navigation-bar">
   <nav>
     <ul class="nav-list">
-      <li @click="navigateTo('parents')">Manage Children</li>
-      <li @click="navigateTo('item-store')">Item Store</li>
-      <li @click="navigateTo('closet')">Closet</li>
-      <li @click="navigateTo('login')">Login</li>
-      <li @click="navigateTo('logout')">Logout</li>
+      <li @click="navigateTo('parents')" v-if="userType === 'ROLE_PARENT'">Manage Children</li>
+      <li @click="navigateTo('item-store')" v-if="userType === 'ROLE_KID'">Item Store</li>
+      <li @click="navigateTo('closet')"  v-if="userType === 'ROLE_KID'">Closet</li>
+      <li @click="navigateTo('login')" v-if="$store.state.token == ''">Login</li>
+      <li @click="navigateTo('logout')" v-if="$store.state.token != ''">Logout</li>
     </ul>
   </nav>
 </div>
@@ -15,10 +15,21 @@
 <script>
 export default {
     name: "nav-bar",
+    data() {
+      return {
+        // userRole: '',
+      };
+    },
     methods: {
         navigateTo(view) {
         this.$router.push({ name: view });
         },
+    },
+
+    computed: {
+      userType() {
+        return this.$store.state.user.authorities[0].name;
+      }
     }
 }
 </script>
