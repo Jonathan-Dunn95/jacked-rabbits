@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import MascotSelectionService from '../services/MascotSelectionService';
 export default {
   name: "mascot-selector",
   data() {
@@ -35,7 +36,8 @@ export default {
   },
     created() {    
       // set the selectedMascot to the ID of the initially equipped mascot
-      this.selectedMascot = this.$store.state.equippedMascot[0].id;
+      this.selectedMascot = this.$store.state.equippedMascot.id;
+      MascotSelectionService.getAllMascotSelector();
   },
 };
 </script>

@@ -205,8 +205,8 @@ export default new Vuex.Store({
     ],
     equippedMascot:
       {
-        mascotSelectionId: 11,
-        imgURL: "https://mykidswellnessapp-media.s3.amazonaws.com/mascots/mascot11.jpg"
+        mascotSelectionId: 0,
+        imgURL: ""
       },
     mascots: [
       {
@@ -330,7 +330,7 @@ export default new Vuex.Store({
       }
     },
     EQUIP_MASCOT(state, mascot) {
-      state.equippedMascot.splice(0, 1, mascot);
+      state.equippedMascot = mascot;
     },
     SET_SELECTED_CATEGORY(state, category) {
       state.selectedCategory = category;
