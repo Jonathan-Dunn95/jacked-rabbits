@@ -70,8 +70,6 @@ export default {
 .nav-tabs {
   display: flex;
   margin-bottom: 2rem;
-  border-bottom: 10px solid var(--primary800);
-  background-color: var(--primary800);
 }
 .nav-tabs button {
   flex: 1;

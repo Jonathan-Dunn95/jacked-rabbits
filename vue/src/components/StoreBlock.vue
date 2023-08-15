@@ -31,7 +31,7 @@ export default {
       selectedItem: null,
     }
   },
-  created() { 
+  created() {
     ItemStoreService.getAllItems()
     .then(response => {
         // success!

@@ -2,8 +2,11 @@
 <div class="navigation-bar">
   <nav>
     <ul class="nav-list">
+      <li @click="navigateTo('parents')">Manage Children</li>
       <li @click="navigateTo('item-store')">Item Store</li>
       <li @click="navigateTo('closet')">Closet</li>
+      <li @click="navigateTo('login')">Login</li>
+      <li @click="navigateTo('logout')">Logout</li>
     </ul>
   </nav>
 </div>
