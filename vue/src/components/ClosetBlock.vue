@@ -15,7 +15,7 @@
       @click="selectItem(item)"
       />
     </div>
-    <button id="equip-item-btn" @click="equipItem(selectedItem)">Equip Item</button>
+    <button id="equip-item-btn" @click="equipItem(selectedItem)">Equip Selected Item</button>
   </div>
 </template>
 

@@ -299,7 +299,6 @@ export default new Vuex.Store({
       const index = state.equippedItems.findIndex(
         (equippedItem) => equippedItem.category === item.category
       );
-  
       if (index !== -1) {
         state.equippedItems.splice(index, 1, item);
       } else {
@@ -314,6 +313,15 @@ export default new Vuex.Store({
     },
     SELECT_ITEM(state, item) {
       state.selectedItem = item;
-    }
+    },
+    PURCHASE_ITEM(state, purchasedItem) {
+      state.closetItems.push(purchasedItem);
+
+      // removes item from items store
+      // const index = state.closetItems.findIndex(item => item.itemId === purchasedItem.itemId);
+      // if (index !== -1) {
+      //   state.closetItems.splice(index, 1);
+      // }
+    },
   },
 })

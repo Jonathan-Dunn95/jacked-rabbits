@@ -5,6 +5,9 @@
     </div>
     <div class="contentLayout" v-else>
       <logo-header />
+      <div class="navbar-wrapper">
+        <nav-bar />
+      </div>
       <router-view />
     </div>
   </div>
@@ -12,10 +15,12 @@
 
 <script>
 import LogoHeader from './components/LogoHeader.vue'
+import NavBar from './components/NavBar.vue';
 
 export default {
   components: { 
-    LogoHeader 
+    LogoHeader,
+    NavBar 
     },
 
     data() {

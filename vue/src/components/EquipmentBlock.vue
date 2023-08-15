@@ -12,13 +12,7 @@
 export default {
     named: "equipment-block",
     methods: {
-        equipItem(item) {
-        this.$store.commit("EQUIP_ITEM", item);
-        },
-        selectCategory(category) { 
-            this.$store.commit("SET_SELECTED_CATEGORY", category);
-        },
-    }
+    },
 }
 </script>
 

@@ -11,10 +11,11 @@
       <img v-for="item in filteredItems" 
       :key="item.itemId"
       :src="item.imgURL"
-      @click="toggleItemSelected(item)"
-      :class="{ selected: selectedItems.includes(item) }" 
+      :class="{ selected: item === selectedItem }" 
+      @click="selectItem(item)"
       />
     </div>
+    <button id="purchase-item-btn" @click="purchaseItem(selectedItem)">Purchase Selected Item</button>
   </div>
 </template>
 
@@ -27,8 +28,8 @@ export default {
     return {
       selectedCategory: 'Shirts',
       items: [],
-      selectedItems: [],
-    };
+      selectedItem: null,
+    }
   },
   created() { 
     ItemStoreService.getAllItems()
@@ -64,20 +65,19 @@ export default {
     },
     selectCategory(category) { 
       this.selectedCategory = category;
-      this.selectedItems = [];
+      // this.selectedItem = [];
     },
-    toggleItemSelected(item) {
-      if (this.selectedItems.includes(item)) {
-        this.selectedItems = [];
-      } else {
-        this.selectedItems = [item];
-      }
+    selectItem(item) {
+        this.selectedItem = item;
     },
     preloadImages() {
       for (const item of this.items) {
         const img = new Image();
         img.src = item.imgURL;
       }
+    },
+    purchaseItem(item) {
+      this.$store.commit("PURCHASE_ITEM", item);
     },
   }
 }
@@ -89,17 +89,17 @@ export default {
   border: 10px solid var(--primary800);
   background-color: var(--primary400);
   border-radius: 0.5rem;
+  padding: 1rem;
 }
 .nav-tabs {
   display: flex;
   margin-bottom: 1rem;
-  border-bottom: 10px solid var(--primary800);
-  background-color: var(--primary800);
 }
 .nav-tabs button {
   flex: 1;
   border-radius: 0.5rem;
-  height: 5rem;
+  border: 5px solid var(--primary800);
+  height: 5.5rem;
   cursor: pointer;
 }
 .item-grid {
@@ -109,13 +109,13 @@ export default {
   background-color: var(--primary400);
 }
 .item-grid img {
-  max-width: 275px;
-  max-height: 275px;
+  flex: 0 1 calc(25% - 1rem);
+  max-width: calc(25% - 1rem);
   width: 100%;
   border: 5px solid var(--primary800);
+  margin-bottom: 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  margin-bottom: 1rem;
 }
 .nav-tabs button.active {
   background-color: var(--primary800);
@@ -125,5 +125,9 @@ export default {
 .item-grid img.selected {
   border: 5px inset yellow;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+#purchase-item-btn {
+  border: 5px solid var(--primary800);
+  cursor: pointer;
 }
 </style>

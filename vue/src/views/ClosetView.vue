@@ -19,7 +19,7 @@
 // import ClosetService from "../services/ClosetService.js";
 import MascotBlock from "../components/MascotBlock.vue";
 import ClosetBlock from "../components/ClosetBlock.vue";
-import EquipmentBlock from "../components/EquipmentBlock.vue"
+import EquipmentBlock from "../components/EquipmentBlock.vue";
 
 export default {
     name: "closet-view",

@@ -1,14 +1,6 @@
 <template>
     <div class="logoHeader">
-        <router-link v-bind:to="{ name: 'home' }">
         <img class="logo" src="https://mykidswellnessapp-media.s3.amazonaws.com/logos/logoIdea2.jpg" alt="logo">
-        </router-link>
-        <div class="spacer">
-        <router-link v-bind:to="{ name: 'home' }">Home</router-link>
-        &nbsp;|&nbsp;
-        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-        <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''">Login</router-link>
-        </div>
     </div>
 </template>
 
@@ -23,19 +15,10 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: var(--primary400) 0.5rem solid;
-    padding-bottom: 0.5rem;
 }
 .logo {
   margin-left: 1rem;
   margin-top: 0.5rem;
   height: 10rem;
-}
-.spacer {
-  display: flex;
-  align-self: flex-end;
-  color: var(--primary600);
-  margin: 0.5rem;
-  font-size: 1.2rem;
 }
 </style>

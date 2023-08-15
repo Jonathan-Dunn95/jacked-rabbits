@@ -1,9 +1,6 @@
 <template>
   <div class="container">
     <div class="button-container">
-      <!-- <router-link v-bind:to="{ name: 'games' }">
-        <button>Play Games</button>
-      </router-link> -->
       <router-link v-bind:to="{ name: 'closet' }">
         <button>Your Closet</button>
       </router-link>
@@ -49,7 +46,6 @@ export default {
     align-items: flex-start;
 }
 #mascot-selector-container {
-  flex-direction: row;
   height: 100%;
   width: 50%;
   margin-right: 1.5rem;
