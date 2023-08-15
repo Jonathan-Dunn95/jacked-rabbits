@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="equipped-items-grid">
-      <img v-for="item in $store.state.equippedItems" 
+      <img v-for="item in equippedItems" 
       v-bind:key="item.itemId"
       :src="item.imgURL"
       @click="selectCategory(item.category)" />
@@ -15,6 +15,11 @@ import MascotService from '../services/MascotService'
 export default {
     named: "equipment-block",
     methods: {
+    },
+    computed: {
+      equippedItems() {
+        return this.$store.state.equippedItems;
+      }
     },
     created() {
       let equippedItems = [];
