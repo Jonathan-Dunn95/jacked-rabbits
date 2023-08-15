@@ -11,4 +11,5 @@ export default {
     getMascotSelectionByMascotId(mascotSelectionID) {
         return axios.get(`/mascot_selection/select-by-id/${mascotSelectionID}`)
     }
+    
 }

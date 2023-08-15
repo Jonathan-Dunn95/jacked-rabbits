@@ -32,9 +32,6 @@ public class MascotController {
         return mascotDao.getAllMascot();
     }
 
-
-
-
     @RequestMapping(path = "/mascot/{mascotId}", method = RequestMethod.GET)
     public Mascot getMascotById(@PathVariable int mascotId){
 

@@ -2,8 +2,8 @@
   <div class="container">
     <div class="mascot-grid">
       <img v-for="mascot in allMascots"
-        :key="mascot.id"
-        :src="mascot.url"
+        :key="mascot.mascotSelectionId"
+        :src="mascot.imgURL"
         :class="{ selected: mascot === selectedMascot }"
         @click="selectMascot(mascot)"
         />
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import MascotSelectionService from '../services/MascotSelectionService';
+import MascotService from '../services/MascotService';
 export default {
   name: "mascot-selector",
   data() {
@@ -24,8 +26,14 @@ export default {
     selectMascot(mascot) { 
       this.selectedMascot = mascot;
     },
-    equipMascot(mascot) {
-      this.$store.commit("EQUIP_MASCOT", mascot);
+    equipMascot(mascotSelection) {
+      this.$store.commit("EQUIP_MASCOT", mascotSelection);
+      MascotService.getMascotByKidId(this.$store.state.user.id).then(response => {
+        let mascot = response.data 
+        mascot.mascotSelectionId = mascotSelection.mascotSelectionId
+      MascotService.updateMascotById(mascot)  
+      console.log(mascot)
+      })
     }
   },
   computed: {
@@ -35,7 +43,10 @@ export default {
   },
     created() {    
       // set the selectedMascot to the ID of the initially equipped mascot
-      this.selectedMascot = this.$store.state.equippedMascot[0].id;
+      this.selectedMascot = this.$store.state.equippedMascot;
+      MascotSelectionService.getAllMascotSelector().then( response => {
+        this.$store.commit('SET_MASCOTS', response.data)
+      });
   },
 };
 </script>
@@ -72,4 +83,21 @@ export default {
   border: 5px solid var(--primary800);
   cursor: pointer;
 }
+  button {
+    border-radius: 0.25rem;
+    background-color: var(--primary400);
+    border: 2px solid;
+    border-color: #1dc5ba;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    color: var(--primary800);
+    border: 4px solid var(--primary800);
+    font-weight: bold;
+    transition-duration: 0.4s;
+  }
+  button:hover {
+    background-color: var(--primary800);
+    border: 4px solid var(--primary400);
+    color: white;
+  }
 </style>
