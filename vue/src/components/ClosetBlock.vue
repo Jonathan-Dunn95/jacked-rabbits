@@ -12,9 +12,9 @@
       :key="item.id" 
       :src="item.url"
       :class="{ selected: item.id === selectedItem }"
-      @click="selectItem(item)"
-      @dblclick="equipItem(item)"
-       />
+      @click="equipItem(item)"
+      
+      />
     </div>
   </div>
 </template>
@@ -36,10 +36,6 @@ export default {
       return this.filterOutEquippedItems();
     },
   },
-  created() {
-    // Prefetch the URLs of all items in the closet so no loading
-    this.preloadImages();
-  },
   methods: {
     selectCategory(category) {
       this.selectedCategory = category;
@@ -50,19 +46,13 @@ export default {
     equipItem(item) {
       this.$store.commit("EQUIP_ITEM", item);
     },
-  filterOutEquippedItems() {
-    return this.allClosetItems.filter(item => {
-      const isEquipped = this.$store.state.equippedItems.some(equippedItem => {
-        return equippedItem.category === this.selectedCategory && equippedItem.id === item.id;
+    filterOutEquippedItems() {
+      return this.allClosetItems.filter(item => {
+        const isEquipped = this.$store.state.equippedItems.some(equippedItem => {
+          return equippedItem.category === this.selectedCategory && equippedItem.id === item.id;
+        });
+        return !isEquipped && item.category === this.selectedCategory;
       });
-      return !isEquipped && item.category === this.selectedCategory;
-    });
-  },
-    preloadImages() {
-      for (const item of this.allClosetItems) {
-        const img = new Image();
-        img.src = item.url;
-      }
     },
   }
 }

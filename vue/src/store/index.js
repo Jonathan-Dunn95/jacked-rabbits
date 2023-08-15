@@ -259,6 +259,9 @@ export default new Vuex.Store({
     //   }
     // ]
   },
+  getters: {
+    selectedCategory: state => state.selectedCategory
+  },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -306,5 +309,8 @@ export default new Vuex.Store({
     EQUIP_MASCOT(state, mascot) {
       state.equippedMascot.splice(0, 1, mascot);
     },
+    SET_SELECTED_CATEGORY(state, category) {
+      state.selectedCategory = category;
+    }
   },
 })
