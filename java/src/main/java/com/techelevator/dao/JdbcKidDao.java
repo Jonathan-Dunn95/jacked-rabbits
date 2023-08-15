@@ -47,7 +47,6 @@ public class JdbcKidDao implements KidDao {
     }
 
 
-
     @Override
     public Kid createKid(KidRequestDto kidRequest, int userId) {
         String sql = "INSERT INTO kids (kids_id, user_id, username, password_hash, carrots, play_time_seconds) VALUES (?, ?, ?, ?, ?, ?) RETURNING kids_id;";
@@ -55,8 +54,8 @@ public class JdbcKidDao implements KidDao {
         Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, userId, kidRequest.getParentId(), kidRequest.getUsername(), password_hash, kidRequest.getCarrots(), kidRequest.getPlayTime());
         if (kidId != null) {
             createActivity(kidId);
-//            createCloset();
-//            createMascot();
+            createCloset(kidId);
+            createMascot(kidId);
             return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash(), kidRequest.getPlayTime(), "ROLE_KID");
         } else {
             return null;
@@ -120,8 +119,8 @@ public class JdbcKidDao implements KidDao {
 
     private void createCloset(int kidId) {
         System.out.println('3');
-        String sql = "INSERT INTO create (kids_id,steps,minutes) VALUES (?,?,?)";
-        Closet closet = new Closet();
+        String sql = "INSERT INTO closet (mascot_id, item_id) VALUES (?,?),(?,?),(?,?),(?,?),(?,?)";
+        jdbcTemplate.update(sql, kidId, 1,kidId,13,kidId,25,kidId,37,kidId,49);
 //        closet.setCloset_id();
     }
 
@@ -129,11 +128,12 @@ public class JdbcKidDao implements KidDao {
         System.out.println('3');
         String sql = "INSERT INTO mascot (mascot_id,kids_id, shirt, shoes, hat, accessory, background, closet_id) VALUES (?,?,?,?,?,?)";
         Mascot mascot = new Mascot();
-        mascot.setShirt(0);
-        mascot.setShoes(0);
-        mascot.setHat(0);
-        mascot.setAccessory(0);
-        mascot.setBackground(0);
+        mascot.setShirt(1);
+        mascot.setShoes(13);
+        mascot.setHat(25);
+        mascot.setAccessory(37);
+        mascot.setBackground(49);
+        mascot.setMascotSelectionId(1);
 //        mascot.setClosetId(0);
         jdbcTemplate.update(sql,kidId,kidId,mascot.getShirt(),mascot.getShoes(),mascot.getHat(),mascot.getAccessory(),mascot.getBackground());
     }
