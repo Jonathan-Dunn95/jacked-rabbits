@@ -1,6 +1,8 @@
 <template>
     <div class="logoHeader">
-        <img class="logo" src="https://mykidswellnessapp-media.s3.amazonaws.com/logos/logoIdea2.jpg" alt="logo">
+        <router-link class="logoGroup" v-bind:to="{ name: 'home' }">
+            <img class="logo" src="https://mykidswellnessapp-media.s3.amazonaws.com/logos/logoIdea2.jpg" alt="logo">
+        </router-link>
     </div>
 </template>
 

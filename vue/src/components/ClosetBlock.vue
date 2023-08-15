@@ -9,7 +9,7 @@
     </div>
     <div class="item-grid">
       <img v-for="item in displayedItems" 
-      :key="item.id" 
+      :key="item.id"
       :src="item.url"
       :class="{ selected: item === selectedItem }"
       @click="selectItem(item)"
