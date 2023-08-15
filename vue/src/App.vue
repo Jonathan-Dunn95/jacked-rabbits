@@ -33,7 +33,7 @@
       ></div>
     </div>
     <div class="loading" v-if="isLoading">
-      <img src="@/assets/game_loading.gif" />
+      <img src="@/assets/bunny_loading.gif" />
     </div>
     <div class="contentLayout" v-else>
       <logo-header />
@@ -76,7 +76,7 @@ export default {
       this.$router.afterEach(() => {
         setTimeout(() => {
           this.isLoading = false;
-        }, 300); // You can adjust the delay as needed
+        }, 600); // You can adjust the delay as needed
       });
   },
 }
