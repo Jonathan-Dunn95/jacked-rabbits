@@ -65,6 +65,7 @@ export default {
   border: 10px solid var(--primary800);
   background-color: var(--primary400);
   border-radius: 0.5rem;
+  padding: 1rem;
 }
 .nav-tabs {
   display: flex;
@@ -105,5 +106,6 @@ export default {
 }
 #equip-item-btn {
   border: 5px solid var(--primary800);
+  cursor: pointer;
 }
 </style>
