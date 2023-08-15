@@ -2,8 +2,8 @@
   <div class="container">
     <div class="mascot-grid">
       <img v-for="mascot in allMascots"
-        :key="mascot.id"
-        :src="mascot.url"
+        :key="mascot.mascotSelectionId"
+        :src="mascot.imgURL"
         :class="{ selected: mascot === selectedMascot }"
         @click="selectMascot(mascot)"
         />
@@ -37,7 +37,9 @@ export default {
     created() {    
       // set the selectedMascot to the ID of the initially equipped mascot
       this.selectedMascot = this.$store.state.equippedMascot.id;
-      MascotSelectionService.getAllMascotSelector();
+      MascotSelectionService.getAllMascotSelector().then( response => {
+        this.$store.commit('SET_MASCOTS', response.data)
+      });
   },
 };
 </script>
