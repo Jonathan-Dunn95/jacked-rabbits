@@ -17,7 +17,7 @@ export default {
         },
         selectCategory(category) { 
             this.$store.commit("SET_SELECTED_CATEGORY", category);
-        }
+        },
     }
 }
 </script>

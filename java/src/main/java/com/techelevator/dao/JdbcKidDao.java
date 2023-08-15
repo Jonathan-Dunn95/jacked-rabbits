@@ -56,7 +56,7 @@ public class JdbcKidDao implements KidDao {
         if (kidId != null) {
             createActivity(kidId);
 //            createCloset();
-//            createMascot();
+////            createMascot();
             return new Kid(kidId, kidRequest.getParentId(), kidRequest.getUsername(), kidRequest.getCarrots(), kidRequest.getPasswordHash(), kidRequest.getPlayTime(), "ROLE_KID");
         } else {
             return null;
