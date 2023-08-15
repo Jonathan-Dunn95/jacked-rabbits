@@ -84,13 +84,13 @@ export default {
     padding: 10px 20px;
     font-size: 1.5rem;
     color: var(--primary800);
-    border: 3px solid var(--primary800);
+    border: 4px solid var(--primary800);
     font-weight: bold;
     transition-duration: 0.4s;
   }
   button:hover {
     background-color: var(--primary800);
-    border: 3px solid var(--primary400);
+    border: 4px solid var(--primary400);
     color: white;
   }
 </style>
