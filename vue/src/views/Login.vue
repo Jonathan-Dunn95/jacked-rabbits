@@ -1,8 +1,6 @@
 <template>
   <div id="login">
-    <div class="loading" v-if="isLoading">
-      <img src="@/assets/game_loading.gif" />
-    </div>
+   
     <form @submit.prevent="login">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
@@ -40,7 +38,7 @@ export default {
         username: "",
         password: ""
       },
-      isLoading: false,
+     
       invalidCredentials: false
     };
   },
@@ -54,10 +52,7 @@ export default {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             this.$router.push("/");
-             setTimeout(() => {
-              this.isLoading = false; // Hide loading GIF
-              this.$router.push("/");
-            }, 100000);
+             
           }
         })
         .catch(error => {
