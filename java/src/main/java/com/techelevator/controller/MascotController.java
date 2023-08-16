@@ -66,36 +66,36 @@ public class MascotController {
 //    }
 
     // Review
-//    @RequestMapping(path = "/mascot/{mascotId}/customize", method = RequestMethod.PUT)
-//    public void customizeMascot(@PathVariable int mascotId, @RequestBody Mascot mascots) {
-//        // get the mascot --> customized
-//        Mascot mascot = mascotDao.getMascotByMascotId(mascotId);
-//        // check if mascot exists
-//        if (mascot == null) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Mascot not found.");
-//        }
-//
-//        // Check if the child has enough carrots
-//        Kid kid = kidDao.getKidById(mascot.getKidId());
-//        int requiredCarrots = calculateCarrotsRequiredForCustomization(mascot);
-//
-//        if (kid.getCarrots() >= requiredCarrots) {
-//            // Deduct carrots and update mascot customization in the database
-//            kid.setCarrots(kid.getCarrots() - requiredCarrots);
-//            // update mascot
-//            mascot.setShirt(mascots.getShirt());
-//            mascot.setShoes(mascots.getShoes());
-//            mascot.setHat(mascots.getHat());
-//            mascot.setAccessory(mascots.getAccessory());
-//            mascot.setBackground(mascots.getBackground());
-//            mascot.setMascotSelectionId(mascots.getMascotSelectionId());
-//            mascotDao.updateMascotCustomization(mascotId, mascot);
-//            kidDao.updateKid(kid);
-//        } else {
-//            // Handle insufficient carrots error
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Insufficient carrots for customization.");
-//        }
-//    }
+    @RequestMapping(path = "/mascot/{mascotId}/customize", method = RequestMethod.PUT)
+    public void customizeMascot(@PathVariable int mascotId, @RequestBody Mascot mascots) {
+        // get the mascot --> customized
+        Mascot mascot = mascotDao.getMascotByMascotId(mascotId);
+        // check if mascot exists
+        if (mascot == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Mascot not found.");
+        }
+
+        // Check if the child has enough carrots
+        Kid kid = kidDao.getKidById(mascot.getKidId());
+        int requiredCarrots = calculateCarrotsRequiredForCustomization(mascot);
+
+        if (kid.getCarrots() >= requiredCarrots) {
+            // Deduct carrots and update mascot customization in the database
+            kid.setCarrots(kid.getCarrots() - requiredCarrots);
+            // update mascot
+            mascot.setShirt(mascots.getShirt());
+            mascot.setShoes(mascots.getShoes());
+            mascot.setHat(mascots.getHat());
+            mascot.setAccessory(mascots.getAccessory());
+            mascot.setBackground(mascots.getBackground());
+            mascot.setMascotSelectionId(mascots.getMascotSelectionId());
+            mascotDao.updateMascotCustomization(mascotId, mascot);
+            kidDao.updateKid(kid);
+        } else {
+            // Handle insufficient carrots error
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Insufficient carrots for customization.");
+        }
+    }
 
     private int calculateCarrotsRequiredForCustomization(Mascot mascot) {
         int totalCarrotsRequired = 0;
