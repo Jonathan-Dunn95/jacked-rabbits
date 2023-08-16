@@ -28,6 +28,7 @@ export default {
       this.selectedMascot = mascot;
     },
     equipMascot(mascotSelection) {
+      alert("Mascot Equipped");
       this.$store.commit("EQUIP_MASCOT", mascotSelection);
       MascotService.getMascotByKidId(this.$store.state.user.id).then(response => {
         let mascot = response.data 
