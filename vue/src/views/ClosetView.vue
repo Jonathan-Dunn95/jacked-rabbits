@@ -1,12 +1,12 @@
 <template>
   <div class="container">
+  <div class="kid-info-div">
+    <kid-info id="kid-info-container" />
+  </div>
     <div class="content-layout">
       <mascot-block id="mascot-block-container" />
       <equipment-block id="equipment-block-container" />
-      <div id="store-area">
-      <kid-info id="kid-info-container" />
       <closet-block id="closet-block-container" />
-      </div>
     </div>
   </div>
 </template>
@@ -49,11 +49,12 @@ button {
 }
 .content-layout {
   display: flex;
-  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 100%;
 }
 #mascot-block-container {
   height: 100%;
-  width: 45%;
+  width: 40%
   /* margin-right: 1.5rem; */
 }
 #equipment-block-container {
@@ -63,14 +64,14 @@ button {
   margin-right: 1.5rem;
 }
 #closet-block-container {
-  width: 94%;
-  /* margin-left: 1.5rem; */
-}
-#store-area {
-  display: flex;
-  flex-direction: column;
+  width: 40%;
 }
 #kid-info-container {
   display: flex;
+}
+.kid-info-div {
+  justify-content: flex-end;
+  margin-left: 57%;
+  margin-right: 1%;
 }
 </style>

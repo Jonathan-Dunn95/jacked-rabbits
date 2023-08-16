@@ -85,13 +85,13 @@ export default {
 }
 @keyframes dynamicBackground {
   0% {
-    background-color: #0fe69e;
+    background-color: var(--primary400);
   }
   50% {
-    background-color: #0fe69e;
+    background-color: var(--primary400);
   }
   100% {
-    background-color: #0fe69e;
+    background-color: var(--primary400);
   }
 }
 @keyframes bounce {

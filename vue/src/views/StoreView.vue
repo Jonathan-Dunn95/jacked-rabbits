@@ -1,9 +1,12 @@
 <template>
   <div class="container">
+    <div class="kid-info-div">
+      <kid-info id="kid-info-container" />
+    </div>
     <div class="content-layout">
       <mascot-selector id="mascot-selector-container" />
       <div id="store-area">
-      <kid-info id="kid-info-container" />
+      <!-- <kid-info id="kid-info-container" /> -->
       <store-block id="store-block-container" />
       </div>
     </div>
@@ -61,5 +64,10 @@ button {
   display: flex;
   flex-direction: column;
   width: 50%
+}
+.kid-info-div {
+  justify-content: flex-end;
+  margin-left: 53%;
+  margin-right: 1.5%;
 }
 </style>
