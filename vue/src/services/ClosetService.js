@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default {
 
-    getClosetByMascotId(mascotID) {
+    getItemsByMascotId(mascotID) {
         return axios.get(`/closet/${mascotID}`)
     },
     updateCloset(closet) {

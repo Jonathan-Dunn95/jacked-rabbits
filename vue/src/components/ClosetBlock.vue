@@ -9,8 +9,8 @@
     </div>
     <div class="item-grid">
       <img v-for="item in displayedItems"
-      :key="item.id"
-      :src="item.url"
+      :key="item.itemId"
+      :src="item.imgURL"
       :class="{ selected: item === selectedItem }"
       @click="selectItem(item)"
       />
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import ClosetService from '../services/ClosetService';
 import MascotService from '../services/MascotService';
 export default {
   name: "closet-block",
@@ -48,16 +49,16 @@ export default {
     equipItem(item) {
       MascotService.getMascotByKidId(this.$store.state.user.id).then( response => {
         let updatedMascot = response.data
-        if(item.id<13) {
-          updatedMascot.shirt = item.id
-        } else if(item.id<25) {
-          updatedMascot.shoes = item.id
-        } else if(item.id<37) {
-          updatedMascot.hat = item.id
-        } else if(item.id<49) {
-          updatedMascot.accessory = item.id
+        if(item.itemId<13) {
+          updatedMascot.shirt = item.itemId
+        } else if(item.itemId<25) {
+          updatedMascot.shoes = item.itemId
+        } else if(item.itemId<37) {
+          updatedMascot.hat = item.itemId
+        } else if(item.itemId<49) {
+          updatedMascot.accessory = item.itemId
         } else {
-          updatedMascot.background = item.id
+          updatedMascot.background = item.itemId
         }
         MascotService.updateMascotById(updatedMascot).then( () => {
           this.$store.commit("EQUIP_ITEM", item);
@@ -70,11 +71,19 @@ export default {
     filterOutEquippedItems() {
       return this.allClosetItems.filter(item => {
         const isEquipped = this.$store.state.equippedItems.some(equippedItem => {
-          return equippedItem.category === this.selectedCategory && equippedItem.id === item.id;
+          console.log(item.itemId + " " + equippedItem.itemId)
+          return (equippedItem.itemId < 13 && item.itemId < 13 && this.selectedCategory === "Shirts") || (this.selectedCategory === "Shoes" && equippedItem.itemId >= 13 && equippedItem.itemId < 25 && item.itemId >= 13 && item.itemId < 25) || (this.selectedCategory === "Hats" && equippedItem.itemId >= 37 && equippedItem.itemId < 25 && item.itemId >= 25 && item.itemId < 37) || (this.selectedCategory === "Accessories" && equippedItem.itemId >= 37 && equippedItem.itemId < 49 && item.itemId >= 37 && item.itemId < 49) || (this.selectedCategory === "Backgrounds" && equippedItem.itemId >= 49 && item.itemId >= 49)
         });
-        return !isEquipped && item.category === this.selectedCategory;
+        return !isEquipped && ((this.selectedCategory === "Shirts" && item.itemId < 13) || (this.selectedCategory === "Shoes" && item.itemId >= 13 && item.itemId < 25) || (this.selectedCategory === "Hats" && item.itemId >= 25 && item.itemId < 37) || (this.selectedCategory === "Accessories" && item.itemId >= 37 && item.itemId < 49) || (this.selectedCategory === "Backgrounds" && item.itemId >= 49));
       });
     },
+  },
+  created() {
+    MascotService.getMascotByKidId(this.$store.state.user.id).then( response => {
+      ClosetService.getItemsByMascotId(response.data.mascotId).then( items => {
+        this.$store.commit('SET_CLOSET_ITEMS', items.data)
+      })
+    })
   }
 }
 </script>

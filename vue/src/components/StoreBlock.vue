@@ -79,7 +79,7 @@ export default {
     purchaseItem(item) {
       MascotService.getMascotByKidId(this.$store.state.user.id).then( response => {
         let closetEntry = {};
-        console.log(item.id)
+        // console.log(item.id)
         closetEntry.mascotId = response.data.mascotId
         closetEntry.itemId = item.itemId;
         ClosetService.updateCloset(closetEntry)
