@@ -68,14 +68,6 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    // {
-    //   path: "/kids",
-    //   name: "kids",
-    //   component: KidsLandingPage,
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // },
     {
       path: "/parents/register",
       name: "register-kids",

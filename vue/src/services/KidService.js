@@ -26,6 +26,6 @@ export default {
         return axios.put(`/activity/update/${activity.kidId}`, activity)
     },
     updateKid(kid) {
-        return axios.put(`/kids/update/${kid.kidId}`, kid);
+        return axios.put(`/kids/update/${kid.id}`, kid);
     }
 }

@@ -7,8 +7,8 @@ import java.util.List;
 public interface ClosetDao {
 
     List<Integer> getItemsByMascotId(int mascotId);
-    void addItemToCloset(int itemId, int mascotId);
 
+    void addItemToCloset(int itemId, int mascotId);
 
 }
 

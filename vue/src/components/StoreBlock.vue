@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <!-- <h2>{{ kid.username }} </h2> -->
+    <!-- <h2>{{ activeKid.username }} </h2> -->
     <div class="nav-tabs">
       <button @click="selectCategory('Shirts')" :class="{ active: selectedCategory === 'Shirts' }">Shirts</button>
       <button @click="selectCategory('Shoes')" :class="{ active: selectedCategory === 'Shoes' }">Shoes</button>
@@ -31,6 +31,7 @@ export default {
       selectedCategory: 'Shirts',
       items: [],
       selectedItem: null,
+      randomKid: null,
     }
   },
   created() {
@@ -42,9 +43,10 @@ export default {
       .catch(error => {
         console.error('An error occurred trying to load items!', error);
       });
-      KidService.getKidById(this.$store.state.user.id).then(response => {
-        this.$store.commit("SET_ACTIVE_KID", response.data);
-      })
+      KidService.getKidById(this.$store.state.user.id)
+      // .then(response => {
+      //   this.$store.commit("SET_ACTIVE_KID", response);
+      // })
   },
   computed: {
     filteredItems() {
@@ -73,8 +75,11 @@ export default {
         this.selectedItem = item;
     },
     purchaseItem(item) {
-      this.$store.commit("PURCHASE_ITEM", item);
-      KidService.updateKid(this.$store.state.activeKid)
+      this.$store.commit("PURCHASE_ITEM", item)
+      let newKid = this.$store.state.user
+      newKid.carrots = newKid.carrots-1;
+      KidService.updateKid(newKid)
+      console.log('Carrots should be down by 1')
     },
   }
 }

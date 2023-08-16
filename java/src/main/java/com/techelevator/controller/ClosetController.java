@@ -23,7 +23,7 @@ public class ClosetController {
         return closetDao.getItemsByMascotId(mascotId);
     }
 // Needs review
-    @RequestMapping(path = "add/{mascotId}", method = RequestMethod.POST)
+    @RequestMapping(path = "update/{mascotId}", method = RequestMethod.POST)
     public void addItemToCloset(@RequestBody Closet closet) {
         closetDao.addItemToCloset(closet.getItemId(), closet.getMascotId());
     }
