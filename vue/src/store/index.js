@@ -15,9 +15,21 @@ const currentKids = localStorage.getItem('kids');
 const currentActivities = localStorage.getItem('activities');
 const currentKid = localStorage.getItem('activeKid');
 
-
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
+}
+function getCategoryFromItemId(itemId) {
+  if (itemId >= 1 && itemId <= 12) { 
+    return 'Shirts';
+  } else if (itemId >= 13 && itemId <= 24) {
+    return 'Shoes';
+  } else if (itemId >= 25 && itemId <= 36) {
+    return 'Hats';
+  } else if (itemId >= 37 && itemId <= 48) { 
+    return 'Accessories';
+  } else { 
+    return 'Backgrounds';
+  }
 }
 
 export default new Vuex.Store({
@@ -36,9 +48,6 @@ export default new Vuex.Store({
         imgURL: ""
       },
     mascots: [],
-  },
-  getters: {
-    selectedCategory: state => state.selectedCategory
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -74,17 +83,12 @@ export default new Vuex.Store({
       localStorage.setItem('activities', activties)
     },
     EQUIP_ITEM(state, item) {
-      const index = state.equippedItems.findIndex(
-        (equippedItem) => {
-          // console.log(equippedItem.itemId + ' ' + item.id)
-          return (equippedItem.itemId < 13 && item.itemId < 13) || (equippedItem.itemId >= 13 && equippedItem.itemId < 25 && item.itemId >= 13 && item.itemId < 25) || (equippedItem.itemId >= 37 && equippedItem.itemId < 25 && item.itemId >= 25 && item.itemId < 37) || (equippedItem.itemId >= 37 && equippedItem.itemId < 49 && item.itemId >= 37 && item.itemId < 49) || (equippedItem.itemId >= 49 && item.itemId >= 49)
-        }
-      );
-      console.log(index)
+      const equippedCategory = getCategoryFromItemId(item.itemId);
+      const index = state.equippedItems.findIndex((equippedItem) => {
+        const equippedItemCategory = getCategoryFromItemId(equippedItem.itemId);
+        return equippedItemCategory === equippedCategory;
+      });
       if (index !== -1) {
-        // let dbFriendlyItem = {}
-        // dbFriendlyItem.itemId = item.itemId;
-        // dbFriendlyItem.imgURL = item.imgURL;
         state.equippedItems.splice(index, 1, item);
       } else {
         state.equippedItems.push(item);
