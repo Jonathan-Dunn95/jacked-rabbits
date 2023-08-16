@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ClosetDao;
 import com.techelevator.model.Closet;
+import com.techelevator.model.ItemStore;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class ClosetController {
 
 
     @RequestMapping(path = "{mascotId}", method = RequestMethod.GET)
-    public List<Integer> getItemsByMascotId(@PathVariable int mascotId) {
+    public List<ItemStore> getItemsByMascotId(@PathVariable int mascotId) {
         return closetDao.getItemsByMascotId(mascotId);
     }
 // Needs review

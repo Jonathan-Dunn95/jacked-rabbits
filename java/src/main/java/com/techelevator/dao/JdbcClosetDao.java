@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Closet;
+import com.techelevator.model.ItemStore;
 import com.techelevator.model.MascotSelection;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -20,12 +21,20 @@ public class JdbcClosetDao implements ClosetDao {
 
 // Revise
     @Override
-    public List<Integer> getItemsByMascotId(int mascotId) {
+    public List<ItemStore> getItemsByMascotId(int mascotId) {
         String sql = "SELECT item_id FROM closet WHERE mascot_id = ?;";
-        List<Integer> items = new ArrayList<>();
+        String sqlItem = "SELECT * FROM item_store WHERE item_id = ?";
+        List<Integer> itemsIds = new ArrayList<>();
+        List<ItemStore> items = new ArrayList<>();
         SqlRowSet itemIds =  jdbcTemplate.queryForRowSet(sql, mascotId);
         while(itemIds.next()) {
-            items.add(itemIds.getInt("item_id"));
+            itemsIds.add(itemIds.getInt("item_id"));
+        }
+        for(int itemId : itemsIds) {
+            SqlRowSet rowSetItem = jdbcTemplate.queryForRowSet(sqlItem, itemId);
+            if(rowSetItem.next()) {
+                items.add(mapRowToItemStore(rowSetItem));
+            }
         }
         return items;
     }
@@ -57,6 +66,13 @@ public class JdbcClosetDao implements ClosetDao {
         closet.setMascotId(rs.getInt("mascot_id"));
         closet.setItemId(rs.getInt("item_id"));
         return closet;
+    }
+
+    private ItemStore mapRowToItemStore(SqlRowSet rs) {
+        ItemStore itemStore = new ItemStore();
+        itemStore.setItemId(rs.getInt("item_id"));
+        itemStore.setImgURL(rs.getString("img_url"));
+        return itemStore;
     }
 }
 
