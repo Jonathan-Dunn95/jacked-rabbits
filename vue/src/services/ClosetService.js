@@ -6,6 +6,6 @@ export default {
         return axios.get(`/closet/${mascotID}`)
     },
     updateCloset(closet) {
-        return axios.put(`/closet/update/${closet.closetId}`, closet);
+        return axios.post(`/closet/update/`, closet);
     }
 }

@@ -23,6 +23,8 @@
 <script>
 import ItemStoreService from '../services/ItemStoreService'
 import KidService from '../services/KidService';
+import ClosetService from '../services/ClosetService';
+import MascotService from '../services/MascotService';
 
 export default {
   name: "store-block",
@@ -75,6 +77,13 @@ export default {
         this.selectedItem = item;
     },
     purchaseItem(item) {
+      MascotService.getMascotByKidId(this.$store.state.user.id).then( response => {
+        let closetEntry = {};
+        console.log(item.id)
+        closetEntry.mascotId = response.data.mascotId
+        closetEntry.itemId = item.itemId;
+        ClosetService.updateCloset(closetEntry)
+      })
       this.$store.commit("PURCHASE_ITEM", item)
       let newKid = this.$store.state.user
       newKid.carrots = newKid.carrots-1;

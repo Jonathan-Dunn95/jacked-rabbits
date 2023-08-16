@@ -260,7 +260,10 @@ export default new Vuex.Store({
       state.equippedMascot = mascot;
     },
     PURCHASE_ITEM(state, purchasedItem) {
-      state.closetItems.push(purchasedItem);
+      let storeFriendlyItem = {};
+      storeFriendlyItem.id = purchasedItem.itemId;
+      storeFriendlyItem.url = purchasedItem.imgURL;
+      state.closetItems.push(storeFriendlyItem);
 
       // removes item from items store
       // const index = state.closetItems.findIndex(item => item.itemId === purchasedItem.itemId);
