@@ -24,33 +24,8 @@ export default new Vuex.Store({
     user: currentUser || {},
     kids: currentKids || [],
     activities: currentActivities || [],
-    equippedItems: [
-      // {
-      //   id: 1,
-      //   category: "Hats",
-      //   url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/hats/hat1.jpg'
-      // },
-      // {
-      //   id: 2,
-      //   category: "Shirts",
-      //   url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shirts/shirt1.jpg'
-      // },
-      // {
-      //   id: 3,
-      //   category: "Shoes",
-      //   url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/shoes/shoes1.jpg'
-      // },
-      // {
-      //   id: 4,
-      //   category: "Accessories",
-      //   url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc1.jpg'
-      // },
-      // {
-      //   id: 5,
-      //   category: "Backgrounds",
-      //   url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back1.jpg'
-      // },
-    ],
+    activeKid: {},
+    equippedItems: [],
     closetItems: [
       {
         id: 25,
@@ -208,32 +183,7 @@ export default new Vuex.Store({
         mascotSelectionId: 0,
         imgURL: ""
       },
-    mascots: [
-    ],
-    //remove this when connecting to DB
-    // kids: [
-    //   {
-    //     id: 1,
-    //     name: "Timmy",
-    //     steps: 0,
-    //     minutes: 0,
-    //     carrots: 4
-    //   },
-    //   {
-    //     id: 2,
-    //     name: "Jimmy",
-    //     steps: 0,
-    //     minutes: 0,
-    //     carrots: 23
-    //   },
-    //   {
-    //     id: 3,
-    //     name: "Tommy",
-    //     steps: 0,
-    //     minutes: 0,
-    //     carrots: 135
-    //   }
-    // ]
+    mascots: [],
   },
   getters: {
     selectedCategory: state => state.selectedCategory
@@ -294,10 +244,9 @@ export default new Vuex.Store({
     SELECT_ITEM(state, item) {
       state.selectedItem = item;
     },
-
-
-
-
+    SET_ACTIVE_KID(state, data) {
+      state.activeKid = data;
+    },
     SET_MASCOT_ID(state, id) {
       state.equippedMascot.mascotSelectionId = id
     },

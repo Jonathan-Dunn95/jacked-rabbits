@@ -73,11 +73,14 @@ public class JdbcKidDao implements KidDao {
     }
 
     @Override
-    public void updateKid(Kid kid) {
+    public boolean updateKid(Kid kid) {
         String sql = "UPDATE kids " +
-                "SET username = ?, carrots = ?, play_time_seconds = ?" +
+                "SET carrots = ?, " +
+                "play_time_seconds = ?" +
                 "WHERE kids_id = ?;";
-        jdbcTemplate.update(sql, kid.getUsername(), kid.getCarrots(), kid.getPlayTime(), kid.getKidId());
+        jdbcTemplate.update(sql, kid.getCarrots(), kid.getPlayTime(), kid.getKidId());
+        System.out.println("Kid updated");
+        return false;
     }
 
     @Override
@@ -119,7 +122,7 @@ public class JdbcKidDao implements KidDao {
 
     //Store all default items using this method
     private void createCloset(int mascotId) {
-        System.out.println('3');
+        System.out.println('2');
         String sql = "INSERT INTO closet (mascot_id, item_id) VALUES (?,?),(?,?),(?,?),(?,?),(?,?)";
         jdbcTemplate.update(sql, mascotId, 1,mascotId,13,mascotId,25,mascotId,37,mascotId,49);
 //        closet.setCloset_id();

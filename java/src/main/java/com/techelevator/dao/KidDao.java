@@ -14,7 +14,7 @@ public interface KidDao {
 
     void deleteKid(int kidId);
 
-    void updateKid(Kid kid);
+    boolean updateKid(Kid kid);
 
     Activity getActivityById(int id);
 }

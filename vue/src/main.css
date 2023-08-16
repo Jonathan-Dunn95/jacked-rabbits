@@ -1,0 +1,57 @@
+.theme-options {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    text-align: right;
+}
+
+.theme-options div{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin: 2px 10px;
+    border: 1px solid #fff;
+    display: inline-block;
+    opacity: 0.5;
+    
+  }
+  .theme-options div.active {
+    opacity: 1;
+  }
+  #theme-white {
+    background-color: #eee;
+  }
+  #theme-blue {
+    background-color: #1e41c1;
+  }
+  
+  #theme-yellow {
+    background-color: #f8da5b;
+  }
+  #theme-purple {
+    background-color: #c3bef0;
+  }
+  #theme-green {
+    background-color: #95e8d7;
+  }
+  #theme-pink {
+    background-color: pink;
+  }
+  
+  #app.theme-blue {
+      background-color:lightblue;
+  }
+  #app.theme-yellow {
+    background-color:#f8da5b;
+  }
+  #app.theme-purple {
+    background-color:#c3bef0;
+  }   
+  #app.theme-green {
+    background-color:#95e8d7;
+  } 
+  #app.theme-pink {
+    background-color : pink;
+  }

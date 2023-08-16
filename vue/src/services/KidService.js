@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-// TODO: Retrieve kids from parents
-
 export default {
     getParents() { 
         return axios.get('/users')
@@ -9,7 +7,7 @@ export default {
     getKids(parentID) { 
         return axios.get(`/users/${parentID}`)
     },
-    getKid(kidID) { 
+    getKidById(kidID) { 
         return axios.get(`/kids/${kidID}`)
     },
     createKid(kid) {
@@ -26,5 +24,8 @@ export default {
     },
     updateActivity(activity) {
         return axios.put(`/activity/update/${activity.kidId}`, activity)
+    },
+    updateKid(kid) {
+        return axios.put(`/kids/update/${kid.kidId}`, kid);
     }
 }

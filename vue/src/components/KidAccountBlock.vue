@@ -24,8 +24,7 @@
           <input type="number" id="steps" v-model="activityForm.steps">
           <label for="minutes">Minutes: </label>
           <input type="number" id="minutes" v-model="activityForm.minutes">
-          <input type="submit">
-          <!-- <button v-on:click="resetActivityForm">Reset</button> -->
+          <button type="button" @click="updateKidActivity">Log Activity</button>
           <button v-on:click="hideForm">Cancel</button>
         </form>
       </div>
@@ -135,8 +134,6 @@ export default {
   .kid-block {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
   .kid-item {
     display: flex;

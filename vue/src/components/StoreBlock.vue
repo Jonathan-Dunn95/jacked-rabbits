@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- <h2>{{ kid.username }} </h2> -->
     <div class="nav-tabs">
       <button @click="selectCategory('Shirts')" :class="{ active: selectedCategory === 'Shirts' }">Shirts</button>
       <button @click="selectCategory('Shoes')" :class="{ active: selectedCategory === 'Shoes' }">Shoes</button>
@@ -21,6 +22,7 @@
 
 <script>
 import ItemStoreService from '../services/ItemStoreService'
+import KidService from '../services/KidService';
 
 export default {
   name: "store-block",
@@ -36,12 +38,13 @@ export default {
     .then(response => {
         // success!
         this.items = response.data;
-        // preload images once the items are loaded
-        this.preloadImages();
       })
       .catch(error => {
         console.error('An error occurred trying to load items!', error);
       });
+      KidService.getKidById(this.$store.state.user.id).then(response => {
+        this.$store.commit("SET_ACTIVE_KID", response.data);
+      })
   },
   computed: {
     filteredItems() {
@@ -65,19 +68,13 @@ export default {
     },
     selectCategory(category) { 
       this.selectedCategory = category;
-      // this.selectedItem = [];
     },
     selectItem(item) {
         this.selectedItem = item;
     },
-    preloadImages() {
-      for (const item of this.items) {
-        const img = new Image();
-        img.src = item.imgURL;
-      }
-    },
     purchaseItem(item) {
       this.$store.commit("PURCHASE_ITEM", item);
+      KidService.updateKid(this.$store.state.activeKid)
     },
   }
 }

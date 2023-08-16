@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-      <h1>Parents Landing Page</h1>
-      <h4>Manage Kids From This Page</h4>
-      <kid-account-block />
+    <kid-account-block />
   </div>
 </template>
 
@@ -23,6 +21,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 </style>

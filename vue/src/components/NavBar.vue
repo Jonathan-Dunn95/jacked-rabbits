@@ -33,6 +33,7 @@ export default {
   background-color: var(--primary800);
   padding: 1rem 0;
   text-align: right;
+  border-radius: 0.5rem;
 }
 .nav-list li {
   display: inline;
@@ -48,5 +49,6 @@ export default {
   color: var(--primary400);
   background-color: var(--primary400);
   color: var(--primary800);
+  border-radius: 0.5rem;
 }
 </style>

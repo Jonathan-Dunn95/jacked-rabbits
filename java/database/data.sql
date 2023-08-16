@@ -6,6 +6,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('jason','$2a$10$tZSngHOS
 INSERT INTO users (username,password_hash,role) VALUES ('timmy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm','ROLE_KID'); -- password is password
 INSERT INTO users (username,password_hash,role) VALUES ('jimmy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm','ROLE_KID'); -- password is password
 INSERT INTO users (username,password_hash,role) VALUES ('tommy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm','ROLE_KID'); -- password is password
+INSERT INTO users (username,password_hash,role) VALUES ('bob','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm','ROLE_PARENT'); -- password is password
 
 -- Kids Table
 INSERT INTO kids (kids_id, user_id,username,password_hash,carrots) VALUES (4,3,'timmy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm',4);
