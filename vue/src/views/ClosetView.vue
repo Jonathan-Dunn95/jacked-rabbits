@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="content-layout">
+      <kid-info />
       <mascot-block id="mascot-block-container" />
       <equipment-block id="equipment-block-container" />
       <closet-block id="closet-block-container" />
@@ -15,6 +16,7 @@
 import MascotBlock from "../components/MascotBlock.vue";
 import ClosetBlock from "../components/ClosetBlock.vue";
 import EquipmentBlock from "../components/EquipmentBlock.vue";
+import KidInfo from "../components/Kidinfo.vue";
 
 export default {
     name: "closet-view",
@@ -22,6 +24,7 @@ export default {
         MascotBlock,
         ClosetBlock,
         EquipmentBlock,
+        KidInfo
     },
 }
 </script>

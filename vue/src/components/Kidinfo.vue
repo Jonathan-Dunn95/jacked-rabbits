@@ -1,57 +1,105 @@
 <template>
   <div class="kid-info">
-    <p>Carrots: {{ kid.carrots }}</p>
-    <p>Steps: {{ getActivity(kid).steps }}</p>
-    <p>Minutes of Activity: {{ getActivity(kid).minutes }}</p>
+    <div class="counter">
+      <p class="counter-label">🥕</p>
+      <p class="counter-value carrot-value">{{ this.kid.carrots }}</p>
+    </div>
+    <div class="counter">
+      <p class="counter-label">👣</p>
+      <p class="counter-value steps-value">{{ this.activity.steps }}</p>
+    </div>
+    <div class="counter">
+      <p class="counter-label">⏱️</p>
+      <p class="counter-value minutes-value">{{ convertedPlayTime }}</p>
+    </div>
   </div>
 </template>
 <script>
-import KidService from "../services/KidService.js";
+import KidService from '../services/KidService';
 export default {
-//   props: {
-//     kid: Object,
-//     activities: Array,
-//   },
-created() {
-    KidService.getKids(this.$store.state.user.id).then(response => {
-      if(response.status === 200) {
-        //success
-        this.$store.commit("SET_KIDS", response.data);
-        // console.log(this.$store.state.kids)
-      }
-    })
-    KidService.getActivities(this.$store.state.user.id).then(response => {
-      if(response.status === 200) {
-        //success
-        this.$store.commit("SET_ACTIVITIES", response.data);
-        console.log(this.$store.state.kids)
-      }
-    })
-  },
-  computed: {
-    isFormShown() {
-      return this.currentKidId > 0;
-    },
-    kids() {
-      return this.$store.state.kids;
-    },
-    activties() {
-      return this.$store.state.activties
-    },
-    carrots(){
-        return this.$store.state.carrots
-},
+  name: "kid-info",
+  data() {
+    return {
+      kid: null,
+      activity: null,
+    }
   },
   methods: {
-    getActivity(kid) {
-      return this.activities.find((activity) => activity.kidId === kid.kidId) || {
-        steps: 0,
-        minutes: 0,
-      };
+    // getActivity(kid) {
+    //   return (
+    //     activities.find((activity) => activity.kidId === kid.kidId) || {
+    //       steps: 0,
+    //       minutes: 0,
+    //     }
+    //   );
+    // },
+  },
+  computed: {
+    convertedPlayTime() {
+      return (parseInt(this.kid.playTime)/60) + "M"
     }
+  },
+  created() {
+    KidService.getKidById(this.$store.state.user.id).then(response => {
+      this.kid = response.data;
+    })
+    KidService.getActivity(this.$store.state.user.id).then(response => {
+      this.activity = response.data;
+    })
   }
-}
+};
 </script>
 <style scoped>
-/* Styles for KidInfo component */
+.kid-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3366FF;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: dynamicBackground 10s infinite alternate;
+}
+.counter {
+  text-align: center;
+}
+.counter-label {
+  font-size: 30px;
+  margin: 0;
+  padding-top: 5px;
+}
+.counter-value {
+  font-size: 28px;
+  margin: 0;
+  font-weight: bold;
+  animation: bounce 0.5s infinite alternate;
+}
+.carrot-value {
+  color: #F7B733;
+}
+.steps-value {
+  color: #FF6347;
+}
+.minutes-value {
+  color: #00BFFF;
+}
+@keyframes dynamicBackground {
+  0% {
+    background-color: #0fe69e;
+  }
+  50% {
+    background-color: #0fe69e;
+  }
+  100% {
+    background-color: #0fe69e;
+  }
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
 </style>

@@ -9,9 +9,9 @@ INSERT INTO users (username,password_hash,role) VALUES ('tommy','$2a$10$tZSngHOS
 INSERT INTO users (username,password_hash,role) VALUES ('bob','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm','ROLE_PARENT'); -- password is password
 
 -- Kids Table
-INSERT INTO kids (kids_id, user_id,username,password_hash,carrots) VALUES (4,3,'timmy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm',4);
-INSERT INTO kids (kids_id, user_id,username,password_hash,carrots) VALUES (5,3,'jimmy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm',23);
-INSERT INTO kids (kids_id, user_id,username,password_hash,carrots) VALUES (6,3,'tommy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm',135);
+INSERT INTO kids (kids_id, user_id,username,password_hash,carrots,play_time_seconds) VALUES (4,3,'timmy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm',4,60);
+INSERT INTO kids (kids_id, user_id,username,password_hash,carrots,play_time_seconds) VALUES (5,3,'jimmy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm',23,120);
+INSERT INTO kids (kids_id, user_id,username,password_hash,carrots,play_time_seconds) VALUES (6,3,'tommy','$2a$10$tZSngHOSzO6CxBhz4O1Vue7HidItv2eCz902cYoKYfbzfxa2p3oGm',135,600);
 
 -- Activity Table
 INSERT INTO activity (kids_id,steps,minutes) VALUES (4,'40',5);

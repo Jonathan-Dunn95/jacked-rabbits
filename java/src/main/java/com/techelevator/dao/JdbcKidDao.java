@@ -22,7 +22,7 @@ public class JdbcKidDao implements KidDao {
     @Override
     public Kid getKidById(int kidId) {
         Kid kid = null;
-        String sql = "SELECT kids_id, user_id, username, password_hash, carrots FROM kids WHERE kids_id = ?;";
+        String sql = "SELECT kids_id, user_id, username, password_hash, carrots, play_time_seconds FROM kids WHERE kids_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, kidId);
             if (results.next()) {
@@ -110,6 +110,7 @@ public class JdbcKidDao implements KidDao {
         kid.setParentId(rs.getInt("user_id"));
         kid.setUsername(rs.getString("username"));
         kid.setCarrots(rs.getInt("carrots"));
+        kid.setPlayTime(rs.getInt("play_time_seconds"));
         return kid;
     }
 
