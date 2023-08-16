@@ -70,11 +70,11 @@ export default {
     },
     filterOutEquippedItems() {
       return this.allClosetItems.filter(item => {
-        const isEquipped = this.$store.state.equippedItems.some(equippedItem => {
-          console.log(item.itemId + " " + equippedItem.itemId)
-          return (equippedItem.itemId < 13 && item.itemId < 13 && this.selectedCategory === "Shirts") || (this.selectedCategory === "Shoes" && equippedItem.itemId >= 13 && equippedItem.itemId < 25 && item.itemId >= 13 && item.itemId < 25) || (this.selectedCategory === "Hats" && equippedItem.itemId >= 37 && equippedItem.itemId < 25 && item.itemId >= 25 && item.itemId < 37) || (this.selectedCategory === "Accessories" && equippedItem.itemId >= 37 && equippedItem.itemId < 49 && item.itemId >= 37 && item.itemId < 49) || (this.selectedCategory === "Backgrounds" && equippedItem.itemId >= 49 && item.itemId >= 49)
+        const isNotEquipped = this.$store.state.equippedItems.some(equippedItem => {
+          return (equippedItem.itemId < 13 && item.itemId < 13) || (equippedItem.itemId >= 13 && equippedItem.itemId < 25 && item.itemId >= 13 && item.itemId < 25) || (equippedItem.itemId >= 37 && equippedItem.itemId < 25 && item.itemId >= 25 && item.itemId < 37) || (equippedItem.itemId >= 37 && equippedItem.itemId < 49 && item.itemId >= 37 && item.itemId < 49) || (equippedItem.itemId >= 49 && item.itemId >= 49) || ((this.selectedCategory === "Shirts" && item.itemId < 13) || (this.selectedCategory === "Shoes" && item.itemId >= 13 && item.itemId < 25) || (this.selectedCategory === "Hats" && item.itemId >= 25 && item.itemId < 37) || (this.selectedCategory === "Accessories" && item.itemId >= 37 && item.itemId < 49) || (this.selectedCategory === "Backgrounds" && item.itemId >= 49))
         });
-        return !isEquipped && ((this.selectedCategory === "Shirts" && item.itemId < 13) || (this.selectedCategory === "Shoes" && item.itemId >= 13 && item.itemId < 25) || (this.selectedCategory === "Hats" && item.itemId >= 25 && item.itemId < 37) || (this.selectedCategory === "Accessories" && item.itemId >= 37 && item.itemId < 49) || (this.selectedCategory === "Backgrounds" && item.itemId >= 49));
+        // console.log(isEquipped)
+        return isNotEquipped && ((this.selectedCategory === "Shirts" && item.itemId < 13) || (this.selectedCategory === "Shoes" && item.itemId >= 13 && item.itemId < 25) || (this.selectedCategory === "Hats" && item.itemId >= 25 && item.itemId < 37) || (this.selectedCategory === "Accessories" && item.itemId >= 37 && item.itemId < 49) || (this.selectedCategory === "Backgrounds" && item.itemId >= 49));
       });
     },
   },
