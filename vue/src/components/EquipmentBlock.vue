@@ -4,7 +4,7 @@
       <img v-for="item in equippedItems" 
       v-bind:key="item.itemId"
       :src="item.imgURL"
-      @click="selectCategory(item.category)" />
+       />
     </div>
   </div>
 </template>
@@ -68,7 +68,6 @@ export default {
     flex: 0 1 calc(25% - 1rem);
     max-width: calc(80% - 1rem);
     border: 10px ridge yellow;
-    cursor: pointer;
     margin-bottom: 2rem;
     border-radius: 0.5rem;
 }

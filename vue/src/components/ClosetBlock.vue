@@ -8,7 +8,7 @@
       <button @click="selectCategory('Backgrounds')" :class="{ active: selectedCategory === 'Backgrounds' }">Backgrounds</button>
     </div>
     <div class="item-grid">
-      <img v-for="item in displayedItems"
+      <img v-for="item in filteredItems"
       :key="item.itemId"
       :src="item.imgURL"
       :class="{ selected: item === selectedItem }"
@@ -22,25 +22,43 @@
 <script>
 import ClosetService from '../services/ClosetService';
 import MascotService from '../services/MascotService';
+
 export default {
   name: "closet-block",
   data() {
     return {
-      selectedCategory: 'Shirts',
       selectedItem: null,
+      selectedCategory: 'Shirts',
     };
   },
   computed: {
     allClosetItems() {
       return this.$store.state.closetItems;
     },
-    displayedItems() {
-      return this.filterOutEquippedItems();
+    filteredItems() {
+      const filteredItems = this.getFilteredItemsByCategory(this.selectedCategory);
+      return filteredItems;
     },
   },
   methods: {
+    getCategoryFromItemId(itemId) {
+      if (itemId >= 1 && itemId <= 12) { 
+        return 'Shirts';
+      } else if (itemId >= 13 && itemId <= 24) {
+        return 'Shoes';
+      } else if (itemId >= 25 && itemId <= 36) {
+        return 'Hats';
+      } else if (itemId >= 37 && itemId <= 48) { 
+        return 'Accessories';
+      } else { 
+        return 'Backgrounds';
+      }
+    },
     selectCategory(category) {
       this.selectedCategory = category;
+    },
+    changeCategory(category) {
+      this.$store.commit('SET_SELECTED_CATEGORY', category)
     },
     selectItem(item) {
       console.log("Selected item:", item);
@@ -64,18 +82,13 @@ export default {
           this.$store.commit("EQUIP_ITEM", item);
           // this.$router.go() // remove this once closet items pull from DB
         })
-        
       })
       
     },
-    filterOutEquippedItems() {
-      return this.allClosetItems.filter(item => {
-        const isEquipped = this.$store.state.equippedItems.some(equippedItem => {
-          console.log(item.itemId + " " + equippedItem.itemId)
-          return (equippedItem.itemId < 13 && item.itemId < 13 && this.selectedCategory === "Shirts") || (this.selectedCategory === "Shoes" && equippedItem.itemId >= 13 && equippedItem.itemId < 25 && item.itemId >= 13 && item.itemId < 25) || (this.selectedCategory === "Hats" && equippedItem.itemId >= 37 && equippedItem.itemId < 25 && item.itemId >= 25 && item.itemId < 37) || (this.selectedCategory === "Accessories" && equippedItem.itemId >= 37 && equippedItem.itemId < 49 && item.itemId >= 37 && item.itemId < 49) || (this.selectedCategory === "Backgrounds" && equippedItem.itemId >= 49 && item.itemId >= 49)
-        });
-        return !isEquipped && ((this.selectedCategory === "Shirts" && item.itemId < 13) || (this.selectedCategory === "Shoes" && item.itemId >= 13 && item.itemId < 25) || (this.selectedCategory === "Hats" && item.itemId >= 25 && item.itemId < 37) || (this.selectedCategory === "Accessories" && item.itemId >= 37 && item.itemId < 49) || (this.selectedCategory === "Backgrounds" && item.itemId >= 49));
-      });
+    getFilteredItemsByCategory(category) {
+      const start = (category === 'Shirts' ? 1 : category === 'Shoes' ? 13 : category === 'Hats' ? 25 : category === 'Accessories' ? 37 : 49);
+      const end = start + 11;
+      return this.allClosetItems.filter(item => item.itemId >= start && item.itemId <= end);
     },
   },
   created() {
