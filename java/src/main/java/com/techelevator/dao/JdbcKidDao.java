@@ -49,7 +49,9 @@ public class JdbcKidDao implements KidDao {
 
     @Override
     public Kid createKid(KidRequestDto kidRequest, int userId) {
-        String sql = "INSERT INTO kids (kids_id, user_id, username, password_hash, carrots, play_time_seconds) VALUES (?, ?, ?, ?, ?, ?) RETURNING kids_id;";
+        String sql = "INSERT INTO kids (kids_id, user_id, username, password_hash, carrots, play_time_seconds) " +
+                "VALUES (?, ?, ?, ?, ?, ?) " +
+                "RETURNING kids_id;";
         String password_hash = new BCryptPasswordEncoder().encode(kidRequest.getPasswordHash());
         Integer kidId = jdbcTemplate.queryForObject(sql, Integer.class, userId, kidRequest.getParentId(), kidRequest.getUsername(), password_hash, kidRequest.getCarrots(), kidRequest.getPlayTime());
         Integer mascotId = createMascot(kidId);
@@ -71,17 +73,25 @@ public class JdbcKidDao implements KidDao {
         jdbcTemplate.update(sqlKids, kidId);
         jdbcTemplate.update(sqlUser, kidId);
     }
-
     @Override
-    public boolean updateKid(Kid kid) {
+    public void updateKid(Kid kid) {
         String sql = "UPDATE kids " +
                 "SET carrots = ?, " +
-                "play_time_seconds = ?" +
+                "play_time_seconds = ? " +
                 "WHERE kids_id = ?;";
         jdbcTemplate.update(sql, kid.getCarrots(), kid.getPlayTime(), kid.getKidId());
-        System.out.println("Kid updated");
-        return false;
+        System.out.println("Kid updated in jdbckiddao");
     }
+
+//    @Override
+//    public boolean updateKid(Kid kid) {
+//        String sql = "UPDATE kids " +
+//                "SET carrots = ?, " +
+//                "play_time_seconds = ?" +
+//                "WHERE kids_id = ?;";
+//        jdbcTemplate.update(sql, kid.getCarrots(), kid.getPlayTime(), kid.getKidId());
+//        return false;
+//    }
 
     @Override
     public Activity getActivityById(int id) {

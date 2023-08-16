@@ -13,8 +13,7 @@ public interface KidDao {
     Kid createKid(KidRequestDto kidRequest, int userId);
 
     void deleteKid(int kidId);
-
-    boolean updateKid(Kid kid);
+    void updateKid(Kid kid);
 
     Activity getActivityById(int id);
 }

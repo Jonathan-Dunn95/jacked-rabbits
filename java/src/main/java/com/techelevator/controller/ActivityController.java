@@ -29,20 +29,20 @@ public class ActivityController {
         return activityDao.getActivityByKidId(kidId);
     }
 
-    @RequestMapping(path = "/activity/calculate-carrots/{kidId}", method = RequestMethod.PUT)
-    public void updateActivity (@RequestBody Activity activity, @PathVariable int kidId){
-        activityDao.updateActivity(activity);
-        int steps = activity.getSteps();
-        int minutes = activity.getMinutes();
-        int carrotsEarned = calculateCarrotsEarned(steps, minutes);
-
-        // Update play time and carrot balance in the database
-        Kid kid = kidDao.getKidById(kidId);
-        kid.setPlayTime(kid.getPlayTime() + carrotsEarned); // 1 sec play time for each carrot
-        kid.setCarrots(kid.getCarrots() + carrotsEarned);
-
-        kidDao.updateKid(kid);
-    }
+//    @RequestMapping(path = "/activity/calculate-carrots/{kidId}", method = RequestMethod.PUT)
+//    public void updateActivity (@RequestBody Activity activity, @PathVariable int kidId){
+//        activityDao.updateActivity(activity);
+//        int steps = activity.getSteps();
+//        int minutes = activity.getMinutes();
+//        int carrotsEarned = calculateCarrotsEarned(steps, minutes);
+//
+//        // Update play time and carrot balance in the database
+//        Kid kid = kidDao.getKidById(kidId);
+//        kid.setPlayTime(kid.getPlayTime() + carrotsEarned); // 1 sec play time for each carrot
+//        kid.setCarrots(kid.getCarrots() + carrotsEarned);
+//
+//        kidDao.updateKid(kid);
+//    }
 
     private int calculateCarrotsEarned(int steps, int minutes) {
         int totalActivity = steps + minutes;

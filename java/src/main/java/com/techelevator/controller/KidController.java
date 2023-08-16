@@ -71,10 +71,10 @@ public class KidController {
 //        System.out.println("Kid updated from controller");
 //    }
     @RequestMapping(path = "/kids/update/{kidId}", method = RequestMethod.PUT)
-    public Kid updateKid (@PathVariable int kidId, @RequestBody Kid updatedKid) {
+    public void updateKid (@PathVariable int kidId, @RequestBody Kid updatedKid) {
         updatedKid.setKidId(kidId);
         kidDao.updateKid(updatedKid);
-        return updatedKid;
+        System.out.println("Kid updated in kid controller");
     }
 
     @RequestMapping(path = "/kids/{kidId}", method = RequestMethod.DELETE)
