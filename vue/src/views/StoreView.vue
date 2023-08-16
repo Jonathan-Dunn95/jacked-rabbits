@@ -2,7 +2,10 @@
   <div class="container">
     <div class="content-layout">
       <mascot-selector id="mascot-selector-container" />
+      <div id="store-area">
+      <kid-info id="kid-info-container" />
       <store-block id="store-block-container" />
+      </div>
     </div>
   </div>
 </template>
@@ -10,12 +13,14 @@
 <script>
 import StoreBlock from "../components/StoreBlock.vue";
 import MascotSelector from "../components/MascotSelector.vue"
+import KidInfo from '../components/Kidinfo.vue';
 
 export default {
     name: "store-view",
     components: {
         StoreBlock,
         MascotSelector,
+        KidInfo
     },
     methods: {
 
@@ -49,7 +54,12 @@ button {
   margin-right: 1.5rem;
 }
 #store-block-container {
-  width: 50%;
+  width: 90%;
   margin-left: 1.5rem;
+}
+#store-area {
+  display: flex;
+  flex-direction: column;
+  width: 50%
 }
 </style>
