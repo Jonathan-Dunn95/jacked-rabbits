@@ -1,5 +1,5 @@
 <template>
-   <div id="app" v-bind:class="currentTheme">
+  <div id="app" v-bind:class="currentTheme">
     <div class="theme-options">
       <div
         id="theme-white"
@@ -13,8 +13,8 @@
       ></div>
       <div
         id="theme-orange"
-        v-bind:class="{'active':currentTheme === 'theme-orange'}"
-        v-on:click="switchTheme('theme-orange')"
+        v-bind:class="{'active':currentTheme === 'theme-yellow'}"
+        v-on:click="switchTheme('theme-yellow')"
       ></div>
       <div
         id="theme-purple"
@@ -30,8 +30,8 @@
         id="theme-pink"
         v-bind:class="{'active':currentTheme === 'theme-pink'}"
         v-on:click="switchTheme('theme-pink')"
-      ></div>
-    </div>
+      ></div> 
+      </div>
     <div class="loading" v-if="isLoading">
       <img src="@/assets/bunny_loading.gif" />
     </div>
@@ -65,7 +65,6 @@ export default {
         switchTheme(theme) {
           localStorage.setItem('theme-color', theme);
           this.currentTheme = localStorage.getItem('theme-color')
-          
         }
     },
     created() {
@@ -108,52 +107,10 @@ body {
 .contentLayout.loading {
   opacity: 0;
 }
-.theme-options {
-
-
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  padding: 20px;
-  text-align: right;
-}
-.theme-options div {
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  margin: 2px 10px;
-  border: 1px solid #fff;
-  display: inline-block;
-  opacity: 0.5;
-}
-.theme-options div.active {
-  opacity: 1;
-}
-.theme-options div#theme-white {
-  background-color: #eee;
-}
-.theme-options div#theme-blue {
-  background-color: #1e41c1;
-}
-.theme-options div#theme-orange {
-  background-color: #b64b1e;
-}
-.theme-options div#theme-purple {
-  background-color: #7852ae;
-}
-.theme-options div#theme-green {
-  background-color: #5faf3b;
-}
-.theme-options div#theme-pink {
-  background-color: rgb(209, 143, 189);
-}
-
-
 
 #app {
   /* width: 100vw; */
-  height: 100vh;
+ min-height: 100vh;
   --primary200: #daffe9;
   --primary400: #47d7ac;
   --primary500: #1dc5ba;
@@ -168,5 +125,5 @@ body {
   --neutral800: hsl(218, 23%, 27%);
   font-family: 'Montserrat', sans-serif;
 }
-
+@import "main.css";
 </style>
