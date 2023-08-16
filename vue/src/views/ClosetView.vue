@@ -72,6 +72,6 @@ button {
 .kid-info-div {
   justify-content: flex-end;
   margin-left: 57%;
-  margin-right: 1%;
+  margin-right: 1.3%;
 }
 </style>
