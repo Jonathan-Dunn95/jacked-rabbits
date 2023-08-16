@@ -54,7 +54,7 @@ export default {
           updatedMascot.shoes = item.id
         } else if(item.id<37) {
           updatedMascot.hat = item.id
-        } else if(item.id<51) {
+        } else if(item.id<49) {
           updatedMascot.accessory = item.id
         } else {
           updatedMascot.background = item.id

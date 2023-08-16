@@ -155,27 +155,27 @@ export default new Vuex.Store({
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/accessories/acc10.jpg'
       },
       {
-        id: 51,
+        id: 49,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back1.jpg'
       },
       {
-        id: 52,
+        id: 50,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back2.jpg'
       },
       {
-        id: 53,
+        id: 51,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back3.jpg'
       },
       {
-        id: 54,
+        id: 52,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back4.jpg'
       },
       {
-        id: 55,
+        id: 53,
         category: "Backgrounds",
         url: 'https://mykidswellnessapp-media.s3.amazonaws.com/all_items/backgrounds/back5.jpg'
       },
@@ -227,7 +227,7 @@ export default new Vuex.Store({
       const index = state.equippedItems.findIndex(
         (equippedItem) => {
           // console.log(equippedItem.itemId + ' ' + item.id)
-          return (equippedItem.itemId < 13 && item.id < 13) || (equippedItem.itemId >= 13 && equippedItem.itemId < 25 && item.id >= 13 && item.id < 25) || (equippedItem.itemId >= 37 && equippedItem.itemId < 25 && item.id >= 25 && item.id < 37) || (equippedItem.itemId >= 37 && equippedItem.itemId < 51 && item.id >= 37 && item.id < 51) || (equippedItem.itemId >= 51 && item.id >= 51)
+          return (equippedItem.itemId < 13 && item.id < 13) || (equippedItem.itemId >= 13 && equippedItem.itemId < 25 && item.id >= 13 && item.id < 25) || (equippedItem.itemId >= 37 && equippedItem.itemId < 25 && item.id >= 25 && item.id < 37) || (equippedItem.itemId >= 37 && equippedItem.itemId < 49 && item.id >= 37 && item.id < 49) || (equippedItem.itemId >= 49 && item.id >= 49)
         }
       );
       console.log(index)
