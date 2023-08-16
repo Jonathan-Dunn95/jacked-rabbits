@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import MascotService from '../services/MascotService';
 export default {
   name: "closet-block",
   data() {
@@ -45,7 +46,26 @@ export default {
       this.selectedItem = item;
     },
     equipItem(item) {
-      this.$store.commit("EQUIP_ITEM", item);
+      MascotService.getMascotByKidId(this.$store.state.user.id).then( response => {
+        let updatedMascot = response.data
+        if(item.id<13) {
+          updatedMascot.shirt = item.id
+        } else if(item.id<25) {
+          updatedMascot.shoes = item.id
+        } else if(item.id<37) {
+          updatedMascot.hat = item.id
+        } else if(item.id<51) {
+          updatedMascot.accessory = item.id
+        } else {
+          updatedMascot.background = item.id
+        }
+        MascotService.updateMascotById(updatedMascot).then( () => {
+          this.$store.commit("EQUIP_ITEM", item);
+          this.$router.go() // remove this once closet items pull from DB
+        })
+        
+      })
+      
     },
     filterOutEquippedItems() {
       return this.allClosetItems.filter(item => {

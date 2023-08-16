@@ -16,11 +16,6 @@
 
 export default {
   name: "home",
-  data() {
-    return {
-
-    };
-  },
   created() {
     let userType = this.$store.state.user.authorities[0].name;
     if(userType === "ROLE_PARENT") {
