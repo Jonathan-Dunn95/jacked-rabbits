@@ -77,6 +77,7 @@ export default {
         this.selectedItem = item;
     },
     purchaseItem(item) {
+      alert("Item Purchased");
       MascotService.getMascotByKidId(this.$store.state.user.id).then( response => {
         let closetEntry = {};
         // console.log(item.id)
