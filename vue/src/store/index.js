@@ -232,7 +232,10 @@ export default new Vuex.Store({
       );
       console.log(index)
       if (index !== -1) {
-        state.equippedItems.splice(index, 1, item);
+        let dbFriendlyItem = {}
+        dbFriendlyItem.itemId = item.id;
+        dbFriendlyItem.imgURL = item.url;
+        state.equippedItems.splice(index, 1, dbFriendlyItem);
       } else {
         state.equippedItems.push(item);
       }

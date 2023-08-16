@@ -61,7 +61,7 @@ export default {
         }
         MascotService.updateMascotById(updatedMascot).then( () => {
           this.$store.commit("EQUIP_ITEM", item);
-          this.$router.go() // remove this once closet items pull from DB
+          // this.$router.go() // remove this once closet items pull from DB
         })
         
       })
