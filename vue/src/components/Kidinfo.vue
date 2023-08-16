@@ -59,6 +59,7 @@ export default {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   animation: dynamicBackground 10s infinite alternate;
+  border: 10px solid var(--primary800);
 }
 .counter {
   text-align: center;
