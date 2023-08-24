@@ -73,7 +73,10 @@ export default {
     updatedActivity.minutes += parseFloat(this.activityForm.minutes);
   }
 
-  KidService.updateActivity(updatedActivity)
+  KidService.updateActivity(updatedActivity).then(() => {
+    location.reload()
+  })
+
 
   this.hideForm();
 

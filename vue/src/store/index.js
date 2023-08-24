@@ -133,6 +133,11 @@ export default new Vuex.Store({
     },
     SET_CLOSET_ITEMS(state, items) {
       state.closetItems = items;
+    },
+    SET_CARROTS(state, kidId, carrots) {
+      console.log(carrots)
+      let kid = state.kids.find( kid => kid.id === kidId)
+      kid.carrots += carrots;
     }
   },
 })
