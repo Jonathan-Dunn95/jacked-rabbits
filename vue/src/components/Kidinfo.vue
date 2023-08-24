@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     convertedPlayTime() {
-      return (parseInt(this.kid.playTime)/60) + "M"
+      return (Math.round(parseInt(this.kid.playTime)/60)) + "M"
     }
   },
   created() {
